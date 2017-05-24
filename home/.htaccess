@@ -1,0 +1,40 @@
+Options -Indexes
+AddType application/x-httpd-php .php .htm .html
+
+php_value max_execution_time 200
+php_value max_input_time 200
+php_value memory_limit 128M
+php_value upload_max_filesize 30M
+php_value post_max_size 30M
+php_value mbstring.internal_encoding EUC-JP
+php_value mbstring.detect_order EUC-JP,UTF-8,SJIS,JIS,ASCII
+php_flag mbstring.encoding_translation off
+php_value default_charset "EUC-JP"
+
+# Enable RewriteEngine.
+RewriteEngine on
+
+RewriteCond %{HTTP_HOST} ^sweatjack.jp
+RewriteRule ^(.*)$ http://www.sweatjack.jp/$1 [R=301,L]
+
+
+# 404 Error for Multidomain Directories.
+RewriteCond %{HTTP_HOST} ^sweatjack.jp$
+RewriteCond %{REQUEST_URI} ^/(test.sweatjack.jp)/
+RewriteRule ^(.*)$ /$1 [L,R=404]
+
+# Main RewriteRule for multidomain.
+RewriteCond %{HTTP_HOST} ^(test.sweatjack.jp)
+RewriteCond %{REQUEST_URI} !^/(test.sweatjack.jp)/
+RewriteRule ^(.*)$ /%{HTTP_HOST}/$1/ [L]
+
+
+RewriteCond %{HTTP_USER_AGENT} (iPhone|iPod|Android|BlackBerry|Windows.Phone) [NC]
+#ipadÇÕPCî≈Ç…ÅB
+RewriteCond %{HTTP_USER_AGENT} !iPad [NC]
+#viewmode=pc
+RewriteCond %{HTTP_COOKIE} !viewmode=pc
+RewriteCond %{QUERY_STRING} !viewmode=pc
+
+#RewriteRule ^$ http:\/\/www.sweatjack.jp/m2/ [R=301,L]
+
