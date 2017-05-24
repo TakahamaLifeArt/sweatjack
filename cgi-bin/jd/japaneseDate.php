@@ -955,8 +955,8 @@ class japaneseDate
 	 *
 	 * <pre>{@link http://php.five-foxes.com/module/php_man/index.php?web=function.strftime strftimeの仕様}
 	 * に加え、
-	 * %J 1〜31の日
-	 * %g 1〜9なら先頭にスペースを付ける、1〜31の日
+	 * %J 1~31の日
+	 * %g 1~9なら先頭にスペースを付ける、1~31の日
 	 * %K 和名曜日
 	 * %k 六曜番号
 	 * %6 六曜
@@ -965,7 +965,7 @@ class japaneseDate
 	 * %L 祝日
 	 * %o 干支番号
 	 * %O 干支
-	 * %N 1〜12の月
+	 * %N 1~12の月
 	 * %E 旧暦年
 	 * %G 旧暦の月
 	 * %F 年号
@@ -1032,6 +1032,37 @@ class japaneseDate
 			}
 		}
 		return strftime($resstr, $time_stamp);
+	}
+	
+	/**
+	 * 休業期間の配列を返します
+	 *
+	 * @param string $str 開始日付
+	 * @param string $end 終了日付
+	 * @param int $mon 月を指定、指定しない場合は休業期間全ての日付情報を返す
+	 * @return array
+	 */
+	function getExtHoliday($str, $end, $mon=null)
+	{
+		$_from_holiday = strtotime($str);
+		$_to_holiday	= strtotime($end);
+		$res = array();
+		if (!$_from_holiday || !$_to_holiday) {
+			return $res;
+		}
+
+		$time_stamp = mktime(0, 0, 0, date("m", $_from_holiday), date("d", $_from_holiday), date("Y", $_from_holiday));
+		$end_time_stamp = mktime(0, 0, 0, date("m", $_to_holiday), date("d", $_to_holiday)+1, date("Y", $_to_holiday));
+
+		while($time_stamp<$end_time_stamp){
+			$gc = $this->makeDateArray($time_stamp);
+			if($mon==$gc['Month'] || $mon==null){
+				$res[] = $gc;
+			}
+			$time_stamp = mktime(0, 0, 0, date("m", $time_stamp), date("d", $time_stamp) + 1, date("Y", $time_stamp));
+		}
+
+		return $res;
 	}
 }
 ?>

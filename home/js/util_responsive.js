@@ -382,9 +382,7 @@ jQuery.fn.extend({
 *		¥é¥¤¥Ö¥é¥ê³ÈÄ¥
 */
 	jQuery.extend({
-		prop: {
-			'holidayInfo':{}
-		},
+		holidayInfo:{},
 		addFigure:function(arg){
 			var str = new String(arg);
 			str = str.replace(/[£°-£¹]/g, function(m){

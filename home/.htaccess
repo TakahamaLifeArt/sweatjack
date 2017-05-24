@@ -19,14 +19,14 @@ RewriteRule ^(.*)$ http://www.sweatjack.jp/$1 [R=301,L]
 
 
 # 404 Error for Multidomain Directories.
-RewriteCond %{HTTP_HOST} ^sweatjack.jp$
-RewriteCond %{REQUEST_URI} ^/(test.sweatjack.jp)/
-RewriteRule ^(.*)$ /$1 [L,R=404]
+#RewriteCond %{HTTP_HOST} ^sweatjack.jp$
+#RewriteCond %{REQUEST_URI} ^/(test.sweatjack.jp)/
+#RewriteRule ^(.*)$ /$1 [L,R=404]
 
 # Main RewriteRule for multidomain.
-RewriteCond %{HTTP_HOST} ^(test.sweatjack.jp)
-RewriteCond %{REQUEST_URI} !^/(test.sweatjack.jp)/
-RewriteRule ^(.*)$ /%{HTTP_HOST}/$1/ [L]
+#RewriteCond %{HTTP_HOST} ^(test.sweatjack.jp)
+#RewriteCond %{REQUEST_URI} !^/(test.sweatjack.jp)/
+#RewriteRule ^(.*)$ /%{HTTP_HOST}/$1/ [L]
 
 
 RewriteCond %{HTTP_USER_AGENT} (iPhone|iPod|Android|BlackBerry|Windows.Phone) [NC]

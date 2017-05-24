@@ -80,67 +80,61 @@ jQuery(function($){
     			 */
     			var tbl = $(my).closest('table');
     			var pos = tbl.attr('id').split('_')[2];
-		    	var area = [1];
-				var extra = [1];
-    			var ink = [tbl.find('.ink').val()];
-    			if(ink[0]<1){
-    				if(!$(my).is('.item_selector')) $.msgbox('インクの色数を指定して下さい。');
+//		    	var area = [1];
+//				var extra = [1];
+    			var ink = tbl.find('.ink').val() - 0;
+    			if (ink<1) {
+    				if (!$(my).is('.item_selector')) $.msgbox('インクの色数を指定して下さい。');
     				return;
     			}
     			var amount = tbl.find('.amount').val();
-    			if(amount<1){
+    			if (amount<1) {
     				if(!$(my).is('.item_selector')) $.msgbox('製作枚数を指定して下さい。');
     				return;
     			}
     			var item_id = tbl.find('select').val();
     			var itemprice = 0;		// 商品代
-    			var print_fee = [];		// プリント代（0：通常	1：ジャンボ版）
+//    			var print_fee = [];		// プリント代（0：通常	1：ジャンボ版）
     			var cost = [];			// 合計金額（0：通常	1：ジャンボ版）
+				
+				var ids = {};
+					ids[item_id] = amount;
+				var argsNormal = {'vol':amount, 'ink':ink, 'ids':ids, 'size':0};
+				var argsJumbo = {'vol':amount, 'ink':ink, 'ids':ids, 'size':1};
 
-    			// 商品価格を取得
-    			$.ajax({ url: '../../app-def/dbinfo.php', type: 'POST', dataType: 'text', async: false,
-					data: {'act':'cost', 'item_id':item_id, 'size_id':20, 'points':1, 'iswhite':'1'}, success: function(r){
-						itemprice = (amount*(r-0));
+				$.when(
+					$.getJSON($.TLA.api+'?callback=?', {'act':'price', 'itemid':item_id, 'amount':amount, 'output':'jsonp'}),
+					$.getJSON($.TLA.api+'?callback=?', {'act':'printfee', 'printmethod':'silk', 'args':argsNormal, 'output':'jsonp', 'curdate':'2017-05-25'}),
+					$.getJSON($.TLA.api+'?callback=?', {'act':'printfee', 'printmethod':'silk', 'args':argsJumbo, 'output':'jsonp', 'curdate':'2017-05-25'})
+				).then(function(r1, r2, r3){
+					if (!r1 || !r2 || !r3) {
+						$.msgbox('通信エラー： データの取得に失敗しました。');
+						return;
 					}
-				});
-
-    			// 通常版とジャンボ版のプリント代
-    			var size = [0];
-    			$.ajax({ url: '../../app-def/estimation.php', type: 'POST', dataType: 'text', async: false,
-					data: {'act':'silkprintfee','amount':amount, 'area':area, 'ink':ink, 'item_id':item_id, 'size':size, 'jumbo':[1], 'extra':extra, 'repeat':0}, success: function(r){
-						print_fee = r.split('|');
-						
-						// 通常
-						var fee = print_fee[0]-0;
-						tbl.find('.regular').children('p').children('span').text($.addFigure(itemprice+fee));
-						cost[0] = Math.round( ((itemprice+fee)*(1+_TAX)) / amount );
-						$('#regular_price_'+pos).text($.addFigure(cost[0]));
-						
-						// ジャンボ
-						fee = print_fee[1]-0;
-						tbl.find('.jumbo').children('p').children('span').text($.addFigure(itemprice+fee));
-						cost[1] = Math.round( ((itemprice+fee)*(1+_TAX)) / amount );
-						$('#jumbo_price_'+pos).text($.addFigure(cost[1]));
+					for (var i=0; i<r1[0].length; i++) {
+						if (r1[0][i]['sizeid']==20) {
+							itemprice = amount * (r1[0][i]['price_white'] - 0);
+							break;
+						}
 					}
-				});
-    			
-    			/* 2016-09-21 廃止
-    			 * ジャンボ版プリント代
-    			size = [1];
-    			$.ajax({ url: '../../app-def/estimation.php', type: 'POST', dataType: 'text', async: false,
-					data: {'act':'silkprintfee','amount':amount, 'area':area, 'ink':ink, 'item_id':item_id, 'size':size, 'extra':extra, 'repeat':0}, success: function(r){
-						print_fee[1] = (r-0);
-						tbl.find('.jumbo').children('p').children('span').text($.addFigure(itemprice+print_fee[1]));
-						cost[1] = Math.round( ((itemprice+print_fee[1])*(1+_TAX)) / amount );
-						$('#jumbo_price_'+pos).text($.addFigure(cost[1]));
-					}
-				});
-				*/
+					
+					// 通常
+					var fee = r2[0]['tot']-0;
+					tbl.find('.regular').children('p').children('span').text($.addFigure(itemprice+fee));
+					cost[0] = Math.round( ((itemprice+fee)*(1+_TAX)) / amount );
+					$('#regular_price_'+pos).text($.addFigure(cost[0]));
 
-				var plus = cost[1] - cost[0];
-				$('#plus_'+pos).text($.addFigure(plus));
-
-				$('#regular_price_'+pos+', #jumbo_price_'+pos).effect('pulsate',{'times':3},200);
+					// ジャンボ
+					fee = r3[0]['tot']-0;
+					tbl.find('.jumbo').children('p').children('span').text($.addFigure(itemprice+fee));
+					cost[1] = Math.round( ((itemprice+fee)*(1+_TAX)) / amount );
+					$('#jumbo_price_'+pos).text($.addFigure(cost[1]));
+					
+					// 差額
+					var plus = cost[1] - cost[0];
+					$('#plus_'+pos).text($.addFigure(plus));
+					$('#regular_price_'+pos+', #jumbo_price_'+pos).effect('pulsate',{'times':3},200);
+				});
 	    	}
     	},
     	digits:function($target, args, setup){

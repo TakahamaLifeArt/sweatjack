@@ -15,6 +15,7 @@
 				  2014.02.04 都道府県を分ける
 				  2014.05.12 支払方法にカード決済を追加
 				  2014.08.13 特急料金の有無を追加
+				  2017-05-25 プリント代計算の仕様変更によるプリント情報の更新
 	
 -------------------------------------------------------------- */
 require_once dirname(__FILE__).'/../php_libs/http.php';
@@ -30,7 +31,7 @@ class Ordermail extends Conndb{
 			$user = $_SESSION['orders']['customer'];
 			$opts = $_SESSION['orders']['options'];
 			$sum = $_SESSION['orders']['sum'];
-						
+			
 			$order_info = "☆━━━━━━━━【　お申し込み内容　】━━━━━━━━☆\n\n";
 			
 			$order_info .= "┏━━━━━━━━┓\n";
@@ -63,7 +64,7 @@ class Ordermail extends Conndb{
 			$order_info .= "◆　　商品情報\n";
 			$order_info .= "┗━━━━━━━┛\n";
 			
-/*
+			/*
 *	['items'][category_id]['category_key']
 *			  			  ['category_name']
 *		   	  			  ['item'][id]['code']
@@ -91,7 +92,7 @@ class Ordermail extends Conndb{
 						$order_info .= "--------------------\n";
 					}
 					$order_info .= "\n\n";
-/*
+					/*
 *	プリント位置と添付ファイル
 *	['items'][category_id]['item'][id]['name']
 *									  ['posid']
@@ -101,14 +102,14 @@ class Ordermail extends Conndb{
 */
 					$attach_info[$posid]['design'] = $v2['design'];
 					$attach_info[$posid]['item'][] = $item_name;
-					
+
 				}
 			}
 			$order_info .= "◆枚数合計：　".number_format($sum['amount'])." 枚\n";
 			$order_info .= "━━━━━━━━━━━━━━━━━━━━━\n\n\n";
 			
-
-/*
+			
+			/*
 *	$attach_info
 *	[posid]['item'][アイテム名, ...]
 *		   ['design'][base][0]['posname']
@@ -121,6 +122,8 @@ class Ordermail extends Conndb{
 			$order_info .= "┏━━━━━━━━━┓\n";
 			$order_info .= "◆　　プリント情報\n";
 			$order_info .= "┗━━━━━━━━━┛\n";
+			$sizeName = array('大', '中', '小');
+			$printName = array('silk'=>'シルク','digit'=>'デジタル転写','inkjet'=>'インクジェット');
 			foreach($attach_info as $posid=>$a1){
 				$order_item = "◇アイテム：　".implode('、', $a1['item'])."\n";
 				$printinfo = '';
@@ -131,12 +134,11 @@ class Ordermail extends Conndb{
 						if($a2[$i]['ink']==0 && empty($a2[$i]['attachname'])) continue;
 						if($a2[$i]['ink']>=9) $ink = "フルカラー\n";
 						else $ink = $a2[$i]['ink']."色\n";
-						$tmp .= "　　・".$a2[$i]['posname']."　".$ink;
-						
-					}
-					if($tmp!=""){
+						$tmp = $a2[$i]['posname']."　".$ink;
+						$printinfo .= "◇プリント方法：　".$printName[$a2[$i]['printing']]."\n";
 						$printinfo .= "◇プリント位置：　".$base."\n";
-						$printinfo .= $tmp;
+						$printinfo .= "◇デザインサイズ：　".$sizeName[$a2[$i]['areasize']]."\n";
+						$printinfo .= "◇デザインの色数：　".$tmp."\n";
 					}
 				}
 				if($printinfo!=""){
@@ -150,14 +152,17 @@ class Ordermail extends Conndb{
 			
 			if(empty($opts['pack'])){
 				$order_info .= "◇たたみ・袋詰め：　希望しない\n";
-			}else{
+			}else if($opts['pack']==1){
 				$order_info .= "◇たたみ・袋詰め：　希望する\n";
+			}else{
+				$order_info .= "◇たたみ・袋詰め：　袋のみ\n";
 			}
+			
 			//$order_info .= "◇デザインの入稿方法：　".$opts['ms']."\n\n";
 			//$order_info .= "◇プリントカラー：　\n".$opts['note_printcolor']."\n\n";
 			//$order_info .= "◇文字入力の確認：　\n".$opts['note_write']."\n\n";
 			$order_info .= "━━━━━━━━━━━━━━━━━━━━━\n\n\n";
-
+			
 			$order_info .= "┏━━━━━━━━━┓\n";
 			$order_info .= "◆　　添付ファイル\n";
 			$order_info .= "┗━━━━━━━━━┛\n";
@@ -179,11 +184,11 @@ class Ordermail extends Conndb{
 			if(!empty($opts['student'])){
 				switch($opts['student']){
 					case '3':	$discountname[] = "学割";
-								break;
+						break;
 					case '5':	$discountname[] = "2クラス割";
-								break;
+						break;
 					case '7':	$discountname[] = "3クラス割";
-								break;
+						break;
 				}
 			}
 			
@@ -236,7 +241,7 @@ class Ordermail extends Conndb{
 			/*
 			$attr = array('','法人','学生','個人');
 			$order_info .= "◇お客様について：　".$attr[$opts['attr']]."\n";
-			
+
 			$purpose = array('', 
 				'文化祭・体育祭（クラス・サークル・企業）',
 				'スポーツ・ダンスユニフォーム（部活・サークルなど）',
@@ -255,7 +260,7 @@ class Ordermail extends Conndb{
 			}
 			$tmp[] = $opts['purpose_text'];
 			$order_info .= "◇ご使用用途：　".implode(', ',$tmp)."\n";
-			
+
 			$media = array('', 
 				'Yahoo検索','Google検索','その他検索エンジン',
 				'Tシャツ、ファッション関連サイト','バナー広告',
@@ -272,11 +277,11 @@ class Ordermail extends Conndb{
 			$tmp[] = $opts['media_text'];
 			$order_info .= "◇何でお知りになったか：　".implode(', ',$tmp)."\n";
 			*/
-			
-			if(empty($opts['blog'])){
-				$order_info .= "◇デザイン掲載：　掲載不可\n\n";
-			}else{
+
+			if(empty($opts['publish'])){
 				$order_info .= "◇デザイン掲載：　掲載可\n\n";
+			}else{
+				$order_info .= "◇デザイン掲載：　掲載不可\n\n";
 			}
 			$order_info .= "◇デザインについてのご要望など：\n";
 			if(empty($user['note_design'])){
@@ -286,17 +291,25 @@ class Ordermail extends Conndb{
 			}
 			$order_info .= "------------------------------------------\n\n";
 			
+			$order_info .= "◇刺繍をご希望の場合：\n";
+			if(empty($user['note_printmethod'])){
+				$order_info .= "なし\n";
+			}else{
+				$order_info .= $user['note_printmethod']."\n";
+			}
+			$order_info .= "------------------------------------------\n\n";
+			
 			$order_info .= "◇プリントするデザインの色：\n";
 			$order_info .= $user['note_printcolor']."\n";
 			$order_info .= "------------------------------------------\n\n";
-			
+
 			$order_info .= "◇デザインテンプレートの指定：\n";
 			$order_info .= $user['note_template']."\n";
 			$order_info .= "------------------------------------------\n\n";
-			
+
 			$payment = array("銀行振込","代金引換","現金でお支払い（工場でお受取）","カード決済","コンビニ決済");
 			$order_info .= "◇お支払方法：　".$payment[$opts['payment']]."\n\n";
-			
+
 			$order_info .= "◇ご要望・ご質問など：\n";
 			if(empty($user['comment'])){
 				$order_info .= "なし\n\n";
@@ -318,7 +331,7 @@ class Ordermail extends Conndb{
 			}
 			$order_info .= "━━━━━━━━━━━━━━━━━━━━━\n\n";
 			*/
-			
+
 			/* 2013-11-25 廃止
 			if(empty($user['payment'])){
 				$order_info .= "┏━━━━━━━┓\n";
@@ -331,14 +344,18 @@ class Ordermail extends Conndb{
 				$order_info .= "※お振込み手数料は、お客様のご負担とさせて頂いております。\n\n";
 			}
 			*/
-			
+
 			// send mail
 			$res = $this->send_mail($order_info, $user['customername'], $user['email'], $attach);
-			
+			if (!$res) {
+				throw new Exception();
+			}
+
 			// db
-			$this->insertOrderToDB();
+			$res = $this->insertOrderToDB();
+
 			return $res;
-			
+
 		}catch (Exception $e) {
 			return false;
 		}
@@ -467,86 +484,91 @@ class Ordermail extends Conndb{
 	}
 
 	public function insertOrderToDB(){
-			$httpObj = new HTTP("http://original-sweat.com/system/php_libs/ordersinfo.php");
-			$items = $_SESSION['orders']['items'];
-			$attach = $_SESSION['orders']['attach'];
-			$user = $_SESSION['orders']['customer'];
-			$opts = $_SESSION['orders']['options'];
-			$sum = $_SESSION['orders']['sum'];		
+		$httpObj = new HTTP(_ORDER_INFO);
+		$items = $_SESSION['orders']['items'];
+		$attach = $_SESSION['orders']['attach'];
+		$user = $_SESSION['orders']['customer'];
+		$opts = $_SESSION['orders']['options'];
+		$sum = $_SESSION['orders']['sum'];		
 
+		// 顧客情報
+		$customer_id = "";
+		//新規顧客の場合
+		if(empty($user['member'])){
+			$field1 = array("number","cstprefix","customer_id","customerruby","companyruby","customername","company","tel","mobile","fax","email","password","mobmail","bill","cutofday","cyclebilling","paymentday","remittancecharge","zipcode","addr0","addr1","addr2","addr3","addr4","reg_site");
+			$data1 = array("","k","",$user['customerruby'],"",$user['customername'],"",$user['tel'],"","",$user['email'],$user['pass'],"","1","20","1","31","1",$user['zipcode'],$user['addr0'],$user['addr1'],$user['addr2'],"","",_SITE);
+		} else {
+			//ログインした顧客の場合
+			$customer_id = $user['member'];
+			//$field1 = "";
+			$field1 = array("customer_id","customerruby","customername","tel","email","zipcode","addr0","addr1","addr2","reg_site");
+			$data1 = array($customer_id,$user['customerruby'],$user['customername'],$user['tel'],$user['email'],$user['zipcode'],$user['addr0'],$user['addr1'],$user['addr2'],_SITE);
+		}
 
-			// 顧客情報
-			$customer_id = "";
-			//新規顧客の場合
-			if(empty($user['member'])){
-				$field1 = array("number","cstprefix","customer_id","customerruby","companyruby","customername","company","tel","mobile","fax","email","password","mobmail","bill","cutofday","cyclebilling","paymentday","remittancecharge","zipcode","addr0","addr1","addr2","addr3","addr4","reg_site");
-				$data1 = array("","k","",$user['customerruby'],"",$user['customername'],"",$user['tel'],"","",$user['email'],$user['pass'],"","1","20","1","31","1",$user['zipcode'],$user['addr0'],$user['addr1'],$user['addr2'],"","",_SITE);
-			} else {
-				//ログインした顧客の場合
-				$customer_id = $user['member'];
-				$field1 = array("customer_id","customerruby","customername","tel","email","zipcode","addr0","addr1","addr2","reg_site");
-				$data1 = array($customer_id,$user['customerruby'],$user['customername'],$user['tel'],$user['email'],$user['zipcode'],$user['addr0'],$user['addr1'],$user['addr2'],_SITE);
-			}
+		// お届け先情報
+		$field2 = array("customer_id", "delivery_customer");
+		$data2 = array($customer_id, $user['delivery_customer']);
 
-			// お届け先情報
-			$field2 = array("customer_id", "delivery_customer");
-			$data2 = array($customer_id, $user['delivery_customer']);
+		// 受注情報
 
-			// 受注情報
+		$discount = "";
+		// ブログ割
+		if(empty($opts['blog'])){
+			$discount = "blog0";
+		}else{
+			$discount = "blog1";
+		}
+		$discount .= ",";
+		// イラレ割
+		if(empty($opts['illust'])){
+			$discount .= "illust0";
+		}else{
+			$discount .= "illust1";
+		}
 
-			$discount = "";
-			// ブログ割
-			if(empty($opts['blog'])){
-				$discount = "blog0";
-			}else{
-				$discount = "blog1";
-			}
-			$discount .= ",";
-			// イラレ割
-			if(empty($opts['illust'])){
-				$discount .= "illust0";
-			}else{
-				$discount .= "illust1";
-			}
-			
-			// 学割
-			switch($opts['student']){
-				case '3':	$discount1 = "student";
-							break;
-				case '5':	$discount1 = "team2";
-							break;
-				case '7':	$discount1 = "team3";
-							break;
-				default: 	$discount1 = "";
-			}
-			
-			// 紹介割
-			if(!empty($opts['intro'])){
-				$discount2 = "introduce";
-			}
+		// 学割
+		switch($opts['student']){
+			case '3':	$discount1 = "student";
+				break;
+			case '5':	$discount1 = "team2";
+				break;
+			case '7':	$discount1 = "team3";
+				break;
+			default: 	$discount1 = "";
+		}
 
-			// 支払方法
-			$payment = array("wiretransfer","cod","cash","credit","conbi");
-			
-			// 消費税
-			$tax = parent::getSalesTax();
-			$tax /= 100;
+		// 紹介割
+		if(!empty($opts['intro'])){
+			$discount2 = "introduce";
+		}
+		// 支払方法
+		$payment = array("wiretransfer","cod","cash","credit","conbi");
 
-			// 見積
-			$basefee = $sum["itemprice"] + $sum["printprice"] + $sum["optionfee"];
-			$salestax = floor(basefee*$tax);
-			$total = floor(basefee*(1+$tax));
-			$credit = 0;
-			if($sum["payment"]==3){
-				$credit = ceil($total*_CREDIT_RATE);
-				$total += $credit;
-			}
-			$perone = ceil($total/$sum['amount']);
+		// 消費税
+		$tax = parent::getSalesTax();
+		$tax /= 100;
 
+		// 見積
+		$basefee = $sum["itemprice"] + $sum["printprice"] + $sum["optionfee"];
+		$salestax = floor(basefee*$tax);
+		$total = floor(basefee*(1+$tax));
+		$credit = 0;
+		if($sum["payment"]==3){
+			$credit = ceil($total*_CREDIT_RATE);
+			$total += $credit;
+		}
+		$perone = ceil($total/$sum['amount']);
 
-			$field3 = array(
+		// コメント欄
+		$comment[] = $user['note_design'];
+		$comment[] = $user['note_printcolor'];
+		$comment[] = $user['note_printprintmethod'];
+		$comment[] = $user['comment'];
+		$strComment = implode("\n", $comment);	
+
+		$field3 = array(
 			"id","reception","destination","order_comment","paymentdate",
-			"exchink_count","deliverytime","manuscriptdate","invoicenote","billnote",
+			"exchink_count","exchthread_count","deliverytime","manuscriptdate","invoicenote","billnote",
 			"contact_number",
 			"additionalname","extradiscountname","boxnumber","handover","factory",
 			"destcount","ordertype","schedule1","schedule2","schedule3","schedule4",
@@ -567,117 +589,125 @@ class Ordermail extends Conndb{
 			"discount","media","bill",
 
 			"productfee","printfee","silkprintfee","colorprintfee","digitprintfee",
-			"inkjetprintfee","cuttingprintfee","exchinkfee","additionalfee","packfee",
+			"inkjetprintfee","cuttingprintfee","embroideryprintfee","exchinkfee","additionalfee","packfee",
 
 			"expressfee","discountfee","reductionfee","carriagefee","extracarryfee",
-			"designfee","codfee","basefee","salestax","creditfee","conbifee","repeatdesign","allrepeat");
+			"designfee","codfee","basefee","salestax","creditfee", "conbifee","repeatdesign","allrepeat");
 
-			$data3 = array
-			("","0","0",$user['note_design']."\n".$user['note_printcolor']."\n".$user['note_template']."\n".$user['comment'],"",
-			"0",$opts['deliverytime'],"","","",
-			"",
-			"","","0","0","0",
-			"1","general","","","",$opts['deliveryday'],
+		$data3 = array
+			("","0","0",$strComment,"",
+			 "0","0",$opts['deliverytime'],"","","",
+			 "",
+			 "","","0","0","0",
+			 "1","general","","","",$opts['deliveryday'],
 
-			"0","normal",$sum['amount'],$opts['noprint'],"","",
-			$discount1,$discount2,"0","","0",$payment[$opts['payment']],
+			 "0","normal",$sum['amount'],$opts['noprint'],"","",
+			 $discount1,$discount2,"0","","0",$payment[$opts['payment']],
 
-			"accept","0","2","","0","その他","0",
-			"0","0","","0","0",
-			"0","",$customer_id,$total,$sum['amount'],
+			 "accept","0","2","","0","その他","0",
+			 "0","0","","0","0",
+			 "0","",$customer_id,$total,$sum['amount'],
 
-			"",$user['repeater'],"0","0",
-			empty($opts['pack'])? 1: 0,
-			$opts['pack']!=2? 0: 1,
-			$opts['pack']!=2? 0: $sum['amount'],
-			$opts['pack']!=1? 0: 1,
-			$opts['pack']!=1? 0: $sum['amount'],
-			$discount,"","",
+			 "",$user['repeater'],"0","0",
+			 empty($opts['pack'])? 1: 0,
+			 $opts['pack']!=2? 0: 1,
+			 $opts['pack']!=2? 0: $sum['amount'],
+			 $opts['pack']!=1? 0: 1,
+			 $opts['pack']!=1? 0: $sum['amount'],
+			 $discount,"","",
 
-			$sum["itemprice"],$sum["printprice"],"0","0","0",
-			"0","0","0","0",$sum["pack"],
+			 $sum["itemprice"],$sum["printprice"],"0","0","0",
+			 "0","0","0","0","0",$sum["pack"],
 
-			$sum["expressfee"],$sum["discount"],"0",$sum["carriage"],"0",
-			"0",$sum["codfee"],$basefee,$salestax,$credit,$sum["conbifee"],"0","0");
+			 $sum["expressfee"],$sum["discount"],"0",$sum["carriage"],"0",
+			 "0",$sum["codfee"],$basefee,$salestax,$credit, $sum["conbifee"],"0","0");
+
+		$field4 = array("master_id","choice","plateis","size_id","amount","item_cost","item_printfee","item_printone","item_id","item_name","stock_number","maker","size_name","item_color","price");
+		$field5 = array();
+		$field6 = array("category_id","printposition_id","subprice");
+		$field7 = array("areaid", "print_id", "area_name", "area_path", "origin", "ink_count", "print_type","areasize_from", "areasize_to", "areasize_id", "print_option", "jumbo_plate", "design_plate","design_type","design_size", "repeat_check", "silkmethod");
+		$field8 = array("areaid", "area_id", "selective_key", "selective_name");
+
+		//注文商品
+		$data4 = array();
+		$data5 = array();
+		//商品カテゴリーごとのプリント情報
+		//data6
+		$orderprint = array();
+		//data7
+		$orderarea = array();
+		//data8
+		$orderselectivearea = array();
 
 
-			$field4 = array("master_id","choice","plateis","size_id","amount","item_cost","item_printfee","item_printone","item_id","item_name","stock_number","maker","size_name","item_color","price");
-			$field5 = array();
-			$field6 = array("category_id","printposition_id","subprice");
-			$field7 =  array("areaid", "print_id", "area_name", "area_path",  "origin", "ink_count", "print_type","areasize_from", "areasize_to", "areasize_id", "print_option", "jumbo_plate", "design_plate","design_type","design_size", "repeat_check", "silkmethod");
-			$field8 = array("areaid", "area_id", "selective_key", "selective_name");
+		$attach_info = array();
+		$idx6 = 0;
+		$idx7 = 0;
+		$idx8 = 0;
+		foreach($items as $catid=>$v1){
+			foreach($v1['item'] as $itemid=>$v2){
+				$posid = $v2['posid'];
+				$orderprintTemp =$catid."|".$posid."|0";
+				array_push($orderprint , $orderprintTemp);
 
-			//注文商品
-			$data4 = array();
-			$data5 = array();
-			//商品カテゴリーごとのプリント情報
-			//data6
-			$orderprint = array();
-			//data7
-			$orderarea = array();
-			//data8
-			$orderselectivearea = array();
-
-			$attach_info = array();
-			$idx6 = 0;
-			$idx7 = 0;
-			$idx8 = 0;
-			foreach($items as $catid=>$v1){
-				foreach($v1['item'] as $itemid=>$v2){
-					$posid = $v2['posid'];
-					$orderprintTemp =$catid."|".$posid."|0";
-					array_push($orderprint , $orderprintTemp);
-
-					foreach($v2['color'] as $colorcode=>$v3){
-						foreach($v3['size'] as $sizeid=>$v4){
-							if(empty($v4['amount'])) continue;
-							$tempData4 = $v3['master_id']."|1|1|".$sizeid."|".$v4['amount']."|".$v4['cost']."|0|0|||||||" ;
-							array_push($data4, $tempData4);
-					 	}
-				  }
-					$origin[$catid][$posid] = array();
-					foreach($v2['design'] as $base=>$a2){
-						$origin[$catid][$posid][$base] = array("silk"=>1, "digit"=>1);
-						for($i=0; $i<count($a2); $i++){
-							if($a2[$i]['ink']==0 && $opts['noprint']==0) continue;
-							$tempData7 ="0|".$idx6."|". $a2[$i]['areakey']."|".$a2[$i]['categorytype']."/".$a2[$i]['itemtype']."|0|".($a2[$i]['ink']==9 ? "4" : $a2[$i]['ink'])."|silk|35|27|0|0|0|1|".(empty($opts['illust'])? "": "イラレ")."||0|1";
-							array_push($orderarea , $tempData7);
-						  if($a2[$i]['ink']>0){
-					  		$data8[$idx8]['area_id'] = $idx7;
-					  		$data8[$idx8]['selective_key'] = $a2[$i]['poskey'];
-						  	$data8[$idx8]['selective_name'] = $a2[$i]['posname'];
-						  	$idx8++;
-						  	$tempData8 ="0|".$idx7."|".$a2[$i]['poskey']."|".$a2[$i]['posname'];
-						  	array_push($orderselectivearea , $tempData8);
-							}
-							$idx7++;
-							if($opts['noprint']==1){
-								break 2;
-							}
-		  			}
+				foreach($v2['color'] as $colorcode=>$v3){
+					foreach($v3['size'] as $sizeid=>$v4){
+						if(empty($v4['amount'])) continue;
+						$tempData4 = $v3['master_id']."|1|1|".$sizeid."|".$v4['amount']."|".$v4['cost']."|0|0|||||||" ;
+						array_push($data4, $tempData4);
 					}
-					$idx6++;
-	    	}
+				}
+				//				$origin[$catid][$posid] = array();
+				foreach($v2['design'] as $base=>$a2){
+					//					$origin[$catid][$posid][$base] = array("silk"=>1, "digit"=>1);
+					for($i=0; $i<count($a2); $i++){
+						if($a2[$i]['ink']==0 && $opts['noprint']==0) continue;
+						$printCode = $a2[$i]['printing'];
+						$sizeFrom = $printCode!='silk'? 0: 35;
+						$sizeTo = $printCode!='silk'? 0: 27;
+						$ink = 0;
+						if ($printCode=='silk') {
+							$ink = $a2[$i]['ink']==9 ? "4" : $a2[$i]['ink'];
+						}
+						$tempData7 = "0|".$idx6."|". $a2[$i]['areakey']."|".$a2[$i]['categorytype']."/".$a2[$i]['itemtype']."|1|".$ink."|".$printCode."|".$sizeFrom."|".$sizeTo."|".$a2[$i]['areasize']."|0|0|1|".(empty($opts['illust'])? "": "イラレ")."||0|1";
+						array_push($orderarea , $tempData7);
+						if($a2[$i]['ink']>0){
+							$data8[$idx8]['area_id'] = $idx7;
+							$data8[$idx8]['selective_key'] = $a2[$i]['poskey'];
+							$data8[$idx8]['selective_name'] = $a2[$i]['posname'];
+							$idx8++;
+							$tempData8 ="0|".$idx7."|".$a2[$i]['poskey']."|".$a2[$i]['posname'];
+							array_push($orderselectivearea , $tempData8);
+						}
+						$idx7++;
+						if($opts['noprint']==1){
+							break 2;
+						}
+					}
+				}
+				$idx6++;
 			}
-  		$field9 = array("inkid", "area_id", "ink_name", "ink_code", "ink_position");
-      $orderink = array();
-		  $field10= array("exchid","ink_id","exchink_name","exchink_code","exchink_volume");
-		  $exchink = array();
-		  $field12 = array();
-		  $data12 = array();
+		}
+		$field9 = array("inkid", "area_id", "ink_name", "ink_code", "ink_position");
+		$orderink = array();
+		$field10= array("exchid","ink_id","exchink_name","exchink_code","exchink_volume");
+		$exchink = array();
+		$field12 = array();
+		$data12 = array();
 
-			//添付ファイル
-  	  for($i=0;$i<count($attach);$i++){
-		    $file[$i] = $attach[$i]['img']['file'];
-		  	$filename[$i] = $attach[$i]['img']['name'];
-		  }
-			//管理システムにpost
-		  $res = $httpObj->request('POST', array('act'=>'insert', 'mode'=>'order', 'field1'=>$field1, 'data1'=>$data1, 'field2'=>$field2, 'data2'=>$data2,
-		 	 	'field3'=>$field3, 'data3'=>$data3, 'field4'=>$field4, 'data4'=>$data4, 'field5'=>$field5, 'data5'=>$data5,
-				'field6'=>$field6, 'data6'=>$orderprint, 'field7'=>$field7, 'data7'=>$orderarea,
-				'field8'=>$field8, 'data8'=>$orderselectivearea, 'field9'=>$field9, 'data9'=>$orderink,
-				'field10'=>$field10, 'data10'=>$exchink, 'field12'=>$field12, 'data12'=>$data12, 'file'=>$file, 'name'=>$filename,'site'=>_SITE));
-		 return $data;
+		//添付ファイル
+		for($i=0;$i<count($attach);$i++){
+			$file[$i] = $attach[$i]['img']['file'];
+			$filename[$i] = $attach[$i]['img']['name'];
+		}
+
+		//管理システムにpost
+		$res = $httpObj->request('POST', array('act'=>'insert', 'mode'=>'order', 'field1'=>$field1, 'data1'=>$data1, 'field2'=>$field2, 'data2'=>$data2,
+											   'field3'=>$field3, 'data3'=>$data3, 'field4'=>$field4, 'data4'=>$data4, 'field5'=>$field5, 'data5'=>$data5,
+											   'field6'=>$field6, 'data6'=>$orderprint, 'field7'=>$field7, 'data7'=>$orderarea,
+											   'field8'=>$field8, 'data8'=>$orderselectivearea, 'field9'=>$field9, 'data9'=>$orderink,
+											   'field10'=>$field10, 'data10'=>$exchink, 'field12'=>$field12, 'data12'=>$data12, 'file'=>$file, 'name'=>$filename,'site'=>_SITE));
+		return $res;
 	}
 }
 ?>

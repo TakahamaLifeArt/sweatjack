@@ -73,7 +73,11 @@
 	$data = $order->reqDetails();
 	$total = $data['total']*(1+$tax);
 	if($data['options']['payment']==3) $total = $total*(1+_CREDIT_RATE);
-	$perone = floor($total/$data['amount']);
+	if($data['amount'] > 0) {
+		$perone = floor($total/$data['amount']);
+	} else {
+		$perone = 0;
+	}
 	$total = floor($total);
 	
 	// user info
@@ -121,23 +125,11 @@
 <!--m2 begin-->
     <link rel="stylesheet" type="text/css" href="/m2/common/css/common1_responsive.css" media="all">
 <!--m2 end--> 
-
-<!--
-	<script type="text/javascript" src="/js/jquery.js"></script>
-  <script type="text/javascript" src="/js/ui/ui.core.js"></script>
-  <script type="text/javascript" src="/js/ui/ui.datepicker.js"></script>
-  <script type="text/javascript" src="/js/ui/i18n/ui.datepicker-ja.js"></script>
-	<script type="text/javascript" src="/js/modalbox/jquery.modalbox-min.js"></script>
-	<script type="text/javascript" src="/common/js/uniform/jquery.uniform.js"></script>
--->
-
-<!-- msgbox begin -->
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
-		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
-		<script src="//ajaxzip3.github.io/ajaxzip3.js" charset="utf-8"></script>
-		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<!-- msgbox end -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/jquery-ui.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
+	<script src="//ajaxzip3.github.io/ajaxzip3.js" charset="utf-8"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/js/util_responsive.js"></script>
 	<script type="text/javascript" src="./js/orderform.js"></script>
 	<script type="text/javascript">
@@ -316,7 +308,7 @@
                                                     <div class="sizes">'.$v['sizes'].'</div>
                                                     <p class="price_s">
                                                         TAKAHAMA価格<br>
-                                                        <span><span>'.$v['minprice'].'</span>円〜</span>
+                                                        <span><span>'.$v['minprice'].'</span>円~</span>
                                                     </p>
                                                 </li>
                                             </ul>
@@ -348,7 +340,7 @@
                                                 <div class="size">'.$v['sizes'].'</div>
                                                 <p class="price">
                                                     TAKAHAMA価格<br>
-                                                    <span><span>'.$v['minprice'].'</span>円〜</span>
+                                                    <span><span>'.$v['minprice'].'</span>円~</span>
                                                 </p>
                                             </li>
                                         </ul>
@@ -466,7 +458,11 @@
 						</div>
 						
 						<div id="pos_wrap"></div>
-						
+						<div>
+							<h3 class="heading_mark">刺繍をご希望の方はご記入ください</h3>
+							<p class="note">例　左そで：刺繍</p>
+							<textarea id="note_printmethod"  name="note_printmethod"></textarea>
+						</div>
 						<div class="arrow_line"><div class="arrow prev" data-back="1"><span>戻る</span></div><div class="step_next" data-step="cart">カートに入れる</div></div>
                     </div>
 				</div>
@@ -510,15 +506,16 @@
 								</thead>
 								<tfoot>
 									<tr><td colspan="4">商品代計</td><td class="ac"><ins class="totamount">0</ins> 枚</td><td class="itemsum">0</td><td></td></tr>
-									<tr><td colspan="2">プリント代</td><td colspan="3" class="printing"></td><td class="printfee">0</td><td></td></tr>
+									<tr><td colspan="2">プリント代</td><td class="print_size ac"></td><td class="print_pos ac"></td><td class="ink_count ac"></td><td class="printfee">0</td><td></td></tr>
 									<tr><td colspan="5">送料</td><td class="carriage">0</td><td></td></tr>
 									<tr><td colspan="5">代引手数料</td><td class="codfee">0</td><td></td></tr>
+									<tr><td colspan="5">コンビニ手数料</td><td class="conbifee">0</td><td></td></tr>
 									<tr><td colspan="5">袋詰代</td><td class="package">0</td><td></td></tr>
 									<tr><td colspan="2">割引</td><td colspan="3" class="discountname"></td><td class="discountfee">0</td><td></td></tr>
 									<tr><td colspan="2">特急料金</td><td colspan="3" class="expressinfo"></td><td class="expressfee">0</td><td></td></tr>
 									<tr class="foot_sub"><td colspan="5">計</td><td class="base">0</td><td></td></tr>
 									<tr class="foot_sub"><td colspan="5">消費税</td><td class="tax">0</td><td></td></tr>
-									<tr class="foot_sub"><td colspan="5">カード手数料</td><td class="credit">0</td><td></td></tr>
+									<tr class="foot_sub"><td colspan="5">カード決済システム利用料</td><td class="credit">0</td><td></td></tr>
 									<tr class="foot_total"><td colspan="5">お見積り合計</td><td class="total">0</td><td></td></tr>
 									<tr class="foot_perone"><td colspan="5">1枚あたり</td><td class="perone">0</td><td></td></tr>
 								</tfoot>
@@ -573,17 +570,20 @@
 										<th>袋詰め　<span class="anchor" id="pop_pack">袋詰めとは</span></th>
 										<td>
 											<label><input type="radio" name="pack" value="0" <?php if(empty($regist['options']['pack'])) echo 'checked="checked"'; ?> />希望しない</label>
-											<label><input type="radio" name="pack" value="1" <?php if($regist['options']['pack']==1) echo 'checked="checked"'; ?> />希望する（1枚あたり50円）</label>
+											<label><input type="radio" name="pack" value="2" <?php if($regist['options']['pack']==2) echo 'checked="checked"'; ?> />袋のみ同封（10円/1枚）</label>
+											<br>
+											<label><input type="radio" name="pack" value="1" <?php if($regist['options']['pack']==1) echo 'checked="checked"'; ?> />希望する（50円/1枚）</label>
 										</td>
 									</tr>
 									<tr>
 										<th>お支払方法　<span class="anchor" id="pop_payment">注意点</span></th>
 										<td>
 											<label><input type="radio" name="payment" value="0" <?php if(empty($regist['options']['payment'])) echo 'checked="checked"'; ?> />銀行振込</label>
-											<label><input type="radio" name="payment" value="2" <?php if($regist['options']['payment']==2) echo 'checked="checked"'; ?> />現金（工場で受取）</label>
+<!--											<label><input type="radio" name="payment" value="2" <?php if($regist['options']['payment']==2) echo 'checked="checked"'; ?> />現金（工場で受取）</label>-->
 											<label><input type="radio" name="payment" value="1" <?php if($regist['options']['payment']==1) echo 'checked="checked"'; ?> />代金引換（手数料800円）</label>
 											<br>
-											<label><input type="radio" name="payment" value="3" <?php if($regist['options']['payment']==3) echo 'checked="checked"'; ?> />カード決済（手数料5％）</label>
+											<label><input type="radio" name="payment" value="3" <?php if($regist['options']['payment']==3) echo 'checked="checked"'; ?> />カード決済（システム利用料5％）</label>
+											<label><input type="radio" name="payment" value="4" <?php if($regist['options']['payment']==4) echo 'checked="checked"'; ?> />コンビニ決済（手数料800円）</label>
 										</td>
 									</tr>
 								</tbody>
@@ -682,13 +682,40 @@
 							<p class="comment">「<span>※</span>」印は必須入力です。</p>
 							
 							<div id="user_wrap" class="clearfix inner">
+							
+							<!--
 								<div class="ft">
 									<ul>
 										<li id= "login_email"><h2>メールアドレス:<span class="fontred">※</span></h2><input type="text" id="email" name="email" value="<?php echo $user['email']; ?>" /></li>
 										<li id="login_introduce1"><h2>パスワード:<span class="fontred">※</span></h2><input type="password" value="<?php echo $user['password']; ?>" id="pass"  name="pass" /></li>
-										<!--<li id="login_introduce2"><h2></h2></li>-->
+										<li id="login_introduce2"><h2></h2></li>
 										<li id="login_introduce2"><input type="button" id="member_login" value="ログイン" /></li>
 										<li id="login_introduce3"><p>☆☆会員の方:新規ご登録の方はログイン不要、注文完了時に会員自動登録されます。☆☆</p></li>
+									</ul>
+								</div>
+							-->
+								<div class="g_ft" style="width=98%;border-bottom: 1px solid #d8d8d8;margin-top:20px;padding-bottom:20px;">
+									<div class="ft">
+										<ul>
+											<h1 class="login_nodisplay">2回目以降注文の方はこちら</h1>
+											<li id= "login_email" class="login_nodisplay"><h2>メールアドレス:<span class="fontred">※</span></h2><input type="text" id="login_input_email" name="login_input_email" value="<?php echo $user['email']; ?>" /></li>
+											<li class="login_nodisplay"><h2>パスワード　　:<span class="fontred">※</span></h2><input type="password" value="<?php echo $user['password']; ?>" id="login_input_pass"  name="login_input_pass" /></li>
+										</ul>
+									</div>
+									<div class="ft">
+										<ul>
+											<li class="login_nodisplay"><input type="button" id="member_login" value="ログイン" /></li>
+											<div class="login_nodisplay"><span class="fontred">※</span><a href="/user/resend_pass.php">パスワードを忘れた方はこちらへ</a></div>
+										</ul>
+									</div>
+								</div>
+								<div class="ft">
+									<ul>
+										<div style="margin-top:35px;margin-bottom:10px;color: #1520d9;"><li class="login_nodisplay"><p>☆☆会員の方:新規ご登録の方はログイン不要、注文完了時に会員自動登録されます。☆☆</p></li></div>
+										<h1 class="login_nodisplay">新規登録の方はこちら</h1>
+										<li id= "login_email"><h2>メールアドレス:<span class="fontred">※</span></h2><input type="text" id="email" name="email" value="<?php echo $user['email']; ?>" /></li>
+										<li class="login_nodisplay"><h2>新規 パスワード:<span class="fontred">※</span></h2><input type="password" value="<?php echo $user['password']; ?>" id="pass"  name="pass" /></li>
+										<li class="login_nodisplay"><span class="fontred">※</span>新規の方は、新しくパスワードを入力します。半角英数字4文字以上16文字以内。</li>
 									</ul>
 								</div>
 								<div class="fl">
@@ -709,8 +736,8 @@
 								</div>
 								<div class="fr">
 									<ul>
-										<li><h2 id="login_introduce4">ご住所:<span class="fontred">※</span></h2></li>
-										<li><h2 id="login_introduce5">お届け先:<span class="fontred">※</span></h2></li>
+										<li><h2 class="login_nodisplay">ご住所:<span class="fontred">※</span></h2></li>
+										<li><h2 class="login_display">お届け先:<span class="fontred">※</span></h2></li>
 										<p id="mypage_msg" style="font-size:10px;font-weight:bold;">★「マイページ」でお届先の追加/編集ができます！</p>
 					 					<li><p><select name="delivery_customer" id="delivery_customer"></select></p></li>
 											<p>〒<input type="text" name="zipcode" class="forZip" id="zipcode1" value="<?php echo $user['zipcode']; ?>" onkeyup="AjaxZip3.zip2addr(this,'','addr0','addr1');" /></p>
@@ -741,7 +768,10 @@
 							</table>
 						</div>
 						
-						<div class="arrow_line"><div class="arrow prev" data-back="3"><span>戻る</span></div><div class="step_next" data-step="confirm">確認画面へ</div></div>
+						<div class="arrow_line">
+                  			<div class="arrow prev" data-back="3"><span>戻る</span></div>
+                  			<div class="step_next" data-step="confirm">確認画面へ</div>
+                   		</div>
                     </div>
 				</div>
 				
@@ -777,7 +807,7 @@
                     <div class="step_inner">
 						<h2><ins>Step6</ins>お申し込み内容をご確認ください</h2>
 						
-						<form id="orderform" name="orderform" method="post" action="./ordercomplete1.php" onSubmit="return false;">
+						<form id="orderform" name="orderform" method="post" action="./ordercomplete.php" onSubmit="return false;">
 						<?php
 							$ticket = htmlspecialchars(md5(uniqid().mt_rand()), ENT_QUOTES);
 							$_SESSION['ticket'] = $ticket;
@@ -795,7 +825,7 @@
 									<tfoot>
 										<tr class="foot_sub"><th colspan="4">計</th><td class="base"><ins>0</ins> 円</td><td></td></tr>
 										<tr class="foot_sub"><th colspan="4">消費税</th><td class="tax"><ins>0</ins> 円</td><td></td></tr>
-										<tr class="foot_sub"><th colspan="4">カード手数料</th><td class="credit"><ins>0</ins> 円</td><td></td></tr>
+										<tr class="foot_sub"><th colspan="4">カード決済システム利用料</th><td class="credit"><ins>0</ins> 円</td><td></td></tr>
 										<tr class="foot_total"><th colspan="4">お見積り合計</th><td class="tot"><ins>0</ins> 円</td></tr>
 										<tr class="foot_perone"><th colspan="4">1枚あたり</th><td class="per"><ins>0</ins> 円</td></tr>
 									</tfoot>
@@ -808,7 +838,10 @@
 									<caption>プリント情報</caption>
 									<thead>
 										<tr>
-											<th>アイテム</th><th>プリント位置</th><th>プリントするデザインの色数</th>
+											<th>アイテム</th>
+											<th>プリント位置</th>
+											<th>デザインのサイズ</th>
+											<th>デザインの色数</th>
 										</tr>
 									</thead>
 									<tbody></tbody>
@@ -938,7 +971,6 @@
 				</div>
 			</div>
 		</div>
-		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <!-- msgbox end-->
 </body>
 </html>

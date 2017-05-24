@@ -395,7 +395,7 @@ html {
 body {
 	font-size: 14px;
 	font-size: 1rem;
-	font-family: "Ž¥â§Ž¤Ž¥ô§Žª","Meiryo","Ž¥ŽÒŽ¥ò§Ž®Ž¥ŽÎŽ³ŽÑŽ¥Ž´ Pro W3","Hiragino Kaku Gothic Pro","Osaka","MS PŽ¥Ž´Ž¥Ž·Ž¥ŽÃŽ¥Ž¯","MS P Gothic",Verdana,Arial,Helvetica,sans-serif;
+	font-family: "¥á¥¤¥ê¥ª","Meiryo","¥Ò¥é??¥Î³Ñ¥´ Pro W3","Hiragino Kaku Gothic Pro","Osaka","MS P¥´¥·¥Ã??","MS P Gothic",Verdana,Arial,Helvetica,sans-serif;
 	text-rendering: optimizeLegibility;
 	color: #444;
 }
@@ -847,6 +847,7 @@ footer[role="contentinfo"] a:hover {
 
 #global-navigation li a {
     display: block;
+	height: 30px;
     text-decoration: none;
     color: #ffffff;
     font-size: .9em;
@@ -1052,8 +1053,6 @@ footer .wrap p a{
 
 
 	#global-navigation li a {
-	    height: 20px;
-	    padding: 20px 0 10px;
 	    text-decoration: none;
 	}
 

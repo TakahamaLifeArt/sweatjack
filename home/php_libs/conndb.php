@@ -314,10 +314,10 @@ class Conndb extends HTTP {
 	*	@args		['itemid'=>itemid, 'amount'=>amount, 'ink'=>inkcount, 'pos'=>posname][][]
 	*	@sheetsize	転写のデザインサイズ　default:1
 	*
-	*	@return		['printfee':プリント代, 'volume':枚数]　引数に配列以外を設定した時はNULL
+	*	@return		['printfee':プリント代, 'volume':枚数, 'tax':消費税率]　引数に配列以外を設定した時はNULL
 	*/
 	public function printfee($args, $sheetsize='1'){
-		$res = parent::request('POST', array('act'=>'printfee', 'sheetsize'=>$sheetsize, 'args'=>$args));
+		$res = parent::request('POST', array('act'=>'printfee', 'sheetsize'=>$sheetsize, 'args'=>$args, 'show_site'=>_SITE));
 		$data = unserialize($res);
 		
 		return $data;
@@ -383,12 +383,12 @@ class Conndb extends HTTP {
 	/*
 	*	メールアドレスの存在確認
 	*	
-	*	@args			[e-mail, reg_site]
+	*	@args			[e-mail,]
 	*
 	*	@return			[顧客情報]
 	************************************************/
-	public function checkExistEmail($email,$reg_site){
-		$res = parent::request('POST', array('act'=>'checkexistemail', 'email'=>$email, 'reg_site'=>$reg_site));
+	public function checkExistEmail($args){
+		$res = parent::request('POST', array('act'=>'checkexistemail', 'args'=>$args));
 		$data = unserialize($res);
 		
 		return $data;

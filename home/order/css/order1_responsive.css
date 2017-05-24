@@ -913,10 +913,14 @@ p.thumb_h .notes_color {
 	width: 150px;
 }
 
-
 #step3 .inner {
 	clear: both;
 	margin: 40px 0px;
+}
+
+#note_printmethod {
+	width: 100%;
+	height: 5em;
 }
 
 
@@ -1067,6 +1071,7 @@ p.thumb_h .notes_color {
 #estimation_wrap table .perone,
 #estimation_wrap table .carriage,
 #estimation_wrap table .codfee,
+#estimation_wrap table .conbifee,
 #estimation_wrap table .package,
 #estimation_wrap table .discountfee,
 #estimation_wrap table .expressfee {

@@ -5,6 +5,7 @@
 *
 * log	2016-09-21 カテゴリにTシャツとブルゾンを追加
 *		2017-03-24 端数処理及びTシャツの人気商品の変更
+*		2017-05-25	プリント代計算の仕様変更
 */
 
 $(function(){
@@ -99,82 +100,7 @@ $(function(){
 				}
 				$.confirm();
 				break;
-
-			default:
-//				$.next();
 		}
-		/*
-		if($(this).is('.goto_position')){
-			$('input[type="number"]', '#step2').blur();
-			var totAmount = 0;
-			var colorcodehash = {};
-			var isCheck = true;
-			$('.size_table', '#step2').each( function(index){
-				var amount = 0;
-				var color_code = $(this).closest('.pane').children('.thumb_wrap').find('.item_image img').attr('alt').split('_')[1];
-				$('tbody tr:not(".heading") td[class*="size_"]', this).each( function(){
-					amount += $(this).children('input').val()-0;
-				});
-
-				if(amount!=0 && colorcodehash[color_code]){
-					isCheck = false;
-					return false;
-				}
-
-				colorcodehash[color_code] = true;
-				totAmount += amount;
-			});
-
-			if(!isCheck){
-				$.msgbox('アイテムカラーの指定が重複しています。ご確認ください。。');
-				return;
-			}
-
-			if(totAmount==0){
-				$.msgbox('アイテムの枚数を指定してください。');
-				return;
-			}
-
-			if(!$.showPrintPosition()){
-				$.msgbox('アイテムの枚数を確認してください。');
-			}
-
-		}else if($(this).is('.goto_cart')){
-			if($.chkInks()){
-				var r1 = $.updateItem();
-				var r2 = $.updatePosition();
-				r2['category'] = r1['category'];
-				$.setCart(r2);
-			}
-		}else if($(this).is('.goto_user')){
-			if($('#nodeliday').is(':checked')){
-				$.next();
-			}else{
-				if($('#deliveryday').val()==""){
-					$.msgbox('ご希望納期を指定してください。');
-				}else{
-					$.ajax({url:'/php_libs/orders.php', type:'get', dataType:'json', async:false, data:{'act':'details'},
-						success: function(r){
-							if(r.options.expressError!=""){
-								$.msgbox(r.options.expressError+"\nご希望納期をご確認ください。");
-							}else{
-								$.next();
-							}
-						}
-					});
-				}
-			}
-		}else if($(this).is('.goto_confirm')){
-			if($('#agree').is(':checked')){
-				$('#sendorder').removeClass('disable_button');
-			}else{
-				$('#sendorder').addClass('disable_button');
-			}
-			$.confirm();
-		}else{
-			$.next();
-		}
-		*/
 	});
 	/********************************
 	*	届き先選択
@@ -188,24 +114,24 @@ $(function(){
 				dataType: 'json',
 				async: true
 			}).done(function(me){
-    		if(typeof me.id !='undefined'){
-						if($('#delivery_customer').val() == "-1") {
-							$('#tel').val(me.tel);
-							$('#zipcode1').val(me.zipcode);
-							$('#addr0').val(me.addr0);
-							$('#addr1').val(me.addr1);
-							$('#addr2').val(me.addr2);
-						} else {
-							for(var i=0; i<me.delivery.length; i++) {
-								if($('#delivery_customer').val() == me.delivery[i].id) {
-									$('#tel').val(me.delivery[i].delitel);
-									$('#zipcode1').val(me.delivery[i].delizipcode);
-									$('#addr0').val(me.delivery[i].deliaddr0);
-									$('#addr1').val(me.delivery[i].deliaddr1);
-									$('#addr2').val(me.delivery[i].deliaddr2+me.delivery[i].deliaddr3+me.delivery[i].deliaddr4);
-								}
+				if(typeof me.id !='undefined'){
+					if($('#delivery_customer').val() == "-1") {
+						$('#tel').val(me.tel);
+						$('#zipcode1').val(me.zipcode);
+						$('#addr0').val(me.addr0);
+						$('#addr1').val(me.addr1);
+						$('#addr2').val(me.addr2);
+					} else {
+						for(var i=0; i<me.delivery.length; i++) {
+							if($('#delivery_customer').val() == me.delivery[i].id) {
+								$('#tel').val(me.delivery[i].delitel);
+								$('#zipcode1').val(me.delivery[i].delizipcode);
+								$('#addr0').val(me.delivery[i].deliaddr0);
+								$('#addr1').val(me.delivery[i].deliaddr1);
+								$('#addr2').val(me.delivery[i].deliaddr2+me.delivery[i].deliaddr3+me.delivery[i].deliaddr4);
 							}
 						}
+					}
 				}
 			}).fail(function(xhr, status, error){
 				alert("Error: "+error+"<br>xhr: "+xhr);
@@ -219,13 +145,6 @@ $(function(){
 	$('.prev').click( function(){
 		var pageIndex = $(this).data('back');
 		$.back(pageIndex);
-		/*
-		if($(this).attr('rel')=='0'){
-			$.back(0);
-		}else{
-			$.back();
-		}
-		*/
 	});
 
 
@@ -369,7 +288,7 @@ $(function(){
 									'<li class="item_info_s clearfix">'+
 										'<div class="colors">'+v['colors']+'</div>'+
 										'<div class="sizes">'+v['sizes']+'</div>'+
-										'<p class="price_s" style="white-space: nowrap;"><p style="display:inline-block;">TAKAHAMA価格</p><span id="price_cost" style="white-space: nowrap;"><span>'+v['minprice']+'</span>円〜</span></p>'+
+										'<p class="price_s" style="white-space: nowrap;"><p style="display:inline-block;">TAKAHAMA価格</p><span id="price_cost" style="white-space: nowrap;"><span>'+v['minprice']+'</span>円~</span></p>'+
 									'</li>'+
 								'</ul>'+
 							'</li>';
@@ -402,7 +321,7 @@ $(function(){
 									'<li class="item_info clearfix">'+
 										'<div class="color">'+v['colors']+'</div>'+
 										'<div class="size">'+v['sizes']+'</div>'+
-										'<p class="price" style="white-space: nowrap;"><p style="display:inline-block;">TAKAHAMA価格</p><span id="price_cost" style="white-space: nowrap;"><span>'+v['minprice']+'</span>円〜</span></p>'+
+										'<p class="price" style="white-space: nowrap;"><p style="display:inline-block;">TAKAHAMA価格</p><span id="price_cost" style="white-space: nowrap;"><span>'+v['minprice']+'</span>円~</span></p>'+
 									'</li>'+
 								'</ul>'+
 							'</li>';
@@ -573,8 +492,8 @@ $(function(){
 		};
 		var val = $(this).is(':checked')? 1: 0;
 		if(val==1){
-			if($('#pos_wrap .inkbox select').length>0){
-				$('#pos_wrap .inkbox select').each( function(){
+			if($('#pos_wrap .inkbox .ink').length>0){
+				$('#pos_wrap .inkbox .ink').each( function(){
 					$(this).val("0").prev("span").text("選択してください");
 				});
 			}
@@ -597,8 +516,20 @@ $(function(){
 			);
 		}
 	});
-
-
+	
+	
+	/********************************
+	*	刺繍を希望の場合のテキストエリア
+	*/
+	$('#note_printmethod').focusout( function(){
+		var key = $(this).attr('name');
+		var val = $(this).val();
+		var postData = {'act':'update', 'mode':'customer'};
+		postData[key] = val;
+		$.ajax({url:'/php_libs/orders.php', async:false, type:'POST', dataType:'text', data:postData});
+	});
+	
+	
 	/*---------- STEP 4 ----------*/
 
 	/********************************
@@ -811,45 +742,37 @@ $(function(){
 		$.ajax({url:'/php_libs/orders.php', type:'post', dataType:'json', async:true, data:postData});
 	});
 	
-	
-	/********************************
-	*	メールアドレスの登録確認
-	*/
-//	$('#email').change( function(){
-//		var val = $(this).val();
-//		$.checkEmail(val);
-//	});
-	
 	/********************************
 	*	ログインボタン
 	*/
 	$('#member_login').on('click', function(){
-			if(!$.check_email($('#login_input_email').val())){
-				return;
-			}
-			var required = [];
-			if($('#login_input_email').val().trim()=='') required.push('<li>メールアドレス</li>');
-			if($('#login_input_pass').val().trim()=='') required.push('<li>パスワード</li>');
-			var required_list = '<ul class="msg">'+required.toString().replace(/,/g,'')+'</ul>';
-			if(required.length>0){
-				$.msgbox("必須項目の入力をご確認ください。<br />"+required_list);
-				return;
-			}
+		var email = $('#login_input_email').val().trim();
+		var pass = $('#login_input_pass').val().trim();
+		if(!$.check_email(email)){
+			return;
+		}
+		var required = [];
+		if(email=='') required.push('<li>メールアドレス</li>');
+		if(pass=='') required.push('<li>パスワード</li>');
+		var required_list = '<ul class="msg">'+required.toString().replace(/,/g,'')+'</ul>';
+		if(required.length>0){
+			$.msgbox("必須項目の入力をご確認ください。<br />"+required_list);
+			return;
+		}
 
-			//セッションにユーザーを保存
-			//画面を再表示
-			var args = {"email":$('#login_input_email').val(),"pass": $('#login_input_pass').val()};
-			$.ajax({url:'user_login.php', type:'get', dataType:'json', async:false, data:{'login':'true', 'email':$('#login_input_email').val(),'pass': $('#login_input_pass').val(), 'reg_site':'5'}, 
-				success: function(r){
-					if(r.length!=0){
-						if(typeof r.id=='undefined') {
-							$.msgbox(r);
-						} else {
-							$.setCustomer2();
-						}
+		//セッションにユーザーを保存
+		//画面を再表示
+		$.ajax({url:'user_login.php', type:'get', dataType:'json', async:false, data:{'login':'true', 'email':email,'pass':pass}, 
+			success: function(r){
+				if(r.length!=0){
+					if(typeof r.id=='undefined') {
+						$.msgbox(r);
+					} else {
+						$.setCustomer2();
 					}
 				}
-			});
+			}
+		   });
 	});
 	
 	/*---------- STEP 6 ----------*/
@@ -875,24 +798,6 @@ $(function(){
 		}else{
 			var func = function(){
 				document.forms.orderform.submit();
-/*
-				var args = $("#conf_email").text();
-				$.ajax({url:'/php_libs/t_orders.php', type:'get', dataType:'json', async:false, data:{'act':'checkemail', 'args':args}, 
-					success: function(r){
-						if(r.length!=0){
-//							var msg = '<h1>登録済みのメールアドレスです！</h1>';
-//							msg += '<p>E-mail：　'+args+'</p>';
-//							msg += '<p>すでにご登録されているユーザー情報でお申し込みを受付いたします。<br>';
-//							msg += 'マイページでログインしてください。</p>';
-//							$.msgbox(msg);
-							document.forms.orderform.submit();
-						}else{
-							document.forms.orderform.submit();
-							//alert("ok");
-						}
-					}
-				});
-*/
 			};
 			if($(this).hasClass('popup')){
 				$.showPop(func, true);
@@ -935,23 +840,6 @@ $(function(){
 			var param = [];
 			if(_UPDATED==1){
 				$.editItem(_CAT_KEY, _ITEM_ID);
-			/*
-			}else if(_UPDATED==3){
-				var param = $.getPage(_ITEM_ID, '');
-				$.itemparam.categoryid = param[0]['categoryid'];
-				$.itemparam.categorykey = param[0]['categorykey'];
-				$.itemparam.categoryname = param[0]['categoryname'];
-
-				$.itemparam.itemid = param[0]['itemid'];
-				$.itemparam.itemcode = param[0]['itemcode'];
-				$.itemparam.itemname = param[0]['itemname'];
-
-				$.ajax({url:'/php_libs/orders.php', type:'get', dataType:'json', async:false, data:{'act':'details'},
-					success: function(r){
-						$.setCart(r);
-					}
-				});
-			*/
 			}else{
 				$.itemparam.categoryid = 2;
 				$.itemparam.categorykey = 'sweat';
@@ -965,6 +853,37 @@ $(function(){
 			$.itemparam.colorcode = '034';
 
 			$('.datepicker', '#step4').datepicker({
+				beforeShowDay: function(date){
+					var weeks = date.getDay();
+					var texts = "";
+					if(weeks == 0) texts = "休日";
+					var YY = date.getFullYear();
+					var MM = date.getMonth() + 1;
+					var DD = date.getDate();
+					var currDate = YY + "/" + MM + "/" + DD;
+					var datesec = Date.parse(currDate)/1000;
+					if(!$.holidayInfo[YY+"_"+MM]){
+						$.holidayInfo[YY+"_"+MM] = new Array();
+						$.ajax({url: '/php_libs/checkHoliday.php',
+								type: 'GET',
+								dataType: 'text',
+								data: {'datesec':datesec},
+								async: false,
+								success: function(r){
+									if(r!=""){
+										var info = r.split(',');
+										for(var i=0; i<info.length; i++){
+											$.holidayInfo[YY+"_"+MM][info[i]] = info[i];
+										}
+									}
+								}
+							   });
+					}
+					if($.holidayInfo[YY+"_"+MM][DD] && weeks!=6) weeks = 0;
+					if(weeks == 0) return [true, 'days_red', texts];
+					else if(weeks == 6) return [true, 'days_blue'];
+					return [true];
+				},
 				onClose: function(dateText, inst){
 					var yy, mm, dd;
 					if(dateText.match(/^(\d{4})\/([01]?\d{1})\/([0123]?\d{1})$/)){
@@ -1325,12 +1244,6 @@ $(function(){
 				for(var i=0; i<r.category.length; i++){
 					c = r['category'][i];
 					var thumbName = c['itemcode']+'_'+c['colorcode'];
-					/*
-					if(c['colorcode']!=''){
-						thumbName += '_'+c['colorcode'];
-					}
-					*/
-					//var folder = (c['categorykey']=='baby')? 't-shirts': c['categorykey'];
 					var folder = c['categorykey'];
 					var thumb = '<img alt="" src="'+_IMG_PSS+'items/'+folder+'/'+c['itemcode']+'/'+thumbName+'_s.jpg" height="26" />';
 					for(var sizeid in c['size']){
@@ -1376,7 +1289,6 @@ $(function(){
 		*	商品の指定でStep2 のタグ生成
 		*/
 			$('.pane:gt(0)', '#step2').remove();
-			// var folder = ($.itemparam.categorykey=='baby')? 't-shirts': $.itemparam.categorykey;
 			$.itemparam.itemid = itemid;
 			$.getPage(itemid, '');
 			var args = ['',''];
@@ -1428,41 +1340,12 @@ $(function(){
 					$.temp.itemid = '';
 				});
 			});
-			
-			/* タグで受取るタイプ
-			$('#color_thumb, #item_image').fadeOut('fast', function(){
-				$.ajax({url:'../php_libs/pageinfo.php', async:false, type:'POST', dataType:'text', 
-					data:{'act':'itemattr','itemid':itemid}, success: function(r){
-						dat = r.split('|');
-						$('#item_image').html(dat[0]);
-						$('#color_thumb').html(dat[1]);
-						$('#num_of_color').text(dat[2]);
-						$('#notes_color').text(dat[3]);
-						
-						$('#color_thumb li img').imagesLoaded( function(){
-							$('#color_thumb, #item_image').fadeIn();
-							
-							var code = $('#item_image img').attr('alt').split('_');
-							
-							$.itemparam.itemcode = code[0];
-							$.itemparam.itemname = $('#item_selector option:selected').text();
-							
-							$.itemparam.colorname = $('#color_thumb li.nowimg img').attr('alt');
-							$.itemparam.colorcode = code[1];
-						});
-					}
-				});
-			});
-			*/
-			
 		},
 		showSelectedItemcolors: function(){
 		/*
 		*	複数のカラーが選択されている場合のStep2のタグ生成
 		*/
-
 			var target = $('.btn_line', '#step2');
-
 			for(var i=1; i<$.temp.colorcode.length; i++){
 				var clone = $('.pane:first', '#step2').clone();
 				// 指定カラーを設定
@@ -1591,7 +1474,6 @@ $(function(){
 		*	複数指定可、クリックで指定を切替
 		*/
 			if($('#pos_wrap').children('div').attr('class').split('_')[1]==46) return;		// プリントなし商品
-//			$('select', '#pos_wrap').uniform({fileDefaultText:''});
 			$('#pos_wrap .posimg').each( function(){
 				$(this).children('img:not(:nth-child(1))').each(function() {
 					var postfix = '_on';
@@ -1614,13 +1496,21 @@ $(function(){
 						var tbody = tbl.children('tbody');
 						var base = tbl.children('caption').text();
 						if(img.is('.cur')){
-							img.attr('src', src).removeClass('cur');
-							tbody.find('tr.pos-'+img.attr('class')).remove();
+//							img.attr('src', src).removeClass('cur');
+//							tbody.find('tr.pos-'+img.attr('class')).remove();
 						}else{
+							var cur = img.siblings('.cur');
+							if (cur.length) {
+								cur.attr('src',cur.attr('src').replace(/_on.png/,'.png')).removeClass('cur');
+								tbody.find('tr.pos-'+cur.attr('class')).remove();
+							}
 							var posname = img.attr('alt');
 							var tr = '<tr class="pos-'+img.attr('class')+'">';
 							tr += '<th>'+posname+'</th>';
-							tr += '<td><select><option value="0" selected="selected">選択してください</option>';
+							tr += '<td><select class="areasize">';
+							tr += '<option value="0" selected="selected">大</option><option value="1">中</option><option value="2">小</option>';
+							tr += '</select></td>';
+							tr += '<td><select class="ink"><option value="0" selected="selected">選択してください</option>';
 							tr += '<option value="1">1色</option><option value="2">2色</option><option value="3">3色</option>';
 							tr += '<option value="9">4色以上</option></select></td>';
 							tr += '</tr>';
@@ -1655,8 +1545,8 @@ $(function(){
 		*	インク指定の確認
 		*/
 			var isInks = false;
-			if($('#pos_wrap .inkbox select').length>0 && !$('#noprint').is(':checked')){
-				$('#pos_wrap .inkbox select').each( function(){
+			if($('#pos_wrap .inkbox .ink').length>0 && !$('#noprint').is(':checked')){
+				$('#pos_wrap .inkbox .ink').each( function(){
 					if($(this).val()!=0){
 						isInks = true;
 						return false;	// break;
@@ -1753,6 +1643,7 @@ $(function(){
 			var cat_type = [];
 			var item_type = [];
 			var area_key = [];
+			var area_size = [];
 			var ink = [];
 			var attach = [];
 			var isResult = false;
@@ -1761,16 +1652,19 @@ $(function(){
 			box.each( function(){
 				var base_name = $('.inkbox table caption', this).text();
 				$('.inkbox table tbody tr', this).each( function(){
+					var my = $(this);
 					base.push(base_name);
-					posname.push( $(this).children('th:first').text() );
+					posname.push( my.children('th:first').text() );
 					if(posid!=46 && noprint==0){
-						ink.push( $(this).find('select').val() );
-						poskey.push( $(this).attr("class").split("-")[1] );
+						ink.push( my.find('.ink').val() );
+						area_size.push( my.find('.areasize').val() );
+						poskey.push( my.attr("class").split("-")[1] );
 					}else{
 						ink.push( 0 );
+						area_size.push( 0 );
 						poskey.push("");
 					}
-					$tfoot = $(this).parent().siblings("tfoot").find("tr:first");
+					var $tfoot = my.parent().siblings("tfoot").find("tr:first");
 					cat_type.push( $tfoot.find("td:first").text() );
 					item_type.push( $tfoot.find("td:eq(1)").text() );
 					area_key.push( $tfoot.find("td:last").text() );
@@ -1778,7 +1672,7 @@ $(function(){
 			});
 
 			$.ajax({url:'/php_libs/orders.php', async:false, type:'POST', dataType:'json',
-				data:{'act':'update','mode':'design', 'posid':posid, 'base':base, 'poskey':poskey, 'posname':posname, 'ink':ink, 'categorytype':cat_type, 'itemtype':item_type, 'areakey':area_key, 'attachname':attach}, success: function(r){
+					data:{'act':'update','mode':'design', 'posid':posid, 'base':base, 'poskey':poskey, 'areasize':area_size, 'posname':posname, 'ink':ink, 'categorytype':cat_type, 'itemtype':item_type, 'areakey':area_key, 'attachname':attach}, success: function(r){
 					if(r.length!=0){
 						isResult = r;
 					}
@@ -1813,12 +1707,21 @@ $(function(){
 			$('#estimation_wrap .itemsum').text($.addFigure(r.itemprice));
 			$('#estimation_wrap .printfee').text($.addFigure(r.printprice));
 			$('#estimation_wrap .totamount').text(r.amount);
-
+			var sizeName = ['大', '中', '小'];
+			var printName = {'silk':'シルク', 'digit':'転写', 'inkjet':'インクジェット'};
+			var print_size = '';
+			var print_pos = '';
+			var ink_count = '';
 			var printing = '';	// プリント位置と色数
 			for(var i=0; i<r.design.length; i++){
-				printing += '<p>'+r.design[i]['pos']+': '+r.design[i]['ink']+'</p>';
+				var ink = r.design[i]['ink']==9? '4色以上': r.design[i]['ink']+'色';
+				print_size += '<p>'+sizeName[r.design[i]['size']]+'</p>';
+				print_pos += '<p>'+r.design[i]['pos']+'</p>';
+				ink_count += '<p>'+ink+'</p>';
 			}
-			$('#estimation_wrap .printing').html(printing);
+			$('#estimation_wrap .print_size').html(print_size);
+			$('#estimation_wrap .print_pos').html(print_pos);
+			$('#estimation_wrap .ink_count').html(ink_count);
 
 			$.updateOptions(r);
 		},
@@ -1841,7 +1744,7 @@ $(function(){
 			$('#estimation_wrap .codfee').text(r.options.codfee);
 			$('#estimation_wrap .conbifee').text(r.options.conbifee);
 			$('#estimation_wrap .discountfee').text($.addFigure(r.options.discount));
-			$('#estimation_wrap .package').text(r.options.pack);
+			$('#estimation_wrap .package').text(r.options.packfee);
 			$('#estimation_wrap .expressfee').text($.addFigure(r.options.expressfee));
 
 			// 割引種類
@@ -1854,15 +1757,31 @@ $(function(){
 			// 製作日数不足
 			if(r.options.expressError!=""){
 				$.msgbox(r.options.expressError+"\nご希望納期をご確認ください。");
-				$('#express_notice ins').text(r.options.expressError).closest('p').show();
+				$('#express_notice ins').text("ご希望納期をご確認ください。").closest('p').show();
+				$('#deliveryday').val("");
 			}else{
 			// 特急料金の種類
 				spec = '';
 				if(r.options.expressfee!=0){
 					spec = r.options['expressInfo'];
 					$('#express_notice ins').text('特急料金がかかります。（'+spec+'）').closest('p').show();
+
+					// 翌日仕上げの場合に袋詰めを選択不可にする
+					if (spec=='翌日仕上げ') {
+						var isPack = $(':radio[name=pack]:checked', '#option_table').val();
+						if (isPack==0) {
+							$(':radio[name=pack]', '#option_table').prop('disabled', true);
+						} else if (r.options.packfee==0) {
+							$(':radio[name=pack]', '#option_table').val([0]).prop('disabled', true);
+						} else {
+							$(':radio[name=pack]', '#option_table').prop('disabled', false);
+						}
+					} else {
+						$(':radio[name=pack]', '#option_table').prop('disabled', false);
+					}
 				}else{
 					$('#express_notice ins').text('').closest('p').hide();
+					$(':radio[name=pack]', '#option_table').prop('disabled', false);
 				}
 				$('.expressinfo', '#estimation_wrap').text(spec);
 			}
@@ -1906,14 +1825,35 @@ $(function(){
 		*				['comment']
 		*				['repeater']
 		*/
-
-			if(!$.check_email($('#email').val())){
+			var email = $('#email').val().trim();
+			if (!$.check_email(email)) {
 				return;
 			}
-
+			
+			// 新規ユーザーの場合、ユーザー存在チェック
+			var isExistUser = false;
+			if ($('#pass').is(':visible')) {
+				$.ajax({url:'/php_libs/orders.php', type:'get', dataType:'json', async:false, data:{'act':'checkemail','args':[email]}, 
+					success: function(r){
+						if(r.length!=0){
+							var msg = '<h1>登録済みのメールアドレスです！</h1>';
+							msg += '<p>E-mail：　'+email+'</p>';
+							msg += '<p>ログインしてください。</p>';
+							msg += '<p><a href="/user/resend_pass.php" target="_brank">パスワードの再発行はこちらへ</a></p>';
+							$.msgbox(msg);
+							isExistUser = true;
+							return;
+						}
+					}
+				});
+			}
+			if (isExistUser) {
+				return;
+			}
+			
 			var required = [];
 			if($('#customername').val().trim()=='') required.push('<li>お名前</li>');
-			if($('#email').val().trim()=='') required.push('<li>メールアドレス</li>');
+			if(email=='') required.push('<li>メールアドレス</li>');
 			if($('#pass').is(':visible') && $('#pass').val().trim()=='') required.push('<li>パスワード</li>');
 			if($('#tel').val().trim()=='') required.push('<li>お電話番号</li>');
 			if($('#addr1').val().trim()=='') required.push('<li>ご住所</li>');
@@ -1929,25 +1869,6 @@ $(function(){
 				return;
 			}
 			
-			// 新規ユーザーの場合、ユーザー存在チェック
-			var isExistUser = false;
-			if($('#pass').is(':visible')) {
-				$.ajax({url:'/php_libs/orders.php', type:'get', dataType:'json', async:false, data:{'act':'checkemail','email':$("#email").val(), 'reg_site':'5'}, 
-					success: function(r){
-						if(r.length!=0){
-							var msg = '<h1>登録済みのメールアドレスです！</h1>';
-							msg += '<p>E-mail：　'+$("#email").val()+'</p>';
-							msg += '<p>ログインしてください。</p>';
-							$.msgbox(msg);
-							isExistUser = true;
-							return;
-						}
-					}
-				});
-			}
-			if(isExistUser) {
-				return;
-			}
 			// ユーザー情報の登録
 			$.updateUser();
 			
@@ -2008,11 +1929,11 @@ $(function(){
 					tr += '<tr><td colspan="4">プリント代</td><td class="ar">'+$.addFigure(option.printprice)+'<span>円</span></td></tr>';
 
 					var optionfee = 0;
-					var optname = {'discount':'割引', 'carriage':'送料', 'codfee':'代引手数料', 'conbifee':'コンビニ手数料', 'pack':'袋詰代', 'expressfee':'特急料金'};
+					var optname = {'discount':'割引', 'carriage':'送料', 'codfee':'代引手数料', 'conbifee':'コンビニ手数料', 'packfee':'袋詰代', 'expressfee':'特急料金'};
 					var pack = '希望しない';
-					if(r.option.packvalue==1){
+					if(r.option.pack==1){
 						pack = '希望する';
-					}else if(r.option.packvalue==2){
+					}else if(r.option.pack==2){
 						pack = '袋のみ';
 					}
 					for(var m in option){
@@ -2027,7 +1948,7 @@ $(function(){
 							tr += '<tr><td colspan="4">'+optname[m]+'</td><td class="ar">'+option[m]+'<span>円</span></td>';
 						}else if(m=='conbifee' && option[m]!=0){
 							tr += '<tr><td colspan="4">'+optname[m]+'</td><td class="ar">'+option[m]+'<span>円</span></td>';
-						}else if(m=='pack'){
+						}else if(m=='packfee'){
 							tr += '<tr><td colspan="4">'+optname[m]+'<span>（'+pack+'）</span></td><td class="ar"><ins id="conf_pack">'+$.addFigure(option[m])+'</ind><span>円</span></td>';
 						}else if(m=='expressfee'&& option['expressInfo']!=''){
 							tr += '<tr><td colspan="4">'+optname[m]+'<span>（'+option['expressInfo']+'）</span></td><td class="ar"><ins id="conf_expressfee">'+$.addFigure(option[m])+'</ind><span>円</span></td>';
@@ -2059,8 +1980,8 @@ $(function(){
 						}
 					}
 					$('#conf_attach').html(attachfiles);
-
-
+					
+					$('#conf_note_design').html('');
 					for(var u in r.user){
 						if(u=='deli'){
 							continue;
@@ -2077,6 +1998,14 @@ $(function(){
 							$('#conf_'+u).html(r.user[tmp]);
 						}else if(u=='organization' && r.user.deli!=1){
 							$('#conf_'+u).html(r.user.customername);
+						}else if (u=='note_printmethod' || u=='note_design') {
+							var txt = $('#conf_note_design').html();
+							if (txt=="") {
+								$('#conf_note_design').html(r.user[u]);
+							} else {
+								txt += "<br>"+r.user[u];
+								$('#conf_note_design').html(txt);
+							}
 						}else{
 							$('#conf_'+u).html(r.user[u]);
 						}
@@ -2093,12 +2022,12 @@ $(function(){
 
 					var payment = ['銀行振込', '代金引換', '工場受取で現金払い', 'カード決済', 'コンビニ決済'];
 					$('#conf_payment').text(payment[r.option.payment]);
-
-
+					
 					// プリント情報
 					var tbody = '';
 					var curitemname = '';
 					var inks = 0;
+					var sizeName = ['大', '中', '小'];
 					for(var i=0; i<r.design.length; i++){
 						if(curitemname!=r.design[i]['itemname']){
 							if(curitemname!='' && inks==0){
@@ -2109,8 +2038,9 @@ $(function(){
 						if(r.design[i]['ink']==0) continue;
 						tbody += '<tr>';
 						tbody += '<th>'+r.design[i]['itemname']+'</th>';
-						tbody += '<td>'+r.design[i]['posname']+'</td>';
-						tbody += '<td>'+r.design[i]['ink']+'</td>';
+						tbody += '<td class="ac">'+r.design[i]['posname']+'</td>';
+						tbody += '<td class="ac">'+sizeName[r.design[i]['areasize']]+'</td>';
+						tbody += '<td class="ac">'+r.design[i]['ink']+'</td>';
 						tbody += '</tr>';
 
 						inks += r.design[i]['ink'];
@@ -2127,35 +2057,6 @@ $(function(){
 			}
 			$.next(5);
 		},
-/*
-		next: function(){
-			var box = $('#gall');
-			var boxXloc = 0;
-			var targetOffset = $('#header').offset().top;
-			if(arguments.length>0){
-				boxXloc = -1*750*(arguments[0]-0);
-			}else{
-				boxXloc = parseInt(box.css("margin-left").substring(0,box.css("margin-left").indexOf("px"))) - 750;
-			}
-	    	$($.browser.opera ? document.compatMode == 'BackCompat' ? 'body' : 'html' :'html,body')
-	        .animate({scrollTop: targetOffset}, 300, 'easeOutExpo');
-			$('#gall').animate({'marginLeft':boxXloc+'px'}, 500, 'swing');
-		},
-		back: function(){
-			var box = $('#gall');
-			var boxXloc = parseInt(box.css("margin-left").substring(0,box.css("margin-left").indexOf("px")));
-			if(boxXloc==0) return;
-			if(arguments.length>0){
-				boxXloc = arguments[0];
-			}else{
-				boxXloc += 750;
-			}
-			var targetOffset = $('#header').offset().top;
-	    	$($.browser.opera ? document.compatMode == 'BackCompat' ? 'body' : 'html' :'html,body')
-	        .animate({scrollTop: targetOffset}, 300, 'easeOutExpo');
-			box.animate({'marginLeft':boxXloc+'px'}, 500, 'swing');
-		},
-*/
 		next: function(pageIndex){
 			$('#gall > .is-appear').slideUp().removeClass('is-appear');
 			var targetOffset = $('#gall > div:eq('+pageIndex+')').addClass('is-appear').slideDown().offset().top;
@@ -2237,7 +2138,7 @@ $(function(){
 			}else{
 				inc = Math.floor(plus / limit);
 			}
-			if(args-price<0){inc = -1*inc;}					// 金額が減る場合
+			if(args-price<0){inc = -1*inc;}						// 金額が減る場合
 			var str = 0;										// 桁区切り済みの表示金額
 			var cnt = 0;										// インクリメント回数
 			var intervalID = setInterval( function(){			// 1ミリ秒ごとに実行

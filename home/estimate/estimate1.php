@@ -96,11 +96,6 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
 	<script src="//ajaxzip3.github.io/ajaxzip3.js" charset="utf-8"></script>
 <!-- msgbox end-->
-<!--    <script type="text/javascript" src="../js/jquery.js"></script>
-    <script type="text/javascript" src="../js/ui/jquery.effects.core.js"></script>
-    <script type="text/javascript" src="../js/ui/jquery.effects.pulsate.js"></script>
-    <script type="text/javascript" src="../js/modalbox/jquery.modalbox-min.js"></script>
--->
     <script type="text/javascript" src="../js/util_responsive.js"></script>
     <script type="text/javascript" src="../js/jumboprint_responsive.js"></script>
     <script type="text/javascript">
