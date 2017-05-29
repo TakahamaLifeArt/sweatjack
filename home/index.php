@@ -191,9 +191,14 @@ this.currentTime = 0;
 </div>
 
 				<!-- // meta slider -->			
- 				<	<div id="option">
-				<h3 id="Line005">【価格改定のお知らせ】（2017年05月23日更新）</h3>
-						<p>5月25日(木)の注文確定分から、価格設定が変わります。<br>※ご不明な点はご連絡くださいませ。</p>
+ 					<div id="option">
+				<h3 id="Line005">【初回追加価格終了のお知らせ】（2017年05月26日更新）</h3>
+						<p>プリント価格改定に伴い、初回追加価格のご案内を終了させていただきます。<br>
+                ご利用いただきまして誠にありがとうございました。<br>
+                なお、新たな価格設定により、少数枚でも追加しやすい金額設定となっております。<br>
+                詳細はスタッフまでお問合せください。
+            </p>
+
 				</div> 			
 				
 				
@@ -386,7 +391,7 @@ var mv_dynamic_to_top = {"text":"To Top","version":"0","min":"500","speed":"300"
 		<section class="home-online">
 
 			 <div id="option">
-				<a href="/m2/guide/information.html"><h3 id="Line005">【価格改定のお知らせ】（2017年05月23日更新）</h3></a> 
+				<a href="/m2/guide/information.html"><h3 id="Line005">【初回追加価格終了のお知らせ】<br>（2017年05月26日更新）<br></h3></a> 
 
 </div> 
 
