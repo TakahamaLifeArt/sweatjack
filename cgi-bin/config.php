@@ -9,7 +9,7 @@ define('_SESS_SAVE_PATH',$_SERVER['DOCUMENT_ROOT'].'/sesstmp/');
 define('_GUEST_IMAGE_PATH', 'user/guest/data/');
 define('_MEMBER_IMAGE_PATH', 'user/member/data/');
 define('_ORDER_TEMP_PATH', 'user/member/data/tmp/');
-define('_MAXIMUM_SIZE', 20971520);		// max upload file size is 20MB.
+define('_MAXIMUM_SIZE', 104857600);		// max upload file size is 100MB(1024*1024*100).
 
 define('_INFO_EMAIL', 'info@sweatjack.jp');
 define('_ORDER_EMAIL', 'order@sweatjack.jp');
