@@ -192,11 +192,11 @@ this.currentTime = 0;
 
 				<!-- // meta slider -->			
  					<div id="option">
-				<h3 id="Line005">【初回追加価格終了のお知らせ】（2017年05月26日更新）</h3>
-						<p>プリント価格改定に伴い、初回追加価格のご案内を終了させていただきます。<br>
-                ご利用いただきまして誠にありがとうございました。<br>
-                なお、新たな価格設定により、少数枚でも追加しやすい金額設定となっております。<br>
-                詳細はスタッフまでお問合せください。
+				<h3 id="Line005">【アイテム価格改定のお知らせ】</h3>
+						<p>6月15日(木)より下記のブランドのアイテムが価格改定となります。<br>
+                「GILDAN」<br>
+                改定前に御見積りいただいた場合でも、ご注文確定が6月15日(木)以降になりますと改定後の価格となりますのでご注意くださいませ。<br>
+                ※リピート注文の場合も改定後は改定価格でのご提供となりますのでご了承ください。
             </p>
 
 				</div> 			
@@ -390,10 +390,10 @@ var mv_dynamic_to_top = {"text":"To Top","version":"0","min":"500","speed":"300"
 
 		<section class="home-online">
 
-			 <div id="option">
-				<a href="/m2/guide/information.html"><h3 id="Line005">【初回追加価格終了のお知らせ】<br>（2017年05月26日更新）<br></h3></a> 
+		 <div id="option">
+				<a href="/m2/guide/information.html"><h3 id="Line005">【アイテム価格改定のお知らせ】</h3></a> 
 
-</div> 
+</div>  
 
  		<!--	 <div id="option">
 				<a href="/m2/guide/information.html"><h3 id="Line005">【GW休業のお知らせ】</h3></a> 
