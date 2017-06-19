@@ -308,7 +308,7 @@
                                                     <div class="sizes">'.$v['sizes'].'</div>
                                                     <p class="price_s">
                                                         TAKAHAMA価格<br>
-                                                        <span><span>'.$v['minprice'].'</span>円~</span>
+                                                        <span><span>'.$v['minprice'].'</span>円xA啓/span>
                                                     </p>
                                                 </li>
                                             </ul>
@@ -340,7 +340,7 @@
                                                 <div class="size">'.$v['sizes'].'</div>
                                                 <p class="price">
                                                     TAKAHAMA価格<br>
-                                                    <span><span>'.$v['minprice'].'</span>円~</span>
+                                                    <span><span>'.$v['minprice'].'</span>円xA啓/span>
                                                 </p>
                                             </li>
                                         </ul>
@@ -416,7 +416,7 @@
 
 						<div class="arrow_line">
 							<div class="arrow prev" data-back="0"><span>戻る</span></div>
-							<div class="step_next" data-step="position">次へ進む</div>
+							<div class="step_next" data-step="position"　onclick="ga('send','event','order','click','step2', 100 );">次へ進む</div>
 						</div>
 					</div>
                 </div>
@@ -463,7 +463,7 @@
 							<p class="note">例　左そで：刺繍</p>
 							<textarea id="note_printmethod"  name="note_printmethod"></textarea>
 						</div>
-						<div class="arrow_line"><div class="arrow prev" data-back="1"><span>戻る</span></div><div class="step_next" data-step="cart">カートに入れる</div></div>
+						<div class="arrow_line"><div class="arrow prev" data-back="1"><span>戻る</span></div><div class="step_next" data-step="cart"　onclick="ga('send','event','order','click','step3', 100 );">カートに入れる</div></div>
                     </div>
 				</div>
 				
@@ -599,11 +599,10 @@
 				 					<?php
 										$option = '<option value="0">---</option>
 				 						<option value="1">午前中</option>
-				 						<option value="2">12:00-14:00</option>
 				 						<option value="3">14:00-16:00</option>
 				 						<option value="4">16:00-18:00</option>
 				 						<option value="5">18:00-20:00</option>
-				 						<option value="6">20:00-21:00</option>';
+				 						<option value="6">19:00-21:00</option>';
 										$option = str_replace('value="'.$regist['options']['deliverytime'].'"', 'value="'.$regist['options']['deliverytime'].'" selected="selected"', $option);
 										echo $option;
 									?>
@@ -643,7 +642,7 @@
 							<textarea id="note_template" name="note_template"><?php echo $user['note_template']; ?></textarea>
 						</div>
 						
-						<div class="arrow_line"><div class="arrow prev" data-back="0"><span>別の商品を見る</span></div><div class="step_next" data-step="user">次へ進む</div></div>
+						<div class="arrow_line"><div class="arrow prev" data-back="0"><span>別の商品を見る</span></div><div class="step_next" data-step="user"　onclick="ga('send','event','order','click','step4', 100 );">次へ進む</div></div>
                     </div>
 				</div>
 				
@@ -770,7 +769,7 @@
 						
 						<div class="arrow_line">
                   			<div class="arrow prev" data-back="3"><span>戻る</span></div>
-                  			<div class="step_next" data-step="confirm">確認画面へ</div>
+                  			<div class="step_next" data-step="confirm" onclick="ga('send','event','order','click','step5', 100 );">確認画面へ</div>
                    		</div>
                     </div>
 				</div>
@@ -840,7 +839,6 @@
 										<tr>
 											<th>アイテム</th>
 											<th>プリント位置</th>
-											<th>デザインのサイズ</th>
 											<th>デザインの色数</th>
 										</tr>
 									</thead>
@@ -896,7 +894,7 @@
 									
 								<div>
 									<p class="pointer">チェック！</p>
-									<div id="sendorder" class="disable_button">注文する</div>
+									<div id="sendorder" class="disable_button" onclick="ga('send','event','order','click','step6', 100 );">注文する</div>
 								</div>
 							</fieldset>
 							
