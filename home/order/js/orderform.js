@@ -6,6 +6,8 @@
 * log	2016-09-21 カテゴリにTシャツとブルゾンを追加
 *		2017-03-24 端数処理及びTシャツの人気商品の変更
 *		2017-05-25	プリント代計算の仕様変更
+*		2017-06-16	デザインサイズの指定を廃止
+
 */
 
 $(function(){
@@ -1507,9 +1509,9 @@ $(function(){
 							var posname = img.attr('alt');
 							var tr = '<tr class="pos-'+img.attr('class')+'">';
 							tr += '<th>'+posname+'</th>';
-							tr += '<td><select class="areasize">';
-							tr += '<option value="0" selected="selected">大</option><option value="1">中</option><option value="2">小</option>';
-							tr += '</select></td>';
+//							tr += '<td><select class="areasize">';
+//							tr += '<option value="0" selected="selected">大</option><option value="1">中</option><option value="2">小</option>';
+//							tr += '</select></td>';
 							tr += '<td><select class="ink"><option value="0" selected="selected">選択してください</option>';
 							tr += '<option value="1">1色</option><option value="2">2色</option><option value="3">3色</option>';
 							tr += '<option value="9">4色以上</option></select></td>';
@@ -1707,7 +1709,7 @@ $(function(){
 			$('#estimation_wrap .itemsum').text($.addFigure(r.itemprice));
 			$('#estimation_wrap .printfee').text($.addFigure(r.printprice));
 			$('#estimation_wrap .totamount').text(r.amount);
-			var sizeName = ['大', '中', '小'];
+//			var sizeName = ['大', '中', '小'];
 			var printName = {'silk':'シルク', 'digit':'転写', 'inkjet':'インクジェット'};
 			var print_size = '';
 			var print_pos = '';
@@ -1715,11 +1717,11 @@ $(function(){
 			var printing = '';	// プリント位置と色数
 			for(var i=0; i<r.design.length; i++){
 				var ink = r.design[i]['ink']==9? '4色以上': r.design[i]['ink']+'色';
-				print_size += '<p>'+sizeName[r.design[i]['size']]+'</p>';
+//				print_size += '<p>'+sizeName[r.design[i]['size']]+'</p>';
 				print_pos += '<p>'+r.design[i]['pos']+'</p>';
 				ink_count += '<p>'+ink+'</p>';
 			}
-			$('#estimation_wrap .print_size').html(print_size);
+//			$('#estimation_wrap .print_size').html(print_size);
 			$('#estimation_wrap .print_pos').html(print_pos);
 			$('#estimation_wrap .ink_count').html(ink_count);
 
@@ -2027,7 +2029,7 @@ $(function(){
 					var tbody = '';
 					var curitemname = '';
 					var inks = 0;
-					var sizeName = ['大', '中', '小'];
+//					var sizeName = ['大', '中', '小'];
 					for(var i=0; i<r.design.length; i++){
 						if(curitemname!=r.design[i]['itemname']){
 							if(curitemname!='' && inks==0){
@@ -2039,7 +2041,7 @@ $(function(){
 						tbody += '<tr>';
 						tbody += '<th>'+r.design[i]['itemname']+'</th>';
 						tbody += '<td class="ac">'+r.design[i]['posname']+'</td>';
-						tbody += '<td class="ac">'+sizeName[r.design[i]['areasize']]+'</td>';
+//						tbody += '<td class="ac">'+sizeName[r.design[i]['areasize']]+'</td>';
 						tbody += '<td class="ac">'+r.design[i]['ink']+'</td>';
 						tbody += '</tr>';
 
