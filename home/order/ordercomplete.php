@@ -1,6 +1,6 @@
 <?php
 	ini_set('memory_limit', '128M');
-	require_once $_SERVER['DOCUMENT_ROOT'].'/../app-def/initcontents.php';
+	require_once $_SERVER['DOCUMENT_ROOT'].'/../app-def/initcontents2.php';
 	require_once dirname(__FILE__).'/../php_libs/orders.php';
 	require_once dirname(__FILE__).'/ordermail.php';
 	
@@ -17,7 +17,7 @@
 	if($isSend){
 		unset($_SESSION['ticket']);
 		$_SESSION['orders'] = array();
-		setcookie(session_name(), "", time()-86400, "/");
+//		setcookie(session_name(), "", time()-86400, "/");
 		unset($_SESSION['orders']);
 	}
 	
@@ -29,12 +29,48 @@
 	<title>お申し込みメール送信完了　|　オリジナルパーカーのスウェットジャック</title>
     <meta name="description" content="オリジナルパーカーのご注文はこちらから。オーダーフォームに入力すると見積も自動でできる！オーダー前に予算がわかり安心です。オリジナルスウェットを作るならスウェットジャックへ" />
     <meta name="keywords" content="スウェット,オリジナルスウェット,パーカー,オリジナルパーカー,プリント,注文,オーダーフォーム" />
+<!--m2 begin-->
+	<meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1" />
+<!--m2 end-->
+
 	<link rel="shortcut icon" href="/icon/favicon.ico" />
-	<link rel="stylesheet" type="text/css" href="/css/template.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="./css/finish.css" media="screen" />
-	
+	<link rel="stylesheet" type="text/css" href="/css/template1_responsive.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="./css/finish1_responsive.css" media="screen" />
+	<link rel='stylesheet' id='contact-form-7-css'  href='../css/header-footer_responsive.css' type='text/css' media='all' />
+<!--m2 begin-->
+    <link rel="stylesheet" type="text/css" href="/m2/common/css/common1_responsive.css" media="all">
+<!--m2 end--> 
+
 	<script type="text/javascript" src="/js/jquery.js"></script>
 	<script type="text/javascript" src="/js/util.js"></script>
+	<script type="text/javascript">
+		jQuery(function($) {
+		  
+		var nav    = $('#fixedBox'),
+		    offset = nav.offset();
+		  
+		$(window).scroll(function () {
+		  if($(window).scrollTop() > offset.top) {
+		    nav.addClass('fixed');
+		  } else {
+		    nav.removeClass('fixed');
+		  }
+		});
+		  
+		});
+	</script>
+
+	<style>
+
+		.fixed {
+		    position: fixed;
+		    top: 0;
+		    width: 100%;
+		    z-index: 10000;
+		}
+
+	</style>
+
 </head>
 
 <body>
@@ -59,7 +95,28 @@
 	
 	</script>
 
-	<div class="header" id="header"><?php echo $header; ?></div>
+<div id="wrapper-all">
+		<header class="site-header"><?php echo $header; ?>			
+
+				
+			<div  id="fixedBox" class="nav">
+				<nav id="global-navigation"><?php echo $menu; ?></nav>	
+			</div>
+</header>
+<!-- m2 begin-->
+<div id="m2_header">
+<h1>オリジナルスウェットならスウェットジャック!</h1>
+<?php 
+		$php = file_get_contents($_SERVER['DOCUMENT_ROOT']."/m2/common/inc/headinc1.html");
+		eval('?>'. mb_convert_encoding($php, 'euc-jp', 'UTF-8'). '<?');
+?>
+
+<nav id="global-navigation"><?php 
+		$php = file_get_contents($_SERVER['DOCUMENT_ROOT']."/m2/common/inc/gnav1.html");
+		eval('?>'. mb_convert_encoding($php, 'euc-jp', 'UTF-8'). '<?');
+?></nav>
+</div>
+<!-- m2 end-->	
 	
 	<div id="container">
 		
@@ -147,7 +204,18 @@ DOC;
 	
 	<p class="page_top"><span>お申し込みメールの送信完了　ページトップへ</span></p>
 
-	<div class="footer"><?php echo $footer; ?></div>
+	
+	<footer>
+<!-- m2 begin -->
+		<div class="footer-wrapper" id="pcpage"><?php echo $footer; ?> </div>
+		<div class="footer-wrapper" id="phonepage"><?php
+			$php = file_get_contents($_SERVER['DOCUMENT_ROOT']."/m2/common/inc/footer1.html");
+			eval('?>'. mb_convert_encoding($php, 'euc-jp', 'UTF-8'). '<?');
+		?>
+	</div>
+<!-- m2 end -->
+	</footer>
+    </div><!-- /wrapper-all-->
 
 	<script type="text/javascript">
 	  (function () {
