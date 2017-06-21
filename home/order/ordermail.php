@@ -56,7 +56,7 @@ class Ordermail extends Conndb{
 				'14:00-16:00',
 				'16:00-18:00',
 				'18:00-20:00',
-				'20:00-21:00'
+				'19:00-21:00'
 			);
 			$order_info .= "◇　配達時間指定　：　".$delitime[$opts['deliverytime']]."\n\n";
 			$order_info .= "━━━━━━━━━━━━━━━━━━━━━\n\n";
@@ -635,6 +635,7 @@ class Ordermail extends Conndb{
 		//商品カテゴリーごとのプリント情報
 		//data6
 		$orderprint = array();
+		$isExistOrderPrint = array();	// 同じカテゴリで且つ同じプリントポジションIDの有無をチェック
 		//data7
 		$orderarea = array();
 		//data8
@@ -657,7 +658,7 @@ class Ordermail extends Conndb{
 				foreach($v2['color'] as $colorcode=>$v3){
 					foreach($v3['size'] as $sizeid=>$v4){
 						if(empty($v4['amount'])) continue;
-						$tempData4 = $v3['master_id']."|1|1|".$sizeid."|".$v4['amount']."|".$v4['cost']."|0|0|||||||" ;
+						$tempData4 = $v3['master_id']."|1|1|".$sizeid."|".$v4['amount']."|".$v4['cost']."|0|0|".$itemid."||||||" ;
 						array_push($data4, $tempData4);
 					}
 				}
