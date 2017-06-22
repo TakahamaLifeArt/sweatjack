@@ -997,16 +997,11 @@ class Orders Extends Conndb {
 			if ($workday<1 || ($workday==1 && $isPack)) {
 				$options['expressError'] = '製作日数が足りません！';
 			} else if($workday==1) {
-//				$options['expressError'] = '<a href="/sameday/">当日仕上げの専用ページ</a>をご利用ください。';
-				$options['expressError'] = '製作日数が足りません！';
+				$options['expressError'] = '<a href="/sameday/">当日仕上げの専用ページ</a>をご利用ください。';
 			} else if($workday==2) {
 				if ($isPack) $opt['pack'] = 0;
 			} else if($isPack) {
 				$workday--;
-			}
-			
-			if (!empty($options['expressError'])) {
-				$_SESSION['orders']['options']['deliveryday'] = '';
 			}
 
 			$express = 0;
@@ -1049,7 +1044,7 @@ class Orders Extends Conndb {
 		$options['publish'] = $opt['publish'];
 		$options['noprint'] = $opt['noprint'];
 
-		$delitime = array('', '午前中', '12:00-14:00', '14:00-16:00', '16:00-18:00', '18:00-20:00', '19:00-21:00');
+		$delitime = array('', '午前中', '12:00-14:00', '14:00-16:00', '16:00-18:00', '18:00-20:00', '20:00-21:00');
 		$options['deliverytime'] = $delitime[$opt['deliverytime']];
 
 		foreach($options as $key=>$val){

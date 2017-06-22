@@ -290,7 +290,7 @@ $(function(){
 									'<li class="item_info_s clearfix">'+
 										'<div class="colors">'+v['colors']+'</div>'+
 										'<div class="sizes">'+v['sizes']+'</div>'+
-						'<p class="price_s" style="white-space: nowrap;"><p style="display:inline-block;">TAKAHAMA≤¡≥ </p><span id="price_cost" style="white-space: nowrap;"><span>'+v['minprice']+'</span>±ﬂ&#12316;</span></p>'+
+										'<p class="price_s" style="white-space: nowrap;"><p style="display:inline-block;">TAKAHAMA≤¡≥ </p><span id="price_cost" style="white-space: nowrap;"><span>'+v['minprice']+'</span>±ﬂè¢∑</span></p>'+
 									'</li>'+
 								'</ul>'+
 							'</li>';
@@ -323,7 +323,7 @@ $(function(){
 									'<li class="item_info clearfix">'+
 										'<div class="color">'+v['colors']+'</div>'+
 										'<div class="size">'+v['sizes']+'</div>'+
-								'<p class="price" style="white-space: nowrap;"><p style="display:inline-block;">TAKAHAMA≤¡≥ </p><span id="price_cost" style="white-space: nowrap;"><span>'+v['minprice']+'</span>±ﬂ&#12316;</span></p>'+
+										'<p class="price" style="white-space: nowrap;"><p style="display:inline-block;">TAKAHAMA≤¡≥ </p><span id="price_cost" style="white-space: nowrap;"><span>'+v['minprice']+'</span>±ﬂè¢∑</span></p>'+
 									'</li>'+
 								'</ul>'+
 							'</li>';
