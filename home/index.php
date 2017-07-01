@@ -232,29 +232,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 				</script>
 			</div>
-
 			<!-- // meta slider -->
-			<!--	<div id="option">
-				<h3 id="Line005">【アイテム価格改定のお知らせ】</h3>
-						<p>6月22日(木)より下記のブランドのアイテムが価格改定となります。<br>
-                「GILDAN」<br>
-                改定前に御見積りいただいた場合でも、ご注文確定が6月22日(木)以降になりますと改定後の価格となりますのでご注意くださいませ。<br>
-                ※リピート注文の場合も改定後は改定価格でのご提供となりますのでご了承ください。
-            </p>
-
-				</div> 			-->
-
-
-
-			<!-- // meta slider -->
-			<!--<	<div id="option">
-				<h3 id="Line005">【GW休業のお知らせ】</h3>
-						<p>12月27日(火)から1月5日(木)の間、休業とさせて頂きます。<br>
-							休業期間中に頂きましたお問合せにつきましては、5月8日(月)以降対応させて頂きます。<br>
-							お急ぎのお客様はご注意下さい。何卒よろしくお願い致します。</p>
-
-				</div> 			-->
-
+			
+			<?php
+			if (!empty(_EXTRA_NOTICE)) {
+				$extNotice = mb_convert_encoding(_EXTRA_NOTICE, 'euc-jp', 'utf-8');
+				$txt = explode(PHP_EOL, $extNotice);
+				echo '<div id="option">';
+				echo '<h3 id="Line005">'.$txt[0].'</h3>';
+				$message = str_replace($txt[0].PHP_EOL, '', $extNotice);
+				echo '<p>'.nl2br($message).'</p></div>';
+			}
+			if (!empty(_NOTICE_HOLIDAY)) {
+				$notice = mb_convert_encoding(_NOTICE_HOLIDAY, 'euc-jp', 'utf-8');
+				$txt = explode(PHP_EOL, $notice);
+				echo '<div id="option">';
+				echo '<h3 id="Line005">'.$txt[0].'</h3>';
+				$message = str_replace($txt[0].PHP_EOL, '', $notice);
+				echo '<p>'.nl2br($message).'</p></div>';
+			}
+			?>
 
 			<section class="home-online">
 
