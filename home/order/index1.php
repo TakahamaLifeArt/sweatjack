@@ -416,11 +416,7 @@
 
 						<div class="arrow_line">
 							<div class="arrow prev" data-back="0"><span>戻る</span></div>
-<<<<<<< HEAD
 							<div class="step_next" data-step="position">次へ進む</div>
-=======
-							<div class="step_next" data-step="position" onclick="ga('send','event','order','click','step2', 100 );">次へ進む</div>
->>>>>>> 321795252dbf2cefff51fe8ac654185f197cf9d9
 						</div>
 					</div>
                 </div>
@@ -467,11 +463,7 @@
 							<p class="note">例　左そで：刺繍</p>
 							<textarea id="note_printmethod"  name="note_printmethod"></textarea>
 						</div>
-<<<<<<< HEAD
 						<div class="arrow_line"><div class="arrow prev" data-back="1"><span>戻る</span></div><div class="step_next" data-step="cart">カートに入れる</div></div>
-=======
-						<div class="arrow_line"><div class="arrow prev" data-back="1"><span>戻る</span></div><div class="step_next" data-step="cart" onclick="ga('send','event','order','click','step3', 100 );">カートに入れる</div></div>
->>>>>>> 321795252dbf2cefff51fe8ac654185f197cf9d9
                     </div>
 				</div>
 				
@@ -650,11 +642,7 @@
 							<textarea id="note_template" name="note_template"><?php echo $user['note_template']; ?></textarea>
 						</div>
 						
-<<<<<<< HEAD
 						<div class="arrow_line"><div class="arrow prev" data-back="0"><span>別の商品を見る</span></div><div class="step_next" data-step="user">次へ進む</div></div>
-=======
-						<div class="arrow_line"><div class="arrow prev" data-back="0"><span>別の商品を見る</span></div><div class="step_next" data-step="user" onclick="ga('send','event','order','click','step4', 100 );">次へ進む</div></div>
->>>>>>> 321795252dbf2cefff51fe8ac654185f197cf9d9
                     </div>
 				</div>
 				
