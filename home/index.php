@@ -178,11 +178,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 			<!-- 	VIDEO   -->
 			<video id="video_2" width="100%" loop autoplay class="video-area">
-				<source src="/img/home/sweatjack.mp4" type="video/mp4">
-				<source src="/img/home/sweatjack.ogv" type="video/ogv">
-				<source src="/img/home/sweatjack.webm" type="video/webm">
-				<p>動画を再生するには、videoタグをサポートしたブラウザが必要です。</p>
-			</video>
+		<source src="/img/home/sweatjack.mp4" type="video/mp4">
+		<source src="/img/home/sweatjack.ogv" type="video/ogv">
+		<source src="/img/home/sweatjack.webm" type="video/webm">
+		<p>動画を再生するには、videoタグをサポートしたブラウザが必要です。</p>
+	</video>
 			<script async defer type="text/javascript">
 				document.getElementById('video_2').addEventListener('ended', function() {
 					this.currentTime = 0;
@@ -232,8 +232,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 				</script>
 			</div>
+
 			<!-- // meta slider -->
-			
+
 			<?php
 			if (!empty(_EXTRA_NOTICE)) {
 				$extNotice = mb_convert_encoding(_EXTRA_NOTICE, 'euc-jp', 'utf-8');
@@ -251,158 +252,158 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				$message = str_replace($txt[0].PHP_EOL, '', $notice);
 				echo '<p>'.nl2br($message).'</p></div>';
 			}
-			?>
+		?>
 
-			<section class="home-online">
+				<section class="home-online">
 
-				<h2 class="header-home"><span><a href="/lineup/lineup_parker1.php">item</a></span></h2>
-				<p>オリジナルパーカー・トレーナー・スウェットパンツの作成のスタートはアイテム選びから。メーカー販売価格から37~56％ＯＦＦ！実物を見ないと分からないお客様もご安心ください。アイテムサンプルの無料レンタル、メーカーカタログも利用して、 納得の一枚が作成できます。</p>
-				<div class="home-itembox">
-					<h3><a href="/lineup/lineup_parker1.php">パーカー</a></h3>
-					<a href="/lineup/lineup_parker1.php"><img src="/img/home/item_01.jpg" alt="" width="100%" /></a>
-					<p class="home-btn"><a href="/lineup/lineup_parker1.php">一覧を見る</a></p>
-				</div>
-				<div class="home-itembox">
-					<h3><a href="/lineup/lineup_trainer1.php">トレーナー</a></h3>
-					<a href="/lineup/lineup_trainer1.php"><img src="/img/home/item_02.jpg" alt="" width="100%" /></a>
-					<p class="home-btn"><a href="/lineup/lineup_trainer1.php">一覧を見る</a></p>
-				</div>
-				<div class="home-itembox">
-					<h3><a href="/lineup/lineup_pants1.php">パンツ</a></h3>
-					<a href="/lineup/lineup_pants1.php"><img src="/img/home/item_03.jpg" alt="" width="100%" /></a>
-					<p class="home-btn"><a href="/lineup/lineup_pants1.php">一覧を見る</a></p>
-				</div>
-
-				<h2 class="header-home"><span><a href="/guide/sweat_navi1.php">ranking</a></span></h2>
-				<p>オリジナルパーカーの作成を検討中のお客様に、特にオススメのアイテム3つをピックアップ致しました。沢山のアイテムの中から探し出すことが得意でないお客様は是非ご利用ください。</p>
-				<div class="home-itembox"><img src="/img/home/rk_cr_01.jpg" alt="" width="30%" /><br>
-					<h3><a href="/lineup/detail_item1.php?c=0&item_id=124">女性にもオススメ</a></h3>
-					<a href="/lineup/detail_item1.php?c=0&item_id=124"><img src="/img/home/rk_01.jpg" alt="" width="100%" /></a>
-					<h3><a href="/lineup/detail_item1.php?c=0&item_id=124">フーデッドライトパーカー<br>(216-MLH)<br>&#165;1,710~</a></h3>
-					<p class="home-btn"><a href="/lineup/detail_item1.php?c=0&item_id=124">詳細を見る</a></p>
-				</div>
-				<div class="home-itembox"><img src="/img/home/rk_cr_02.jpg" alt="" width="30%" /><br>
-					<h3><a href="/lineup/detail_item1.php?c=0&item_id=520">着姿すっきりパーカー</a></h3>
-					<a href="/lineup/detail_item1.php?c=0&item_id=520"><img src="/img/home/rk_02.jpg" alt="" width="100%" /></a>
-					<h3><a href="/lineup/detail_item1.php?c=0&item_id=520">10.0オンススウェットプル<br>オーバーパーカー(5214)<br>&#165;2,120~</a></h3>
-					<p class="home-btn"><a href="/lineup/detail_item1.php?c=0&item_id=520">詳細を見る</a></p>
-				</div>
-				<div class="home-itembox"><img src="/img/home/rk_cr_03.jpg" alt="" width="30%" /><br>
-					<h3><a href="/lineup/detail_item1.php?c=0&item_id=569">ライトな着心地</a></h3>
-					<a href="/lineup/detail_item1.php?c=0&item_id=569"><img src="/img/home/rk_03.jpg" alt="" width="100%" /></a>
-					<h3><a href="/lineup/detail_item.php?c=0&item_id=569">裏起毛プルパーカー<br>(241-CFH)<br>&#165;1,620~</a></h3>
-					<p class="home-btn"><a href="/lineup/detail_item1.php?c=0&item_id=569">詳細を見る</a></p>
-				</div>
-
-
-				<div class="clearfix"></div>
-				<div id="bestitem">
-					<div class="bannernew">
-						<ul>
-							<li>
-								<a href="/guide/parka_guide.php" class="pcset"><img src="/img/home/left_01.jpg" alt="パーカーを選ぶコツ" width="100%" onmouseover="this.src='/img/home/left_01_ro.jpg'" onmouseout="this.src='/img/home/left_01.jpg'" /></a><br>
-								<p>オンス、裏起毛などオリジナルパーカーについての専門用語を写真で詳しく解説致します。生地について厚さについて、パーカーを選ぶ際に必要な情報を提供。お客様がよりパーカーを選びやすくなるページです。</p>
-							</li>
-							<li>
-								<a href="/gallery/gallery_body1.php" class="pcgall"><img src="/img/home/left_02.jpg" alt="制作実例" width="100%" onmouseover="this.src='/img/home/left_02_ro.jpg'" onmouseout="this.src='/img/home/left_02.jpg'" /></a><br>
-								<p>オリジナルパーカー・トレーナー・スウェットパンツのプリント可能な位置が一目で分かります。フードプリント、 袖プリント、大きくプリント、パンツのプリント、さまざまなデザインに対応します。掲載以外の位置にももちろんプリント可能なので、どうぞお気軽にご相談ください。</p>
-							</li>
-							<li>
-								<a href="/design/index1.php" class="pcdes"><img src="/img/home/left_03.jpg" alt="デザインテンプレート集" width="100%" onmouseover="this.src='/img/home/left_03_ro.jpg'" onmouseout="this.src='/img/home/left_03.jpg'" /></a><br>
-								<p>デザインが得意でない方でもオリジナルパーカー・スウェットが作成できます。スウェットジャックが、無料でオリジナルデザインを提供。フォントの変更、デザインの組み合わせが可能になったことで簡単にお客様だけのオリジナルパーカーが作成できます。</p>
-							</li>
-						</ul>
+					<h2 class="header-home"><span><a href="/lineup/lineup_parker1.php">item</a></span></h2>
+					<p>オリジナルパーカー・トレーナー・スウェットパンツの作成のスタートはアイテム選びから。メーカー販売価格から37~56％ＯＦＦ！実物を見ないと分からないお客様もご安心ください。アイテムサンプルの無料レンタル、メーカーカタログも利用して、 納得の一枚が作成できます。</p>
+					<div class="home-itembox">
+						<h3><a href="/lineup/lineup_parker1.php">パーカー</a></h3>
+						<a href="/lineup/lineup_parker1.php"><img src="/img/home/item_01.jpg" alt="" width="100%" /></a>
+						<p class="home-btn"><a href="/lineup/lineup_parker1.php">一覧を見る</a></p>
 					</div>
-					<div class="ranking">
-						<ul>
-							<h2 class="header-home"><span><a href="/lineup/lineup_parker1.php">new</a></span></h2><br>
-							<p>厳選した商品3点をピックアップ。今までにないパーカーやスウェットをUPしていきますので、周りと差をつけたいお客様は是非ご覧ください。在庫状況や、新商品のサンプルなどオリジナルパーカーを作成する際、少しでも疑問を持ちましたら、お気軽にお問い合わせください。</p>
-							<li>
-								<div class="itembox2">
-									<a href="/lineup/detail_item1.php?c=0&item_id=526"><img src="/img/home/right_01.png" alt="12.2オンスデニムスウェットプルオーバーパーカー" width="100%" /></a>
-									<h3><a href="/lineup/detail_item1.php?c=0&item_id=526">12.2オンスデニム<br>スウェットプル<br>オーバーパーカ<br>(3907)<br>&#165;4,870~</a></h3>
-									<p class="home-btn"><a href="/lineup/detail_item1.php?c=0&item_id=526">詳細を見る</a></p>
-								</div>
-							</li>
-							<li>
-								<div class="itembox2">
-									<a href="/lineup/detail_item1.php?c=0&item_id=376"><img src="/img/home/right_02.png" alt="チャンピオン 12ozリバースウィーブパーカー" width="100%" /></a>
-									<h3><a href="/lineup/detail_item1.php?c=0&item_id=376">チャンピオン<br>12ozリバース<br>ウィーブパーカー<br>(CHMP-F1051)<br>&#165;10,440~</a></h3>
-									<p class="home-btn"><a href="/lineup/detail_item1.php?c=0&item_id=376">詳細を見る</a></p>
-								</div>
-							</li>
-							<li>
-								<div class="itembox2">
-									<a href="/lineup/detail_item1.php?c=0&item_id=368"><img src="/img/home/right_03.png" alt="マックスヘビーPOパーカー" width="100%" /></a>
-									<h3><a href="/lineup/detail_item1.php?c=0&item_id=368">マックスヘビー<br>POパーカー<br><br>(CS-2220)<br>&#165;2,880~</a></h3>
-									<p class="home-btn"><a href="/lineup/detail_item1.php?c=0&item_id=368">詳細を見る</a></p>
-								</div>
-							</li>
-						</ul>
+					<div class="home-itembox">
+						<h3><a href="/lineup/lineup_trainer1.php">トレーナー</a></h3>
+						<a href="/lineup/lineup_trainer1.php"><img src="/img/home/item_02.jpg" alt="" width="100%" /></a>
+						<p class="home-btn"><a href="/lineup/lineup_trainer1.php">一覧を見る</a></p>
+					</div>
+					<div class="home-itembox">
+						<h3><a href="/lineup/lineup_pants1.php">パンツ</a></h3>
+						<a href="/lineup/lineup_pants1.php"><img src="/img/home/item_03.jpg" alt="" width="100%" /></a>
+						<p class="home-btn"><a href="/lineup/lineup_pants1.php">一覧を見る</a></p>
+					</div>
+
+					<h2 class="header-home"><span><a href="/guide/sweat_navi1.php">ranking</a></span></h2>
+					<p>オリジナルパーカーの作成を検討中のお客様に、特にオススメのアイテム3つをピックアップ致しました。沢山のアイテムの中から探し出すことが得意でないお客様は是非ご利用ください。</p>
+					<div class="home-itembox"><img src="/img/home/rk_cr_01.jpg" alt="" width="30%" /><br>
+						<h3><a href="/lineup/detail_item1.php?c=0&item_id=124">女性にもオススメ</a></h3>
+						<a href="/lineup/detail_item1.php?c=0&item_id=124"><img src="/img/home/rk_01.jpg" alt="" width="100%" /></a>
+						<h3><a href="/lineup/detail_item1.php?c=0&item_id=124">フーデッドライトパーカー<br>(216-MLH)<br>&#165;1,710~</a></h3>
+						<p class="home-btn"><a href="/lineup/detail_item1.php?c=0&item_id=124">詳細を見る</a></p>
+					</div>
+					<div class="home-itembox"><img src="/img/home/rk_cr_02.jpg" alt="" width="30%" /><br>
+						<h3><a href="/lineup/detail_item1.php?c=0&item_id=520">着姿すっきりパーカー</a></h3>
+						<a href="/lineup/detail_item1.php?c=0&item_id=520"><img src="/img/home/rk_02.jpg" alt="" width="100%" /></a>
+						<h3><a href="/lineup/detail_item1.php?c=0&item_id=520">10.0オンススウェットプル<br>オーバーパーカー(5214)<br>&#165;2,120~</a></h3>
+						<p class="home-btn"><a href="/lineup/detail_item1.php?c=0&item_id=520">詳細を見る</a></p>
+					</div>
+					<div class="home-itembox"><img src="/img/home/rk_cr_03.jpg" alt="" width="30%" /><br>
+						<h3><a href="/lineup/detail_item1.php?c=0&item_id=569">ライトな着心地</a></h3>
+						<a href="/lineup/detail_item1.php?c=0&item_id=569"><img src="/img/home/rk_03.jpg" alt="" width="100%" /></a>
+						<h3><a href="/lineup/detail_item.php?c=0&item_id=569">裏起毛プルパーカー<br>(241-CFH)<br>&#165;1,620~</a></h3>
+						<p class="home-btn"><a href="/lineup/detail_item1.php?c=0&item_id=569">詳細を見る</a></p>
+					</div>
+
+
+					<div class="clearfix"></div>
+					<div id="bestitem">
+						<div class="bannernew">
+							<ul>
+								<li>
+									<a href="/guide/parka_guide.php" class="pcset"><img src="/img/home/left_01.jpg" alt="パーカーを選ぶコツ" width="100%" onmouseover="this.src='/img/home/left_01_ro.jpg'" onmouseout="this.src='/img/home/left_01.jpg'" /></a><br>
+									<p>オンス、裏起毛などオリジナルパーカーについての専門用語を写真で詳しく解説致します。生地について厚さについて、パーカーを選ぶ際に必要な情報を提供。お客様がよりパーカーを選びやすくなるページです。</p>
+								</li>
+								<li>
+									<a href="/gallery/gallery_body1.php" class="pcgall"><img src="/img/home/left_02.jpg" alt="制作実例" width="100%" onmouseover="this.src='/img/home/left_02_ro.jpg'" onmouseout="this.src='/img/home/left_02.jpg'" /></a><br>
+									<p>オリジナルパーカー・トレーナー・スウェットパンツのプリント可能な位置が一目で分かります。フードプリント、 袖プリント、大きくプリント、パンツのプリント、さまざまなデザインに対応します。掲載以外の位置にももちろんプリント可能なので、どうぞお気軽にご相談ください。</p>
+								</li>
+								<li>
+									<a href="/design/index1.php" class="pcdes"><img src="/img/home/left_03.jpg" alt="デザインテンプレート集" width="100%" onmouseover="this.src='/img/home/left_03_ro.jpg'" onmouseout="this.src='/img/home/left_03.jpg'" /></a><br>
+									<p>デザインが得意でない方でもオリジナルパーカー・スウェットが作成できます。スウェットジャックが、無料でオリジナルデザインを提供。フォントの変更、デザインの組み合わせが可能になったことで簡単にお客様だけのオリジナルパーカーが作成できます。</p>
+								</li>
+							</ul>
+						</div>
+						<div class="ranking">
+							<ul>
+								<h2 class="header-home"><span><a href="/lineup/lineup_parker1.php">new</a></span></h2><br>
+								<p>厳選した商品3点をピックアップ。今までにないパーカーやスウェットをUPしていきますので、周りと差をつけたいお客様は是非ご覧ください。在庫状況や、新商品のサンプルなどオリジナルパーカーを作成する際、少しでも疑問を持ちましたら、お気軽にお問い合わせください。</p>
+								<li>
+									<div class="itembox2">
+										<a href="/lineup/detail_item1.php?c=0&item_id=526"><img src="/img/home/right_01.png" alt="12.2オンスデニムスウェットプルオーバーパーカー" width="100%" /></a>
+										<h3><a href="/lineup/detail_item1.php?c=0&item_id=526">12.2オンスデニム<br>スウェットプル<br>オーバーパーカ<br>(3907)<br>&#165;4,870~</a></h3>
+										<p class="home-btn"><a href="/lineup/detail_item1.php?c=0&item_id=526">詳細を見る</a></p>
+									</div>
+								</li>
+								<li>
+									<div class="itembox2">
+										<a href="/lineup/detail_item1.php?c=0&item_id=376"><img src="/img/home/right_02.png" alt="チャンピオン 12ozリバースウィーブパーカー" width="100%" /></a>
+										<h3><a href="/lineup/detail_item1.php?c=0&item_id=376">チャンピオン<br>12ozリバース<br>ウィーブパーカー<br>(CHMP-F1051)<br>&#165;10,440~</a></h3>
+										<p class="home-btn"><a href="/lineup/detail_item1.php?c=0&item_id=376">詳細を見る</a></p>
+									</div>
+								</li>
+								<li>
+									<div class="itembox2">
+										<a href="/lineup/detail_item1.php?c=0&item_id=368"><img src="/img/home/right_03.png" alt="マックスヘビーPOパーカー" width="100%" /></a>
+										<h3><a href="/lineup/detail_item1.php?c=0&item_id=368">マックスヘビー<br>POパーカー<br><br>(CS-2220)<br>&#165;2,880~</a></h3>
+										<p class="home-btn"><a href="/lineup/detail_item1.php?c=0&item_id=368">詳細を見る</a></p>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+				<section class="home-column1">
+					<h2 class="header-home"><span><a href="/guide/guide1.php">order flow</a></span></h2>
+					<div class="odflow"><img src="/img/home/or_img.png" alt="ご注文の流れ" width="100%" />
+						<p class="odflow_lnk"><a href="/guide/guide1.php">詳細を見る&gt;</a></p>
+					</div>
+					<div class="column-thumb">
+						<a href="/estimate/estimate1.php"><img src="/img/home/mi_img.jpg" alt="10秒見積もり" width="100%"></a>
+					</div>
+					<div class="column-thumb">
+						<a href="/calendar/calendar1.php"><img src="/img/home/ot_img.jpg" alt="お届け日計算" width="100%"></a>
+					</div>
+					<div class="column-thumb">
+						<p>web上で簡単にオリジナルパーカーの作成費用が確認できるページです。予算オーバーになってもご安心ください。シルクスクリーン、転写プリント、カッティングなど、弊社のスタッフが柔軟な対応で、 ご予算に合わせたご提案をさせていただきます。</p>
+					</div>
+					<div class="column-thumb">
+						<p>web上で簡単にお届け日を計算できるページです。通常3日仕上げから当日仕上げまで各プランでのお届け日がすぐに確認できますので、お急ぎのお客様がオリジナルパーカーを作成する時も安心です。</p>
+					</div>
+				</section>
+
+				<section class="home-column">
+					<div class="column-thumb">
+						<h3 class="colum-name">SweatJack</h3>
+					</div>
+					<div class="column-info">
+						<h3>オリジナルパーカー、オリジナルスウェットの作成が早い。</h3>
+						<p>業界ではあまり見られない、自社工場を東京都葛飾区の下町に持ち合わせているので、「翌日仕上げ」「２日仕上げ」の超特急プリントが可能です。更に、弊社は全て手作業でプリントしており、職人の魂を込めた一刷りにより、生きたプリントを実現しています。そのため、機械では出せない、プロ仕様のプリントが良品質の商品を作り上げています。弊社は、オリジナルパーカー・トレーナー・スウェットパンツのお好みの場所にオリジナルデザインのプリントが施せます。パーカーなら背面、前面はもちろん、 フードプリントや袖（スリーブ）にもプリント可能です。商品ラインナップも多く、現在大流行中のチャンピオン、ビッグシルエット、レディースサイズにも対応した商品を取り揃えております。また、とにかく大きくプリントしたいお客様には 通常プリント、1.5倍のプリントサイズ「ジャンボプリント」もオススメです。イラストレーター、画像・写真データ、文字打ちのほか、手描きイラストにも対応していますので、 オリジナルイラスト、チームのロゴマークなどをプリントして、 お客様だけのオリジナルパーカーが作成できます。WEB上ではお問い合わせをなさらずとも、見積もりシステム、納品日自動計算により簡単にオーダーできます。この機会に是非、スウェットジャックをご活用ください。</p>
+					</div>
+				</section>
+				<div class="other">
+					<div id="othermenu">
+						<h2 class="header-home"><span><a href="">other</a></span></h2>
+						<section class="home-company">
+							<h4><a href="/company/company1.php">企業情報</a></h4>
+						</section>
+						<section class="home-guide">
+							<h4><a href="/customer/contact1.php">お問い合わせ</a></h4>
+						</section>
+						<section class="home-info">
+							<h4><a href="/faq/index1.php">Q&A</a></h4>
+						</section>
+						<section class="home-order">
+							<h4><a href="/guide/guide1.php">ご注文の流れ</a></h4>
+						</section>
+						<section class="home-design">
+							<h4><a href="/guide/design_tech1.php">デザインの作り方</a></h4>
+						</section>
+					</div>
+					<div class="caler">
+						<div class="calendar_wrapper">
+							<div id="datepicker"></div>
+							<p class="openhours">営業時間　10:00~18:00（月~金）</p>
+							<p><span class="fontred">※</span>定休日：土・日・祝</p>
+						</div>
 					</div>
 				</div>
-			</section>
 
-			<section class="home-column1">
-				<h2 class="header-home"><span><a href="/guide/guide1.php">order flow</a></span></h2>
-				<div class="odflow"><img src="/img/home/or_img.png" alt="ご注文の流れ" width="100%" />
-					<p class="odflow_lnk"><a href="/guide/guide1.php">詳細を見る&gt;</a></p>
-				</div>
-				<div class="column-thumb">
-					<a href="/estimate/estimate1.php"><img src="/img/home/mi_img.jpg" alt="10秒見積もり" width="100%" /></a>
-				</div>
-				<div class="column-thumb">
-					<a href="/calendar/calendar1.php"><img src="/img/home/ot_img.jpg" alt="お届け日計算" width="100%" /></a>
-				</div>
-				<div class="column-thumb">
-					<p>web上で簡単にオリジナルパーカーの作成費用が確認できるページです。予算オーバーになってもご安心ください。シルクスクリーン、転写プリント、カッティングなど、弊社のスタッフが柔軟な対応で、 ご予算に合わせたご提案をさせていただきます。</p>
-				</div>
-				<div class="column-thumb">
-					<p>web上で簡単にお届け日を計算できるページです。通常3日仕上げから当日仕上げまで各プランでのお届け日がすぐに確認できますので、お急ぎのお客様がオリジナルパーカーを作成する時も安心です。</p>
-				</div>
-			</section>
-
-			<section class="home-column">
-				<div class="column-thumb">
-					<h3 class="colum-name">SweatJack</h3>
-				</div>
-				<div class="column-info">
-					<h3>オリジナルパーカー、オリジナルスウェットの作成が早い。</h3>
-					<p>業界ではあまり見られない、自社工場を東京都葛飾区の下町に持ち合わせているので、「翌日仕上げ」「２日仕上げ」の超特急プリントが可能です。更に、弊社は全て手作業でプリントしており、職人の魂を込めた一刷りにより、生きたプリントを実現しています。そのため、機械では出せない、プロ仕様のプリントが良品質の商品を作り上げています。弊社は、オリジナルパーカー・トレーナー・スウェットパンツのお好みの場所にオリジナルデザインのプリントが施せます。パーカーなら背面、前面はもちろん、 フードプリントや袖（スリーブ）にもプリント可能です。商品ラインナップも多く、現在大流行中のチャンピオン、ビッグシルエット、レディースサイズにも対応した商品を取り揃えております。また、とにかく大きくプリントしたいお客様には 通常プリント、1.5倍のプリントサイズ「ジャンボプリント」もオススメです。イラストレーター、画像・写真データ、文字打ちのほか、手描きイラストにも対応していますので、 オリジナルイラスト、チームのロゴマークなどをプリントして、 お客様だけのオリジナルパーカーが作成できます。WEB上ではお問い合わせをなさらずとも、見積もりシステム、納品日自動計算により簡単にオーダーできます。この機会に是非、スウェットジャックをご活用ください。</p>
-				</div>
-			</section>
-			<div class="other">
-				<div id="othermenu">
-					<h2 class="header-home"><span><a href="">other</a></span></h2>
-					<section class="home-company">
-						<h4><a href="/company/company1.php">企業情報</a></h4>
-					</section>
-					<section class="home-guide">
-						<h4><a href="/customer/contact1.php">お問い合わせ</a></h4>
-					</section>
-					<section class="home-info">
-						<h4><a href="/faq/index1.php">Q&A</a></h4>
-					</section>
-					<section class="home-order">
-						<h4><a href="/guide/guide1.php">ご注文の流れ</a></h4>
-					</section>
-					<section class="home-design">
-						<h4><a href="/guide/design_tech1.php">デザインの作り方</a></h4>
-					</section>
-				</div>
-				<div class="caler">
-					<div class="calendar_wrapper">
-						<div id="datepicker"></div>
-						<p class="openhours">営業時間　10:00~18:00（月~金）</p>
-						<p><span class="fontred">※</span>定休日：土・日・祝</p>
-					</div>
-				</div>
-			</div>
-
-			<footer>
-				<div class="footer-wrapper">
-					<?php echo $footer; ?> </div>
-			</footer>
+				<footer>
+					<div class="footer-wrapper">
+						<?php echo $footer; ?> </div>
+				</footer>
 		</div>
 
 
@@ -490,16 +491,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 				<section class="home-online">
 
-					<!--	 <div id="option">
-				<a href="/m2/guide/information.html"><h3 id="Line005">【アイテム価格改定のお知らせ】</h3></a> 
-
-</div>  -->
-
-					<!--	 <div id="option">
-				<a href="/m2/guide/information.html"><h3 id="Line005">【GW休業のお知らせ】</h3></a> 
-
-</div>  -->
-
+					<div id="option">
+						<a href="/m2/guide/information.html">
+							<h3 id="Line005">【夏季休業のお知らせ】</h3>
+						</a>
+					</div>
 
 					<h2 class="header-home"><span>商品カテゴリー</span></h2>
 					<div class="home-itembox">
@@ -563,8 +559,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								<li>
 									<a href="/m2/guide/parka_guide.html" class="pcset"><img src="/m2/img/sp_three_01.jpg" alt="パーカーを選ぶコツ" width="100%" /></a>
 								</li>
-								<!--	<li><a href="/gallery/gallery_body1.php" class="pcgall"><img src="./img/sp_three_02.jpg" alt="制作実例"  width="100%" /></a></li>
-				<li><a href="/design/index1.php" class="pcdes"><img src="./img/sp_three_03.jpg" alt="デザインテンプレート集"  width="100%" /></a></li>  -->
 							</ul>
 						</div>
 						<div class="ranking">
@@ -617,7 +611,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<script type="text/javascript">
 				(function() {
 					var tagjs = document.createElement("script");
-					var s = document.getElementsByTagName("script")[0];　
+					var s = document.getElementsByTagName("script")[0];
 					tagjs.async = true;
 					tagjs.src = "//s.yjtag.jp/tag.js#site=gfjjZ2r";
 					s.parentNode.insertBefore(tagjs, s);
@@ -625,8 +619,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 			</script>
 			<noscript>
-				<iframe src="//b.yjtag.jp/iframe?c=gfjjZ2r" width="1" height="1" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-			</noscript>
+<iframe src="//b.yjtag.jp/iframe?c=gfjjZ2r" width="1" height="1" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+</noscript>
 
 
 			<link rel='stylesheet' id='metaslider-responsive-slider-css' href='http://www.sweatjack.jp/css/responsiveslides.css' type='text/css' media='all' property='stylesheet' />
