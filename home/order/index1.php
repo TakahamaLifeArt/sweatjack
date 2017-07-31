@@ -560,12 +560,6 @@
 											<label><input type="radio" name="intro" value="3" <?php if($regist['options']['intro']==1) echo 'checked="checked"'; ?> />はい<ins>3%OFF</ins></label>
 										</td>
 									</tr>
-									<!--
-									<tr>
-										<th></th>
-										<td><p class="note"><span>※1,※2</span>の割引は、30,000円以上お買い上げの場合に適用されます。</p></td>
-									</tr>
-									-->
 									<tr class="separate">
 										<th>袋詰め　<span class="anchor" id="pop_pack">袋詰めとは</span></th>
 										<td>
@@ -682,17 +676,6 @@
 							
 							<div id="user_wrap" class="clearfix inner">
 							
-							<!--
-								<div class="ft">
-									<ul>
-										<li id= "login_email"><h2>メールアドレス:<span class="fontred">※</span></h2><input type="text" id="email" name="email" value="<?php echo $user['email']; ?>" /></li>
-										<li id="login_introduce1"><h2>パスワード:<span class="fontred">※</span></h2><input type="password" value="<?php echo $user['password']; ?>" id="pass"  name="pass" /></li>
-										<li id="login_introduce2"><h2></h2></li>
-										<li id="login_introduce2"><input type="button" id="member_login" value="ログイン" /></li>
-										<li id="login_introduce3"><p>☆☆会員の方:新規ご登録の方はログイン不要、注文完了時に会員自動登録されます。☆☆</p></li>
-									</ul>
-								</div>
-							-->
 								<div class="g_ft" style="width=98%;border-bottom: 1px solid #d8d8d8;margin-top:20px;padding-bottom:20px;">
 									<div class="ft">
 										<ul>
@@ -738,7 +721,7 @@
 										<li><h2 class="login_nodisplay">ご住所:<span class="fontred">※</span></h2></li>
 										<li><h2 class="login_display">お届け先:<span class="fontred">※</span></h2></li>
 										<p id="mypage_msg" style="font-size:10px;font-weight:bold;">★「マイページ」でお届先の追加/編集ができます！</p>
-					 					<li><p><select name="delivery_customer" id="delivery_customer"></select></p></li>
+					 					<li><p><select name="delivery_customer" id="delivery_customer"></select></p>
 											<p>〒<input type="text" name="zipcode" class="forZip" id="zipcode1" value="<?php echo $user['zipcode']; ?>" onkeyup="AjaxZip3.zip2addr(this,'','addr0','addr1');" /></p>
 											<p><input type="text" name="addr0" id="addr0" value="<?php echo $user['addr0']; ?>" placeholder="都道府県" maxlength="4" /></p>
 											<p><input type="text" name="addr1" id="addr1" value="<?php echo $user['addr1']; ?>" placeholder="文字数は全角28文字、半角56文字です" maxlength="56" class="restrict" /></p>
