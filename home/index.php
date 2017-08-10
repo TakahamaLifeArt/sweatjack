@@ -27,7 +27,6 @@
 				'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
 			f.parentNode.insertBefore(j, f);
 		})(window, document, 'script', 'dataLayer', 'GTM-KZ5DQL');
-
 	</script>
 	<!-- End Google Tag Manager -->
 	<meta charset="euc-jp">
@@ -67,7 +66,6 @@
 				}
 			});
 		});
-
 	</script>
 
 
@@ -81,7 +79,6 @@
 			js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
 			fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
-
 	</script>
 	<style type="text/css">
 		.wp_social_bookmarking_light {
@@ -134,7 +131,6 @@
 				display: none;
 			}
 		}
-
 	</style>
 
 
@@ -154,7 +150,6 @@
 
 		ga('create', 'UA-11155922-6', 'auto');
 		ga('send', 'pageview');
-
 	</script>
 </head>
 
@@ -187,7 +182,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				document.getElementById('video_2').addEventListener('ended', function() {
 					this.currentTime = 0;
 				}, false);
-
 			</script>
 			<!-- meta slider -->
 			<div style="width: 100%;" class="metaslider metaslider-responsive metaslider-102 ml-slider">
@@ -229,7 +223,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						var slider = !window.jQuery ? window.setTimeout(timer_metaslider_102, 100) : !jQuery.isReady ? window.setTimeout(timer_metaslider_102, 1) : metaslider_102(window.jQuery);
 					};
 					timer_metaslider_102();
-
 				</script>
 			</div>
 
@@ -419,7 +412,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				"margin": "20"
 			};
 			/* ]]> */
-
 		</script>
 		<script type='text/javascript' src='/js/responsiveslides.min.js'></script>
 
@@ -483,7 +475,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 							var slider = !window.jQuery ? window.setTimeout(timer_metaslider_102, 100) : !jQuery.isReady ? window.setTimeout(timer_metaslider_102, 1) : metaslider_102(window.jQuery);
 						};
 						timer_metaslider_102();
-
 					</script>
 				</div>
 				<!--// meta slider-->
@@ -491,11 +482,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 				<section class="home-online">
 
-					<div id="option">
+					<!--<div id="option">
 						<a href="/m2/guide/information.html">
 							<h3 id="Line005">【夏季休業のお知らせ】</h3>
 						</a>
-					</div>
+					</div>-->
 
 					<h2 class="header-home"><span>商品カテゴリー</span></h2>
 					<div class="home-itembox">
@@ -616,7 +607,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					tagjs.src = "//s.yjtag.jp/tag.js#site=gfjjZ2r";
 					s.parentNode.insertBefore(tagjs, s);
 				}());
-
 			</script>
 			<noscript>
 <iframe src="//b.yjtag.jp/iframe?c=gfjjZ2r" width="1" height="1" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
@@ -635,7 +625,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					"margin": "20"
 				};
 				/* ]]> */
-
 			</script>
 			<script type='text/javascript' src='http://www.sweatjack.jp/js/responsiveslides.min.js'></script>
 	</div>
