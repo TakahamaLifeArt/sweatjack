@@ -482,11 +482,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 				<section class="home-online">
 
-					<!--<div id="option">
-						<a href="/m2/guide/information.html">
-							<h3 id="Line005">≠笙筐菱僅及云襞日六∞</h3>
-						</a>
-					</div>-->
+					<?php
+					$today = date("Y/m/d");
+					$target = strtotime("2017/08/16");
+					if($today < $target){
+						echo '<div id="option"><a href="/m2/guide/information.html"><h3 id="Line005">≠笙筐菱僅及云襞日六∞</h3></a></div>';
+					}
+					?>
 
 					<h2 class="header-home"><span>齒圴市氾打伉□</span></h2>
 					<div class="home-itembox">
