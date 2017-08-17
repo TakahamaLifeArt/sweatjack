@@ -483,9 +483,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<section class="home-online">
 
 					<?php
-					$today = date("Y/m/d");
 					$target = strtotime("2017/08/16");
-					if($today < $target){
+					if(time() < $target){
 						echo '<div id="option"><a href="/m2/guide/information.html"><h3 id="Line005">【夏季休業のお知らせ】</h3></a></div>';
 					}
 					?>
