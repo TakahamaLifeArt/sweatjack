@@ -483,9 +483,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<section class="home-online">
 
 					<?php
-					$target = strtotime("2017/08/16");
-					if(time() < $target){
-						echo '<div id="option"><a href="/m2/guide/information.html"><h3 id="Line005">≠笙筐菱僅及云襞日六∞</h3></a></div>';
+					$today = date("Y/m/d");
+					$target = strtotime("2017/09/04");
+					if($today < $target){
+						echo '<div id="option"><a href="/m2/guide/information.html"><h3 id="Line005">≠失奶氾丞笠傘荼爛及云襞日六∞</h3></a></div>';
 					}
 					?>
 
