@@ -483,14 +483,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<section class="home-online">
 
 					<?php
-<<<<<<< HEAD
-					$target = strtotime("/09/04");
-=======
-//					$target = strtotime("2017/09/04");
->>>>>>> e774c3b27549773ca5bcae307fd30aa6d8b05e39
-//					if(time() >= $target){
-//						echo '<div id="option"><a href="/m2/guide/information.html"><h3 id="Line005">【アイテム価格改定のお知らせ】</h3></a></div>';
-//					}
+					$target = strtotime("/09/27");
+					if(time() >= $target){
+						echo '<div id="option"><a href="/m2/guide/information.html"><h3 id="Line005">【アイテム価格改定のお知らせ】</h3></a></div>';
+					}
 					?>
 
 					<h2 class="header-home"><span>商品カテゴリー</span></h2>
