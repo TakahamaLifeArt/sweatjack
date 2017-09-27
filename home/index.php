@@ -485,7 +485,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<?php
 					$target = strtotime("/09/27");
 					if(time() >= $target){
-						echo '<div id="option"><a href="/m2/guide/information.html"><h3 id="Line005">【アイテム価格改定のお知らせ】</h3></a></div>';
+						echo '<div id="option"><a href="/m2/guide/information.html"><h3 id="Line005">【アイテム価格改定のお知らせ】<br>【ホームページ一時使用不能、復旧のお知らせ】</h3></a></div>';
 					}
 					?>
 
