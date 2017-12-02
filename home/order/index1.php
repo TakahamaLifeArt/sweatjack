@@ -577,7 +577,7 @@
 											<label><input type="radio" name="payment" value="1" <?php if($regist['options']['payment']==1) echo 'checked="checked"'; ?> />代金引換（手数料800円）</label>
 											<br>
 											<label><input type="radio" name="payment" value="3" <?php if($regist['options']['payment']==3) echo 'checked="checked"'; ?> />カード決済（システム利用料5％）</label>
-											<label><input type="radio" name="payment" value="4" <?php if($regist['options']['payment']==4) echo 'checked="checked"'; ?> />コンビニ決済（手数料800円）</label>
+											<!-- <label><input type="radio" name="payment" value="4" <?php if($regist['options']['payment']==4) echo 'checked="checked"'; ?> />コンビニ決済（手数料800円）</label>  -->
 										</td>
 									</tr>
 								</tbody>
