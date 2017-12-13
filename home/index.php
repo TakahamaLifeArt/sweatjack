@@ -483,10 +483,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<section class="home-online">
 
 					<?php
-//					$target = strtotime("/11/22");
-//					if(time() >= $target){
-//						echo '<div id="option"><a href="/m2/guide/information.html"><h3 id="Line005">≠笠傘荼爛及云襞日六∞</h3></a></div>';
-//					}
+					if (time() >= strtotime('2017-12-14')) {
+						echo '<div id="option"><a href="/m2/guide/information.html"><h3 id="Line005">≠鑣筐菱僅及云襞日六∞</h3></a></div>';
+					}
+					if (time() < strtotime('2017-01-09')) {
+						echo '<div id="option"><a href="/m2/guide/information.html"><h3 id="Line005">≠鑣筐菱僅及云襞日六∞</h3></a></div>';
+					}
 					?>
 
 					<h2 class="header-home"><span>齒圴市氾打伉□</span></h2>
