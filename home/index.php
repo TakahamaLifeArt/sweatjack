@@ -250,7 +250,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<section class="home-online">
 
 					<h2 class="header-home"><span><a href="/lineup/lineup_parker1.php">item</a></span></h2>
-					<p>オリジナルパーカー・トレーナー・スウェットパンツの作成のスタートはアイテム選びから。メーカー販売価格から37~56％ＯＦＦ！実物を見ないと分からないお客様もご安心ください。アイテムサンプルの無料レンタル、メーカーカタログも利用して、 納得の一枚が作成できます。</p>
+					<p>オリジナルパーカー・トレーナー・スウェットパンツの作成のスタートはアイテム選びから。メーカー販売価格から37〜56％ＯＦＦ！実物を見ないと分からないお客様もご安心ください。アイテムサンプルの無料レンタル、メーカーカタログも利用して、 納得の一枚が作成できます。</p>
 					<div class="home-itembox">
 						<h3><a href="/lineup/lineup_parker1.php">パーカー</a></h3>
 						<a href="/lineup/lineup_parker1.php"><img src="/img/home/item_01.jpg" alt="" width="100%" /></a>
@@ -272,19 +272,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<div class="home-itembox"><img src="/img/home/rk_cr_01.jpg" alt="" width="30%" /><br>
 						<h3><a href="/lineup/detail_item1.php?c=0&item_id=124">女性にもオススメ</a></h3>
 						<a href="/lineup/detail_item1.php?c=0&item_id=124"><img src="/img/home/rk_01.jpg" alt="" width="100%" /></a>
-						<h3><a href="/lineup/detail_item1.php?c=0&item_id=124">フーデッドライトパーカー<br>(216-MLH)<br>&#165;1,710~</a></h3>
+						<h3><a href="/lineup/detail_item1.php?c=0&item_id=124">フーデッドライトパーカー<br>(216-MLH)<br>&#165;1,710〜</a></h3>
 						<p class="home-btn"><a href="/lineup/detail_item1.php?c=0&item_id=124">詳細を見る</a></p>
 					</div>
 					<div class="home-itembox"><img src="/img/home/rk_cr_02.jpg" alt="" width="30%" /><br>
 						<h3><a href="/lineup/detail_item1.php?c=0&item_id=520">着姿すっきりパーカー</a></h3>
 						<a href="/lineup/detail_item1.php?c=0&item_id=520"><img src="/img/home/rk_02.jpg" alt="" width="100%" /></a>
-						<h3><a href="/lineup/detail_item1.php?c=0&item_id=520">10.0オンススウェットプル<br>オーバーパーカー(5214)<br>&#165;2,120~</a></h3>
+						<h3><a href="/lineup/detail_item1.php?c=0&item_id=520">10.0オンススウェットプル<br>オーバーパーカー(5214)<br>&#165;2,120〜</a></h3>
 						<p class="home-btn"><a href="/lineup/detail_item1.php?c=0&item_id=520">詳細を見る</a></p>
 					</div>
 					<div class="home-itembox"><img src="/img/home/rk_cr_03.jpg" alt="" width="30%" /><br>
 						<h3><a href="/lineup/detail_item1.php?c=0&item_id=569">ライトな着心地</a></h3>
 						<a href="/lineup/detail_item1.php?c=0&item_id=569"><img src="/img/home/rk_03.jpg" alt="" width="100%" /></a>
-						<h3><a href="/lineup/detail_item.php?c=0&item_id=569">裏起毛プルパーカー<br>(241-CFH)<br>&#165;1,620~</a></h3>
+						<h3><a href="/lineup/detail_item.php?c=0&item_id=569">裏起毛プルパーカー<br>(241-CFH)<br>&#165;1,620〜</a></h3>
 						<p class="home-btn"><a href="/lineup/detail_item1.php?c=0&item_id=569">詳細を見る</a></p>
 					</div>
 
@@ -314,21 +314,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								<li>
 									<div class="itembox2">
 										<a href="/lineup/detail_item1.php?c=0&item_id=526"><img src="/img/home/right_01.png" alt="12.2オンスデニムスウェットプルオーバーパーカー" width="100%" /></a>
-										<h3><a href="/lineup/detail_item1.php?c=0&item_id=526">12.2オンスデニム<br>スウェットプル<br>オーバーパーカ<br>(3907)<br>&#165;4,870~</a></h3>
+										<h3><a href="/lineup/detail_item1.php?c=0&item_id=526">12.2オンスデニム<br>スウェットプル<br>オーバーパーカ<br>(3907)<br>&#165;4,870〜</a></h3>
 										<p class="home-btn"><a href="/lineup/detail_item1.php?c=0&item_id=526">詳細を見る</a></p>
 									</div>
 								</li>
 								<li>
 									<div class="itembox2">
 										<a href="/lineup/detail_item1.php?c=0&item_id=376"><img src="/img/home/right_02.png" alt="チャンピオン 12ozリバースウィーブパーカー" width="100%" /></a>
-										<h3><a href="/lineup/detail_item1.php?c=0&item_id=376">チャンピオン<br>12ozリバース<br>ウィーブパーカー<br>(CHMP-F1051)<br>&#165;10,440~</a></h3>
+										<h3><a href="/lineup/detail_item1.php?c=0&item_id=376">チャンピオン<br>12ozリバース<br>ウィーブパーカー<br>(CHMP-F1051)<br>&#165;10,440〜</a></h3>
 										<p class="home-btn"><a href="/lineup/detail_item1.php?c=0&item_id=376">詳細を見る</a></p>
 									</div>
 								</li>
 								<li>
 									<div class="itembox2">
 										<a href="/lineup/detail_item1.php?c=0&item_id=368"><img src="/img/home/right_03.png" alt="マックスヘビーPOパーカー" width="100%" /></a>
-										<h3><a href="/lineup/detail_item1.php?c=0&item_id=368">マックスヘビー<br>POパーカー<br><br>(CS-2220)<br>&#165;2,880~</a></h3>
+										<h3><a href="/lineup/detail_item1.php?c=0&item_id=368">マックスヘビー<br>POパーカー<br><br>(CS-2220)<br>&#165;2,880〜</a></h3>
 										<p class="home-btn"><a href="/lineup/detail_item1.php?c=0&item_id=368">詳細を見る</a></p>
 									</div>
 								</li>
@@ -387,7 +387,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<div class="caler">
 						<div class="calendar_wrapper">
 							<div id="datepicker"></div>
-							<p class="openhours">営業時間　10:00~18:00（月~金）</p>
+							<p class="openhours">営業時間　10:00〜18:00（月〜金）</p>
 							<p><span class="fontred">※</span>定休日：土・日・祝</p>
 						</div>
 					</div>
@@ -483,10 +483,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<section class="home-online">
 
 					<?php
-					if (time() >= strtotime('2017-12-14')) {
-						echo '<div id="option"><a href="/m2/guide/information.html"><h3 id="Line005">【冬季休業のお知らせ】</h3></a></div>';
-					}
-					if (time() < strtotime('2017-01-09')) {
+					if (time() >= strtotime('2017-12-14') && time() < strtotime('2018-01-09')) {
 						echo '<div id="option"><a href="/m2/guide/information.html"><h3 id="Line005">【冬季休業のお知らせ】</h3></a></div>';
 					}
 					?>
@@ -584,7 +581,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					</div>
 					<div class="column-info">
 						<h3>有限会社　タカハマライフアート</h3>
-						<p>〒124-0025　葛飾区西新小岩3-14-26<br>営業時間　10:00~18:00（月~金）<br> ※定休日：土・日・祝
+						<p>〒124-0025　葛飾区西新小岩3-14-26<br>営業時間　10:00〜18:00（月〜金）<br> ※定休日：土・日・祝
 						</p>
 					</div>
 				</section>
