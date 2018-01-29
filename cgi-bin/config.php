@@ -26,7 +26,8 @@ define('_TOLL_FREE', '0120-130-428');
 
 define('_PACK_FEE', 50);
 define('_NO_PACK_FEE', 10);
-define('_CREDIT_RATE', 0.05);	// カード手数料率
+define('_NO_PRINT_RATE', 1.1);	// プリントなしの割増
+define('_CREDIT_RATE', 0);	// カード手数料率 - 廃止2018-01-30
 
 define('_API', 'http://takahamalifeart.com/v1/api');
 define('_API_U', 'http://takahamalifeart.com/v1/apiu');
@@ -56,28 +57,9 @@ $time_end = str_replace("-","/",$holiday_data['end']);
 //休業終始日付、お知らせ
 define('_FROM_HOLIDAY', $time_start);
 define('_TO_HOLIDAY', $time_end);
-
-//    　休業案内入力欄
-
-//$_NOTICE_HOLIDAY = "\n<==========  年末年始のお知らせ  ==========>\n";
-//$_NOTICE_HOLIDAY .= "12月27日(火)から1月5日(木)の間、休業とさせて頂きます。\n";
-//$_NOTICE_HOLIDAY .= "休業期間中に頂きましたお問合せにつきましては、1月6日(金)以降対応させて頂きます。\n";
-//$_NOTICE_HOLIDAY .= "お急ぎの方はご注意下さい。何卒よろしくお願い致します。\n\n";
-
-//$_NOTICE_HOLIDAY = '';
-
 define('_NOTICE_HOLIDAY', $notice);
-
-
-//$_EXTRA_NOTICE = "\n\n<==========  アイテム価格改定のお知らせ  ==========>\n";
-//$_EXTRA_NOTICE .= "タカハマライフアートをご利用頂きありがとうございます。\n";
-//$_EXTRA_NOTICE .= "為替の影響と原産国の人件費の上昇による各社メーカーの値上げに伴い\n";
-//$_EXTRA_NOTICE .= "平成27年4月より当社もアイテムの値上げさせていただくことになりました。\n";
-//$_EXTRA_NOTICE .= "アイテムにより10%?30%値上げの予定です。\n";
-//$_EXTRA_NOTICE .= "そのため、3月中のお見積もり内容の有効期限を3月31日（火）ご注文確定分（13時まで）とさせていただきます。\n";
-//$_EXTRA_NOTICE .= "\n\n";
-
-//$_EXTRA_NOTICE = '';
-
 define('_EXTRA_NOTICE', $extra_noitce);
+
+// 会員割の適用開始日
+define('_START_RANKING', '2018-01-30');
 ?>
