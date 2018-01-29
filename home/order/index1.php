@@ -509,13 +509,16 @@
 									<tr><td colspan="2">プリント代</td><td class="print_size ac"></td><td class="print_pos ac"></td><td class="ink_count ac"></td><td class="printfee">0</td><td></td></tr>
 									<tr><td colspan="5">送料</td><td class="carriage">0</td><td></td></tr>
 									<tr><td colspan="5">代引手数料</td><td class="codfee">0</td><td></td></tr>
-									<tr><td colspan="5">コンビニ手数料</td><td class="conbifee">0</td><td></td></tr>
-									<tr><td colspan="5">袋詰代</td><td class="package">0</td><td></td></tr>
+<!--<tr>
+	<td colspan="5">コンビニ手数料</td>
+	<td class="conbifee">0</td>
+	<td></td>
+</tr>-->									<tr><td colspan="5">袋詰代</td><td class="package">0</td><td></td></tr>
 									<tr><td colspan="2">割引</td><td colspan="3" class="discountname"></td><td class="discountfee">0</td><td></td></tr>
 									<tr><td colspan="2">特急料金</td><td colspan="3" class="expressinfo"></td><td class="expressfee">0</td><td></td></tr>
 									<tr class="foot_sub"><td colspan="5">計</td><td class="base">0</td><td></td></tr>
 									<tr class="foot_sub"><td colspan="5">消費税</td><td class="tax">0</td><td></td></tr>
-									<tr class="foot_sub"><td colspan="5">カード決済システム利用料</td><td class="credit">0</td><td></td></tr>
+<!--									<tr class="foot_sub"><td colspan="5">カード決済システム利用料</td><td class="credit">0</td><td></td></tr>-->
 									<tr class="foot_total"><td colspan="5">お見積り合計</td><td class="total">0</td><td></td></tr>
 									<tr class="foot_perone"><td colspan="5">1枚あたり</td><td class="perone">0</td><td></td></tr>
 								</tfoot>
@@ -535,17 +538,18 @@
 										<td>
 											<label><input type="radio" name="student" value="0" <?php if(empty($regist['options']['student'])) echo 'checked="checked"'; ?> />いいえ</label>
 											<label><input type="radio" name="student" value="3" <?php if($regist['options']['student']==3) echo 'checked="checked"'; ?> />はい<ins>3%OFF</ins></label>
-											<label><input type="radio" name="student" value="5" <?php if($regist['options']['student']==5) echo 'checked="checked"'; ?> />2クラス<ins>5%OFF</ins></label>
-											<label><input type="radio" name="student" value="7" <?php if($regist['options']['student']==7) echo 'checked="checked"'; ?> />3クラス<ins>7%OFF</ins></label>
+<!--											<label><input type="radio" name="student" value="5" <?php if($regist['options']['student']==5) echo 'checked="checked"'; ?> />2クラス<ins>5%OFF</ins></label>-->
+<!--											<label><input type="radio" name="student" value="7" <?php if($regist['options']['student']==7) echo 'checked="checked"'; ?> />3クラス<ins>7%OFF</ins></label>-->
 										</td>
 									</tr>
 									<tr>
-										<th>レビューを掲載しますか</th>
+										<th>写真掲載割</th>
 										<td>
 											<label><input type="radio" name="blog" value="0" <?php if(empty($regist['options']['blog'])) echo 'checked="checked"'; ?> />いいえ</label>
 											<label><input type="radio" name="blog" value="3" <?php if($regist['options']['blog']==3) echo 'checked="checked"'; ?> />はい<ins>3%OFF</ins></label>
 										</td>
 									</tr>
+<!--
 									<tr>
 										<th>Illustratorで入稿しますか</th>
 										<td>
@@ -553,6 +557,8 @@
 											<label><input type="radio" name="illust" value="1" <?php if($regist['options']['illust']==1) echo 'checked="checked"'; ?> />はい<ins>1,000円OFF</ins></label>
 										</td>
 									</tr>
+-->
+<!--
 									<tr>
 										<th>弊社のお客様からのご紹介ですか<ins>※2</ins></th>
 										<td>
@@ -560,6 +566,7 @@
 											<label><input type="radio" name="intro" value="3" <?php if($regist['options']['intro']==1) echo 'checked="checked"'; ?> />はい<ins>3%OFF</ins></label>
 										</td>
 									</tr>
+-->
 									<tr class="separate">
 										<th>袋詰め　<span class="anchor" id="pop_pack">袋詰めとは</span></th>
 										<td>
@@ -576,7 +583,7 @@
 <!--											<label><input type="radio" name="payment" value="2" <?php if($regist['options']['payment']==2) echo 'checked="checked"'; ?> />現金（工場で受取）</label>-->
 											<label><input type="radio" name="payment" value="1" <?php if($regist['options']['payment']==1) echo 'checked="checked"'; ?> />代金引換（手数料800円）</label>
 											<br>
-											<label><input type="radio" name="payment" value="3" <?php if($regist['options']['payment']==3) echo 'checked="checked"'; ?> />カード決済（システム利用料5％）</label>
+											<label><input type="radio" name="payment" value="3" <?php if($regist['options']['payment']==3) echo 'checked="checked"'; ?> />カード決済<!--（システム利用料5％）--></label>
 											<!-- <label><input type="radio" name="payment" value="4" <?php if($regist['options']['payment']==4) echo 'checked="checked"'; ?> />コンビニ決済（手数料800円）</label>  -->
 										</td>
 									</tr>
@@ -585,7 +592,7 @@
 							
 							<div class="line">
 								<label class="title">ご希望納期</label><input class="datepicker" id="deliveryday" type="text" size="14" name="deliveryday" value="<?php echo $regist['options']['deliveryday']; ?>" <?php if($regist['options']['nodeliday']==1) echo 'disabled'; ?> />
-								<label><input type="checkbox" name="nodeliday" id="nodeliday" value="1" <?php if($regist['options']['nodeliday']==1) echo 'checked="checked"'; ?> > 納期の指定なし</label>
+<!--								<label><input type="checkbox" name="nodeliday" id="nodeliday" value="1" <?php if($regist['options']['nodeliday']==1) echo 'checked="checked"'; ?> > 納期の指定なし</label>-->
 								<p id="express_notice"><span class="highlights">※<ins></ins></span><span class="anchor" id="pop_express">特急料金について</span></p>
 								<p>
 									<label class="title">お届時間帯の指定</label>
