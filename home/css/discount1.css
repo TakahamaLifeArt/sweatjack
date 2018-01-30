@@ -7,8 +7,16 @@
 
 -------------------------------------------------------------- */
 
+.container {
+	position: relative;
+	width: 100%;
+	margin: 0px auto;
+	max-width: 940px;
+}
+
 .notes_wrapper {
-	width: 940px;
+	width: 100%;
+	max-width: 940px;
 	padding: 10px;
 }
 
@@ -63,9 +71,20 @@ h2 {
 ===============================================================*/
 
 @media screen and (max-width: 768px) {
+	.container h2 {
+		font-size: 250% !important;
+		font-weight: bold;
+		color: #473932;
+		text-align: left;
+		padding-top: 30px;
+	}
 	.content {
 		display: block;
 		margin: 0 20px;
+	}
+	.notes_wrapper {
+		width: 95%;
+		padding: 10px;
 	}
 	.discount_img {
 		margin-right: 40px;
@@ -74,19 +93,12 @@ h2 {
 	.content_right {
 		width: 100%;
 	}
-	h4 {
+	.container #main h4 {
 		margin: 20px 0 5px 0;
 		font-size: 16px;
 		clear: both;
 		font-weight: bold;
+		text-align: left;
 	}
 
-}
-
-h2.titlelogo {
-	font-size: 250%;
-	font-weight: bold;
-	color: #473932;
-	text-align: left;
-	padding-top: 30px;
 }
