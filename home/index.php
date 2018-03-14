@@ -492,7 +492,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<section class="home-online">
 
 					<?php
-					if (time() >= strtotime('2017-02-26') && time() < strtotime('2018-03-01')) {
+					if (time() >= strtotime('2017-03-13') && time() < strtotime('2018-03-20')) {
 						echo '<div id="option"><a href="/m2/guide/information.html"><h3 id="Line005">【価格改定のお知らせ】</h3></a></div>';
 					}
 					?>
