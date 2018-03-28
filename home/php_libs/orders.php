@@ -863,7 +863,7 @@ class Orders Extends Conndb {
 	*	@sheetsize		転写のデザインサイズ　default: 1
 	*
 	*	return			{'printprice':プリント代, 'design':['インク色数','プリント位置名']}
-	*/	
+	*/
 	public function reqPrintfee($sheetsize='1'){
 		$args = array();
 		if($_SESSION['orders']['options']['noprint']==0 && !empty($_SESSION['orders']['items'])){
@@ -949,34 +949,34 @@ class Orders Extends Conndb {
 		$opt =& $_SESSION['orders']['options'];
 		$discountname = array();;
 		$discount_ratio = 0;
+		
+		// 2018-03-14 プリントなしの場合は割引不可
+		if ($opt['noprint']==0) {
+			$discount_ratio = $opt['student'];
+			switch($opt['student']){
+				case '3':	$discountname[] = '学割';
+					break;
+				case '5':	$discountname[] = '2クラス割';
+					break;
+				case '7':	$discountname[] = '3クラス割';
+					break;
+			}
 
-		// 2013-10-17 30000円の条件廃止
-		//if($p1>30000){
-		$discount_ratio = $opt['student'];
-		switch($opt['student']){
-			case '3':	$discountname[] = '学割';
-				break;
-			case '5':	$discountname[] = '2クラス割';
-				break;
-			case '7':	$discountname[] = '3クラス割';
-				break;
-		}
+			if(!empty($opt['intro'])){
+				$discount_ratio += $opt['intro'];
+				$discountname[] = '紹介割';
+			}
 
-		if(!empty($opt['intro'])){
-			$discount_ratio += $opt['intro'];
-			$discountname[] = '紹介割';
-		}
-		//}
+			if(!empty($opt['blog'])){
+				$discount_ratio += $opt['blog'];
+				$discountname[] = 'ブログ割';
+			}
 
-		if(!empty($opt['blog'])){
-			$discount_ratio += $opt['blog'];
-			$discountname[] = 'ブログ割';
-		}
-
-		$options['discount'] = -1 * ceil(($p1 * $discount_ratio)/100);
-		if(!empty($opt['illust'])){
-			$options['discount'] -= 1000;
-			$discountname[] = 'イラレ割';
+			$options['discount'] = -1 * ceil(($p1 * $discount_ratio)/100);
+			if(!empty($opt['illust'])){
+				$options['discount'] -= 1000;
+				$discountname[] = 'イラレ割';
+			}
 		}
 
 		$options['discountname'] = $discountname;
