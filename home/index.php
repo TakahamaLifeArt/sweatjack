@@ -492,8 +492,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<section class="home-online">
 
 					<?php
-					if (time() >= strtotime('2017-03-13') && time() < strtotime('2018-03-20')) {
-						echo '<div id="option"><a href="/m2/guide/information.html"><h3 id="Line005">≠笠傘荼爛及云襞日六∞</h3></a></div>';
+					if (time() >= strtotime('2018-04-17') && time() < strtotime('2018-05-07')) {
+						echo '<div id="option"><a href="/m2/guide/information.html"><h3 id="Line005">≠GW菱僅及云襞日六∞</h3></a></div>';
 					}
 					?>
 
