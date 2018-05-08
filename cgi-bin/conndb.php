@@ -421,5 +421,31 @@ class Conndb extends HTTP {
 
 		return $data;
 	}
+	
+	
+	/*
+	*	Sweat
+	*
+	*	@return			データベースのテーブルリストを返す
+	************************************************/
+	public function sjTablelist($mode, $item_id=null, $itemcolor_code=null, $part=null){
+		$res = parent::request('POST', array('act'=>'sjTable', 'mode'=>$mode, 'item_id'=>$item_id, 'itemcolor_code'=>$itemcolor_code, 'part'=>$part));
+		$data = unserialize($res);
+
+		return $data;
+	}
+	
+	
+	/*
+	*	Sweat
+	*
+	*	@return			当該商品の単価
+	************************************************/
+	public function sjItemPrice($item_id, $size_id, $points, $isWhite=0, $mode=0){
+		$res = parent::request('POST', array('act'=>'sjItemPrice', 'item_id'=>$item_id, 'size_id'=>$size_id, 'points'=>$points, 'isWhite'=>$isWhite, 'mode'=>$mode));
+		$data = unserialize($res);
+
+		return $data;
+	}
 }
 ?>
