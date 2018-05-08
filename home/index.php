@@ -295,7 +295,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						<p class="home-btn"><a href="/lineup/detail_item1.php?c=0&item_id=569">詳細を見る</a></p>
 					</div>
 
-
 					<div class="clearfix"></div>
 					<div id="bestitem">
 						<div class="bannernew">
