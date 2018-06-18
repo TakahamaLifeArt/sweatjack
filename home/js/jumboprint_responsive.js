@@ -104,8 +104,8 @@ jQuery(function($){
 
 				$.when(
 					$.getJSON($.TLA.api+'?callback=?', {'act':'price', 'itemid':item_id, 'amount':amount, 'output':'jsonp'}),
-					$.getJSON($.TLA.api+'?callback=?', {'act':'printfee', 'printmethod':'silk', 'args':argsNormal, 'output':'jsonp', 'curdate':'2017-05-25'}),
-					$.getJSON($.TLA.api+'?callback=?', {'act':'printfee', 'printmethod':'silk', 'args':argsJumbo, 'output':'jsonp', 'curdate':'2017-05-25'})
+					$.getJSON($.TLA.api+'?callback=?', {'act':'printfee2', 'printmethod':'silk', 'args':argsNormal, 'output':'jsonp', 'curdate':'2017-05-25'}),
+					$.getJSON($.TLA.api+'?callback=?', {'act':'printfee2', 'printmethod':'silk', 'args':argsJumbo, 'output':'jsonp', 'curdate':'2017-05-25'})
 				).then(function(r1, r2, r3){
 					if (!r1 || !r2 || !r3) {
 						$.msgbox('通信エラー： データの取得に失敗しました。');

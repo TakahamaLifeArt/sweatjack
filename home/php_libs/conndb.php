@@ -6,7 +6,7 @@
 */
 require_once $_SERVER['DOCUMENT_ROOT'].'/../cgi-bin/config.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/../cgi-bin/JSON.php';
-require_once $_SERVER['DOCUMENT_ROOT'].'/php_libs/http.php';
+require_once dirname(__FILE__).'/http.php';
 
 class Conndb extends HTTP {
 	
@@ -317,7 +317,7 @@ class Conndb extends HTTP {
 	*	@return		['printfee':プリント代, 'volume':枚数, 'tax':消費税率]　引数に配列以外を設定した時はNULL
 	*/
 	public function printfee($args, $sheetsize='1'){
-		$res = parent::request('POST', array('act'=>'printfee', 'sheetsize'=>$sheetsize, 'args'=>$args, 'show_site'=>_SITE));
+		$res = parent::request('POST', array('act'=>'printfee2', 'sheetsize'=>$sheetsize, 'args'=>$args, 'show_site'=>_SITE));
 		$data = unserialize($res);
 		
 		return $data;
