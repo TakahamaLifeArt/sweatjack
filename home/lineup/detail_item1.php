@@ -301,7 +301,7 @@
 	*/
 	
 	// 発送予定日のハッシュ
-	$fin = DeliveryCounter::counter();
+//	$fin = DeliveryCounter::counter();
 		
 	// みんなにメール
 	if(isset($_POST['multimail'])){
@@ -583,7 +583,7 @@
 								echo '<p>この'.$item_category_name.'は<br>メーカー価格の<br><span><ins>'.$discount_ratio.'</ins>% <ins>OFF</ins></span><br>です。</p>';
 							?>
 							</div>
-							<div id="pcpage" class="send_mail"></div>
+<!--							<div id="pcpage" class="send_mail"></div>-->
 							<div id="pcpage" class="print_out"></div>
 						</div>
 						
