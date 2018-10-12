@@ -20,12 +20,6 @@
 	case _DOC_ROOT.'t_index.php':
 			// $comment = '<p>かっこいいオリジナルスウェットやパーカー作成を！デザイン、納期など、なんでもご相談下さい、スウェットジャックがお手伝いします。</p>';
 			$page = 'home';
-			
-			require_once dirname(__FILE__).'/jd/myCalendar.php';
-			list($year, $month) = explode(' ', date("Y n"));
-			$myCalendar = new myCalendar($year, $month);
-			list($year2, $month2) = explode(' ', date('Y n', mktime(0, 0, 0, date('n')+1, date('j'), date('Y'))));
-			$myCalendar2 = new myCalendar($year2, $month2);
 			break;
 	case _DOC_ROOT.'gallery/gallery_body.php':
 	case _DOC_ROOT.'gallery/gallery_hood.php':
