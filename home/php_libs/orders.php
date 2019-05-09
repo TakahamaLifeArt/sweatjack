@@ -77,7 +77,7 @@
 *			   ['noprint']			0:プリントあり(default)		1:プリントなし
 */
 require_once $_SERVER['DOCUMENT_ROOT'].'/../app-def/session_my_handler.php';
-require_once $_SERVER['DOCUMENT_ROOT'].'/../cgi-bin/jd/japaneseDate.php';
+//require_once $_SERVER['DOCUMENT_ROOT'].'/../cgi-bin/jd/japaneseDate.php';
 require_once dirname(__FILE__).'/items.php';
 require_once dirname(__FILE__).'/conndb.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/order/ordermail.php';

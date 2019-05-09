@@ -6,7 +6,7 @@
  *
  * */
 
-	require_once dirname(__FILE__).'/jd/japaneseDate.php';
+//	require_once dirname(__FILE__).'/jd/japaneseDate.php';
 
 	class DeliveryCounter{
 

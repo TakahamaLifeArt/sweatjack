@@ -53,7 +53,6 @@
 	<script src="/js/jquery.mmenu.min.all.js"></script>
 	<script type="text/javascript" src="/js/ui/ui.datepicker.js"></script>
 	<script type="text/javascript" src="/js/ui/i18n/ui.datepicker-ja.js"></script>
-	<script type="text/javascript" src="/calendar/js/deliveryday.js"></script>
 	<script type="text/javascript">
 		jQuery(function($) {
 			var nav = $('#fixedBox'),
@@ -64,6 +63,17 @@
 					nav.addClass('fixed');
 				} else {
 					nav.removeClass('fixed');
+				}
+			});
+			
+			$('#datepicker').datepicker({
+				beforeShowDay: function(date){
+					var weeks = date.getDay();
+					var texts = "";
+					if(weeks == 0) texts = "休日";
+					if(weeks == 0) return [true, 'days_red', texts];
+					else if(weeks == 6) return [true, 'days_blue'];
+					return [true];
 				}
 			});
 		});
@@ -177,7 +187,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 			<!-- 	VIDEO   -->
-			<video id="video_2" width="100%" loop autoplay class="video-area">
+			<video id="video_2" width="100%" preload="none" autoplay loop muted class="video-area">
 		<source src="/img/home/sweatjack.mp4" type="video/mp4">
 		<source src="/img/home/sweatjack.ogv" type="video/ogv">
 		<source src="/img/home/sweatjack.webm" type="video/webm">
@@ -201,13 +211,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 							<a href="/guide/ink_font.php"><img src="/img/home/main_02.jpg" height="0" width="960" alt="" class="slider-102 slide-125" /></a>
 						</li>
 						<li style='display: none;'>
-							<a href="/estimate/estimate1.php"><img src="/img/home/main_03.jpg" height="0" width="960" alt="" class="slider-102 slide-179" /></a>
+							<a href="https://www.takahama428.com/price/estimate.php" rel="nofollow"><img src="/img/home/main_03.jpg" height="0" width="960" alt="" class="slider-102 slide-179" /></a>
 						</li>
 						<li style='display: none;'>
 							<a href="/gallery/gallery_body1.php"><img src="/img/home/main_04_f.jpg" height="0" width="960" alt="" class="slider-102 slide-227" /></a>
 						</li>
 						<li style='display: none;'>
-							<a href="/guide/guide1.php"><img src="/img/home/main_05.jpg" height="0" width="960" alt="" class="slider-102 slide-177" /></a>
+							<a href="https://www.takahama428.com/guide/orderflow.php" rel="nofollow"><img src="/img/home/main_05.jpg" height="0" width="960" alt="" class="slider-102 slide-177" /></a>
 						</li>
 					</ul>
 
@@ -256,43 +266,43 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 				<section class="home-online">
 
-					<h2 class="header-home"><span><a href="/lineup/lineup_parker1.php">item</a></span></h2>
-					<p>オリジナルパーカー・トレーナー・スウェットパンツの作成のスタートはアイテム選びから。メーカー販売価格から37~56％ＯＦＦ！実物を見ないと分からないお客様もご安心ください。アイテムサンプルの無料レンタル、メーカーカタログも利用して、 納得の一枚が作成できます。</p>
+					<h2 class="header-home"><span><a href="https://www.takahama428.com/items/category/sweat/" rel="nofollow">item</a></span></h2>
+					<p>オリジナルパーカー・トレーナー・スウェットパンツの作成のスタートはアイテム選びから。メーカー販売価格から37〜56％ＯＦＦ！実物を見ないと分からないお客様もご安心ください。アイテムサンプルの無料レンタル、メーカーカタログも利用して、 納得の一枚が作成できます。</p>
 					<div class="home-itembox">
-						<h3><a href="/lineup/lineup_parker1.php">パーカー</a></h3>
-						<a href="/lineup/lineup_parker1.php"><img src="/img/home/item_01.jpg" alt="" width="100%" /></a>
-						<p class="home-btn"><a href="/lineup/lineup_parker1.php">一覧を見る</a></p>
+						<h3><a href="https://www.takahama428.com/items/category/sweat/" rel="nofollow">パーカー</a></h3>
+						<a href="https://www.takahama428.com/items/category/sweat/" rel="nofollow"><img src="/img/home/item_01.jpg" alt="" width="100%" /></a>
+						<p class="home-btn"><a href="https://www.takahama428.com/items/category/sweat/" rel="nofollow">一覧を見る</a></p>
 					</div>
 					<div class="home-itembox">
-						<h3><a href="/lineup/lineup_trainer1.php">トレーナー</a></h3>
-						<a href="/lineup/lineup_trainer1.php"><img src="/img/home/item_02.jpg" alt="" width="100%" /></a>
-						<p class="home-btn"><a href="/lineup/lineup_trainer1.php">一覧を見る</a></p>
+						<h3><a href="https://www.takahama428.com/items/category/sweat/?cat=2&shilhouette%5B%5D=15" rel="nofollow">トレーナー</a></h3>
+						<a href="https://www.takahama428.com/items/category/sweat/?cat=2&shilhouette%5B%5D=15" rel="nofollow"><img src="/img/home/item_02.jpg" alt="" width="100%" /></a>
+						<p class="home-btn"><a href="https://www.takahama428.com/items/category/sweat/?cat=2&shilhouette%5B%5D=15" rel="nofollow">一覧を見る</a></p>
 					</div>
 					<div class="home-itembox">
-						<h3><a href="/lineup/lineup_pants1.php">パンツ</a></h3>
-						<a href="/lineup/lineup_pants1.php"><img src="/img/home/item_03.jpg" alt="" width="100%" /></a>
-						<p class="home-btn"><a href="/lineup/lineup_pants1.php">一覧を見る</a></p>
+						<h3><a href="https://www.takahama428.com/items/category/sweat/?cat=2&shilhouette%5B%5D=16" rel="nofollow">パンツ</a></h3>
+						<a href="https://www.takahama428.com/items/category/sweat/?cat=2&shilhouette%5B%5D=16" rel="nofollow"><img src="/img/home/item_03.jpg" alt="" width="100%" /></a>
+						<p class="home-btn"><a href="https://www.takahama428.com/items/category/sweat/?cat=2&shilhouette%5B%5D=16" rel="nofollow">一覧を見る</a></p>
 					</div>
 
 					<h2 class="header-home"><span><a href="/guide/sweat_navi1.php">ranking</a></span></h2>
 					<p>オリジナルパーカーの作成を検討中のお客様に、特にオススメのアイテム3つをピックアップ致しました。沢山のアイテムの中から探し出すことが得意でないお客様は是非ご利用ください。</p>
 					<div class="home-itembox"><img src="/img/home/rk_cr_01.jpg" alt="" width="30%" /><br>
-						<h3><a href="/lineup/detail_item1.php?c=0&item_id=124">女性にもオススメ</a></h3>
-						<a href="/lineup/detail_item1.php?c=0&item_id=124"><img src="/img/home/rk_01.jpg" alt="" width="100%" /></a>
-						<h3><a href="/lineup/detail_item1.php?c=0&item_id=124">フーデッドライトパーカー<br>(216-MLH)<br>&#165;1,710~</a></h3>
-						<p class="home-btn"><a href="/lineup/detail_item1.php?c=0&item_id=124">詳細を見る</a></p>
+						<h3><a href="https://www.takahama428.com/items/item.php?code=216-mlh" rel="nofollow">女性にもオススメ</a></h3>
+						<a href="https://www.takahama428.com/items/item.php?code=216-mlh" rel="nofollow"><img src="/img/home/rk_01.jpg" alt="" width="100%" /></a>
+						<h3><a href="https://www.takahama428.com/items/item.php?code=216-mlh" rel="nofollow">フーデッドライトパーカー<br>(216-MLH)<br>&#165;1,710〜</a></h3>
+						<p class="home-btn"><a href="https://www.takahama428.com/items/item.php?code=216-mlh" rel="nofollow">詳細を見る</a></p>
 					</div>
 					<div class="home-itembox"><img src="/img/home/rk_cr_02.jpg" alt="" width="30%" /><br>
-						<h3><a href="/lineup/detail_item1.php?c=0&item_id=520">着姿すっきりパーカー</a></h3>
-						<a href="/lineup/detail_item1.php?c=0&item_id=520"><img src="/img/home/rk_02.jpg" alt="" width="100%" /></a>
-						<h3><a href="/lineup/detail_item1.php?c=0&item_id=520">10.0オンススウェットプル<br>オーバーパーカー(5214)<br>&#165;2,120~</a></h3>
-						<p class="home-btn"><a href="/lineup/detail_item1.php?c=0&item_id=520">詳細を見る</a></p>
+						<h3><a href="https://www.takahama428.com/items/item.php?code=5214" rel="nofollow">着姿すっきりパーカー</a></h3>
+						<a href="https://www.takahama428.com/items/item.php?code=5214" rel="nofollow"><img src="/img/home/rk_02.jpg" alt="" width="100%" /></a>
+						<h3><a href="https://www.takahama428.com/items/item.php?code=5214" rel="nofollow">10.0オンススウェットプル<br>オーバーパーカー(5214)<br>&#165;2,120〜</a></h3>
+						<p class="home-btn"><a href="https://www.takahama428.com/items/item.php?code=5214" rel="nofollow">詳細を見る</a></p>
 					</div>
 					<div class="home-itembox"><img src="/img/home/rk_cr_03.jpg" alt="" width="30%" /><br>
-						<h3><a href="/lineup/detail_item1.php?c=0&item_id=569">ライトな着心地</a></h3>
-						<a href="/lineup/detail_item1.php?c=0&item_id=569"><img src="/img/home/rk_03.jpg" alt="" width="100%" /></a>
-						<h3><a href="/lineup/detail_item.php?c=0&item_id=569">裏起毛プルパーカー<br>(241-CFH)<br>&#165;1,620~</a></h3>
-						<p class="home-btn"><a href="/lineup/detail_item1.php?c=0&item_id=569">詳細を見る</a></p>
+						<h3><a href="https://www.takahama428.com/items/item.php?code=5738" rel="nofollow">ライトな着心地</a></h3>
+						<a href="https://www.takahama428.com/items/item.php?code=5738" rel="nofollow"><img src="/img/home/rk_03.jpg" alt="" width="100%" /></a>
+						<h3><a href="https://www.takahama428.com/items/item.php?code=5738" rel="nofollow">裏起毛プルパーカー<br>(241-CFH)<br>&#165;1,620〜</a></h3>
+						<p class="home-btn"><a href="https://www.takahama428.com/items/item.php?code=5738" rel="nofollow">詳細を見る</a></p>
 					</div>
 
 					<div class="clearfix"></div>
@@ -315,27 +325,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						</div>
 						<div class="ranking">
 							<ul>
-								<h2 class="header-home"><span><a href="/lineup/lineup_parker1.php">new</a></span></h2><br>
+								<h2 class="header-home"><span><a href="https://www.takahama428.com/items/category/sweat/" rel="nofollow">new</a></span></h2><br>
 								<p>厳選した商品3点をピックアップ。今までにないパーカーやスウェットをUPしていきますので、周りと差をつけたいお客様は是非ご覧ください。在庫状況や、新商品のサンプルなどオリジナルパーカーを作成する際、少しでも疑問を持ちましたら、お気軽にお問い合わせください。</p>
 								<li>
 									<div class="itembox2">
-										<a href="/lineup/detail_item1.php?c=0&item_id=526"><img src="/img/home/right_01.png" alt="12.2オンスデニムスウェットプルオーバーパーカー" width="100%" /></a>
-										<h3><a href="/lineup/detail_item1.php?c=0&item_id=526">12.2オンスデニム<br>スウェットプル<br>オーバーパーカ<br>(3907)<br>&#165;4,870~</a></h3>
-										<p class="home-btn"><a href="/lineup/detail_item1.php?c=0&item_id=526">詳細を見る</a></p>
+										<a href="https://www.takahama428.com/items/item.php?code=3907" rel="nofollow"><img src="/img/home/right_01.png" alt="12.2オンスデニムスウェットプルオーバーパーカー" width="100%" /></a>
+										<h3><a href="https://www.takahama428.com/items/item.php?code=3907" rel="nofollow">12.2オンスデニム<br>スウェットプル<br>オーバーパーカ<br>(3907)<br>&#165;4,870〜</a></h3>
+										<p class="home-btn"><a href="https://www.takahama428.com/items/item.php?code=3907" rel="nofollow">詳細を見る</a></p>
 									</div>
 								</li>
 								<li>
 									<div class="itembox2">
-										<a href="/lineup/detail_item1.php?c=0&item_id=376"><img src="/img/home/right_02.png" alt="チャンピオン 12ozリバースウィーブパーカー" width="100%" /></a>
-										<h3><a href="/lineup/detail_item1.php?c=0&item_id=376">チャンピオン<br>12ozリバース<br>ウィーブパーカー<br>(CHMP-F1051)<br>&#165;10,440~</a></h3>
-										<p class="home-btn"><a href="/lineup/detail_item1.php?c=0&item_id=376">詳細を見る</a></p>
+										<a href="https://www.takahama428.com/items/item.php?code=chmp-f1051" rel="nofollow"><img src="/img/home/right_02.png" alt="チャンピオン 12ozリバースウィーブパーカー" width="100%" /></a>
+										<h3><a href="https://www.takahama428.com/items/item.php?code=chmp-f1051" rel="nofollow">チャンピオン<br>12ozリバース<br>ウィーブパーカー<br>(CHMP-F1051)<br>&#165;10,440〜</a></h3>
+										<p class="home-btn"><a href="https://www.takahama428.com/items/item.php?code=chmp-f1051" rel="nofollow">詳細を見る</a></p>
 									</div>
 								</li>
 								<li>
 									<div class="itembox2">
-										<a href="/lineup/detail_item1.php?c=0&item_id=368"><img src="/img/home/right_03.png" alt="マックスヘビーPOパーカー" width="100%" /></a>
-										<h3><a href="/lineup/detail_item1.php?c=0&item_id=368">マックスヘビー<br>POパーカー<br><br>(CS-2220)<br>&#165;2,880~</a></h3>
-										<p class="home-btn"><a href="/lineup/detail_item1.php?c=0&item_id=368">詳細を見る</a></p>
+										<a href="https://www.takahama428.com/items/item.php?code=cs-2220" rel="nofollow"><img src="/img/home/right_03.png" alt="マックスヘビーPOパーカー" width="100%" /></a>
+										<h3><a href="https://www.takahama428.com/items/item.php?code=cs-2220" rel="nofollow">マックスヘビー<br>POパーカー<br><br>(CS-2220)<br>&#165;2,880〜</a></h3>
+										<p class="home-btn"><a href="https://www.takahama428.com/items/item.php?code=cs-2220" rel="nofollow">詳細を見る</a></p>
 									</div>
 								</li>
 							</ul>
@@ -344,15 +354,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</section>
 
 				<section class="home-column1">
-					<h2 class="header-home"><span><a href="/guide/guide1.php">order flow</a></span></h2>
+					<h2 class="header-home"><span><a href="https://www.takahama428.com/guide/orderflow.php">order flow</a></span></h2>
 					<div class="odflow"><img src="/img/home/or_img.png" alt="ご注文の流れ" width="100%" />
-						<p class="odflow_lnk"><a href="/guide/guide1.php">詳細を見る&gt;</a></p>
+						<p class="odflow_lnk"><a href="https://www.takahama428.com/guide/orderflow.php" rel="nofollow">詳細を見る&gt;</a></p>
 					</div>
 					<div class="column-thumb">
-						<a href="/estimate/estimate1.php"><img src="/img/home/mi_img.jpg" alt="10秒見積もり" width="100%"></a>
+						<a href="https://www.takahama428.com/price/estimate.php" rel="nofollow"><img src="/img/home/mi_img.jpg" alt="10秒見積もり" width="100%"></a>
 					</div>
 					<div class="column-thumb">
-						<a href="/calendar/calendar1.php"><img src="/img/home/ot_img.jpg" alt="お届け日計算" width="100%"></a>
+						<a href="https://www.takahama428.com/delivery/" rel="nofollow"><img src="/img/home/ot_img.jpg" alt="お届け日計算" width="100%"></a>
 					</div>
 					<div class="column-thumb">
 						<p>web上で簡単にオリジナルパーカーの作成費用が確認できるページです。予算オーバーになってもご安心ください。シルクスクリーン、転写プリント、カッティングなど、弊社のスタッフが柔軟な対応で、 ご予算に合わせたご提案をさせていただきます。</p>
@@ -384,7 +394,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 							<h4><a href="/faq/index1.php">Q&A</a></h4>
 						</section>
 						<section class="home-order">
-							<h4><a href="/guide/guide1.php">ご注文の流れ</a></h4>
+							<h4><a href="https://www.takahama428.com/guide/orderflow.php" rel="nofollow">ご注文の流れ</a></h4>
 						</section>
 						<section class="home-design">
 							<h4><a href="/guide/design_tech1.php">デザインの作り方</a></h4>
@@ -393,7 +403,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<div class="caler">
 						<div class="calendar_wrapper">
 							<div id="datepicker"></div>
-							<p class="openhours">営業時間　10:00~18:00（月~金）</p>
+							<p class="openhours">営業時間　10:00〜18:00（月〜金）</p>
 							<p><span class="fontred">※</span>定休日：土・日・祝</p>
 						</div>
 					</div>
@@ -498,59 +508,61 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 						<h2 class="header-home"><span>商品カテゴリー</span></h2>
 						<div class="home-itembox">
-							<a href="/lineup/lineup_parker1.php"><img src="/m2/img/sp_item_01.jpg" alt="" width="100%" /></a>
+							<a href="https://www.takahama428.com/items/category/sweat/" rel="nofollow"><img src="/m2/img/sp_item_01.jpg" alt="" width="100%" /></a>
 						</div>
 						<div class="home-itembox">
-							<a href="/lineup/lineup_trainer1.php"><img src="/m2/img/sp_item_02.jpg" alt="" width="100%" /></a>
+							<a href="https://www.takahama428.com/items/category/sweat/?cat=2&shilhouette%5B%5D=15" rel="nofollow"><img src="/m2/img/sp_item_02.jpg" alt="" width="100%" /></a>
 						</div>
 						<div class="home-itembox">
-							<a href="/lineup/lineup_zipparker1.php"><img src="/m2/img/sp_item_03.jpg" alt="" width="100%" /></a>
+							<a href="https://www.takahama428.com/items/category/sweat/?cat=2&shilhouette%5B%5D=14" rel="nofollow"><img src="/m2/img/sp_item_03.jpg" alt="" width="100%" /></a>
 						</div>
 						<div class="home-itembox">
-							<a href="/lineup/lineup_pants1.php"><img src="/m2/img/sp_item_04.jpg" alt="" width="100%" /></a>
+							<a href="https://www.takahama428.com/items/category/sweat/?cat=2&shilhouette%5B%5D=16" rel="nofollow"><img src="/m2/img/sp_item_04.jpg" alt="" width="100%" /></a>
 						</div>
 						<div class="home-itembox">
-							<a href="/lineup/lineup_t-shirts.php"><img src="/m2/img/sp_item_05.jpg" alt="" width="100%" /></a>
+							<a href="https://www.takahama428.com/items/category/t-shirts/" rel="nofollow"><img src="/m2/img/sp_item_05.jpg" alt="" width="100%" /></a>
 						</div>
 						<div class="home-itembox">
-							<a href="/lineup/lineup_outer.php"><img src="/m2/img/sp_item_06.jpg" alt="" width="100%" /></a>
+							<a href="https://www.takahama428.com/items/category/outer/" rel="nofollow"><img src="/m2/img/sp_item_06.jpg" alt="" width="100%" /></a>
 						</div>
 
 
 						<section class="home-column1">
 
 							<div class="column-thumb">
-								<a href="/estimate/estimate1.php"><img src="/img/home/mi_img.jpg" alt="10秒見積もり" width="100%" /></a>
+								<a href="https://www.takahama428.com/price/estimate.php" rel="nofollow"><img src="/img/home/mi_img.jpg" alt="10秒見積もり" width="100%" /></a>
 							</div>
 							<div class="column-thumb">
-								<a href="/m2/guide/otodoke1.html"><img src="/img/home/ot_img.jpg" alt="お届け日計算" width="100%" /></a>
+								<a href="https://www.takahama428.com/delivery/" rel="nofollow"><img src="/img/home/ot_img.jpg" alt="お届け日計算" width="100%" /></a>
 							</div>
 						</section>
 
 						<section class="home-column1">
 							<h2 class="header-home"><span>ご注文の流れ</span></h2>
 							<div class="odflow"><img src="/m2/img/sp_or_img.png" alt="ご注文の流れ" width="100%" />
-								<p class="odflow_lnk"><a href="/m2/guide/guide.html">詳細を見る&raquo;</a></p>
+								<p class="odflow_lnk"><a href="https://www.takahama428.com/guide/orderflow.php" rel="nofollow">詳細を見る&raquo;</a></p>
 							</div>
 						</section>
 
 
 						<h2 class="header-home"><span>おすすめランキング</span></h2>
 						<div class="home-itembox-ranc"><img src="/m2/img/sp_rk_cr_01.jpg" alt="" width="100%" /><br>
-							<h4><a href="/lineup/detail_item1.php?c=0&item_id=124">女性にも<br>オススメ</a></h4>
-							<a href="/lineup/detail_item1.php?c=0&item_id=124"><img src="/m2/img/sp_rk_01.jpg" alt="" width="100%" /></a>
+							<h4><a href="https://www.takahama428.com/items/item.php?code=216-mlh" rel="nofollow">女性にも<br>オススメ</a></h4>
+							<a href="https://www.takahama428.com/items/item.php?code=216-mlh" rel="nofollow"><img src="/m2/img/sp_rk_01.jpg" alt="" width="100%" /></a>
 						</div>
 						<div class="home-itembox-ranc"><img src="/m2/img/sp_rk_cr_02.jpg" alt="" width="100%" /><br>
-							<h4><a href="/lineup/detail_item1.php?c=0&item_id=520">着姿すっきり<br>パーカー</a></h4>
-							<a href="/lineup/detail_item1.php?c=0&item_id=520"><img src="/m2/img/sp_rk_02.jpg" alt="" width="100%" /></a>
+							<h4><a href="https://www.takahama428.com/items/item.php?code=5214" rel="nofollow">着姿すっきり<br>パーカー</a></h4>
+							<a href="https://www.takahama428.com/items/item.php?code=5214" rel="nofollow"><img src="/m2/img/sp_rk_02.jpg" alt="" width="100%" /></a>
 						</div>
 						<div class="home-itembox-ranc"><img src="/m2/img/sp_rk_cr_03.jpg" alt="" width="100%" /><br>
-							<h4><a href="/lineup/detail_item1.php?c=0&item_id=569">ライトな<br>着心地</a></h4>
-							<a href="/lineup/detail_item1.php?c=0&item_id=569"><img src="/m2/img/sp_rk_03.jpg" alt="" width="100%" /></a>
+							<h4><a href="https://www.takahama428.com/items/item.php?code=5738" rel="nofollow">ライトな<br>着心地</a></h4>
+							<a href="https://www.takahama428.com/items/item.php?code=5738" rel="nofollow"><img src="/m2/img/sp_rk_03.jpg" alt="" width="100%" /></a>
 						</div>
+<!--
 						<div class="clearfix">
 							<p class="odflow_lnk"><a href="/m2/guide/ranking.html">ランキングを見る&raquo;</a></p>
 						</div>
+-->
 
 						<div id="bestitem">
 							<div class="bannernew">
@@ -565,17 +577,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 									<h2 class="header-home"><span>新商品のご紹介</span></h2>
 									<li>
 										<div class="itembox2">
-											<a href="/lineup/detail_item1.php?c=0&item_id=526"><img src="/m2/img/sp_new_01.jpg" alt="12.2オンスデニムスウェットプルオーバーパーカー" width="100%" /></a>
+											<a href="https://www.takahama428.com/items/item.php?code=3907" rel="nofollow"><img src="/m2/img/sp_new_01.jpg" alt="12.2オンスデニムスウェットプルオーバーパーカー" width="100%" /></a>
 										</div>
 									</li>
 									<li>
 										<div class="itembox2">
-											<a href="/lineup/detail_item1.php?c=0&item_id=376"><img src="/m2/img/sp_new_02.jpg" alt="チャンピオン 12ozリバースウィーブパーカー" width="100%" /></a>
+											<a href="https://www.takahama428.com/items/item.php?code=chmp-f1051" rel="nofollow"><img src="/m2/img/sp_new_02.jpg" alt="チャンピオン 12ozリバースウィーブパーカー" width="100%" /></a>
 										</div>
 									</li>
 									<li>
 										<div class="itembox2">
-											<a href="/lineup/detail_item1.php?c=0&item_id=368"><img src="/m2/img/sp_new_03.jpg" alt="マックスヘビーPOパーカー" width="100%" /></a>
+											<a href="https://www.takahama428.com/items/item.php?code=cs-2220" rel="nofollow"><img src="/m2/img/sp_new_03.jpg" alt="マックスヘビーPOパーカー" width="100%" /></a>
 										</div>
 									</li>
 								</ul>
@@ -589,7 +601,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					</div>
 					<div class="column-info">
 						<h3>有限会社　タカハマライフアート</h3>
-						<p>〒124-0025　葛飾区西新小岩3-14-26<br>営業時間　10:00~18:00（月~金）<br> ※定休日：土・日・祝
+						<p>〒124-0025　葛飾区西新小岩3-14-26<br>営業時間　10:00〜18:00（月〜金）<br> ※定休日：土・日・祝
 						</p>
 					</div>
 				</section>

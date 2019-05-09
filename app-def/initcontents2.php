@@ -63,7 +63,7 @@
 			$gnavi = "navi_3";
 			break;
 	case _DOC_ROOT.'lineup/lineup_parker.php':
-	case _DOC_ROOT.'lineup/lineup_parker1.php':
+	case _DOC_ROOT.'https://www.takahama428.com/items/category/sweat/':
 			/*
 			$comment = '<h1>オリジナルパーカーを選ぼう。</h1><p><strong>メーカー価格（メ）</strong>の<strong>39〜48％OFF!!!</strong> の超目玉特価です！</p>';
 			$itemis = substr(basename($myname, '.php'), strpos(basename($myname, '.php'), '_')+1);
@@ -72,7 +72,7 @@
 	 		$page = basename($myname, '.php');
 			break;
 	case _DOC_ROOT.'lineup/lineup_trainer.php':
-	case _DOC_ROOT.'lineup/lineup_trainer1.php':
+	case _DOC_ROOT.'https://www.takahama428.com/items/category/sweat/?cat=2&shilhouette%5B%5D=15':
 			/*
 			$comment = '<h1>オリジナルトレーナー・スウェットを選ぼう。</h1><p><strong>メーカー価格（メ）</strong>の<strong>39〜48％OFF!!!</strong> の超目玉特価です！</p>';
 			$itemis = substr(basename($myname, '.php'), strpos(basename($myname, '.php'), '_')+1);
@@ -97,7 +97,7 @@
 			$page = basename($myname, '.php');
 			break;
 	case _DOC_ROOT.'lineup/lineup_pants.php':
-	case _DOC_ROOT.'lineup/lineup_pants1.php':
+	case _DOC_ROOT.'https://www.takahama428.com/items/category/sweat/?cat=2&shilhouette%5B%5D=16':
 			/*
 			$comment = '<h1>オリジナルスウェットパンツを選ぼう。</h1><p><strong>メーカー価格（メ）</strong>の<strong>39〜48％OFF!!!</strong> の超目玉特価です！</p>';
 			$itemis = substr(basename($myname, '.php'), strpos(basename($myname, '.php'), '_')+1);
@@ -105,7 +105,7 @@
 			*/
 			$page = basename($myname, '.php');
 			break;
-	case _DOC_ROOT.'lineup/lineup_t-shirts.php':
+	case _DOC_ROOT.'https://www.takahama428.com/items/category/t-shirts/':
 			/*
 			$comment = '<h1>オリジナルTシャツを選ぼう。</h1><p><strong>メーカー価格（メ）</strong>の<strong>39〜48％OFF!!!</strong> の超目玉特価です！</p>';
 			$itemis = substr(basename($myname, '.php'), strpos(basename($myname, '.php'), '_')+1);
@@ -113,7 +113,7 @@
 			*/
 			$page = basename($myname, '.php');
 			break;
-	case _DOC_ROOT.'lineup/lineup_outer.php':
+	case _DOC_ROOT.'https://www.takahama428.com/items/category/outer/':
 			/*
 			$comment = '<h1>オリジナルブルゾンを選ぼう。</h1><p><strong>メーカー価格（メ）</strong>の<strong>39〜48％OFF!!!</strong> の超目玉特価です！</p>';
 			$itemis = substr(basename($myname, '.php'), strpos(basename($myname, '.php'), '_')+1);
@@ -360,13 +360,13 @@
 		$menu .= '<ul class="menu__second-level" style="top: 50px;">';
 
 		
-		if($page!='orderflow') $menu .= '<li><a href="/guide/guide1.php">ご注文の流れ</a></li>';
+		if($page!='orderflow') $menu .= '<li><a href="https://www.takahama428.com/guide/orderflow.php" rel=“nofollow">ご注文の流れ</a></li>';
 		else $menu .= '<li><p>ご注文の流れ</p></li>';
 		
-		if($page!='jumboprint') $menu .= '<li><a href="/estimate/estimate1.php">１０秒見積もり</a></li>';
+		if($page!='jumboprint') $menu .= '<li><a href="https://www.takahama428.com/price/estimate.php" rel=“nofollow">１０秒見積もり</a></li>';
 		else $menu .= '<li><p>１０秒見積もり</p></li>';
 		
-		if($page!='calendar') $menu .= '<li><a href="/calendar/calendar1.php">お届け計算</a></li>';
+		if($page!='calendar') $menu .= '<li><a href="https://www.takahama428.com/delivery/" rel=“nofollow">お届け計算</a></li>';
 		else $menu .= '<li><p>お届け計算</p></li>';
 		
 		if($page!='print_guide') $menu .= '<li><a href="/guide/print_guide1.php">プリント方法</a></li>';
@@ -383,23 +383,20 @@
 
 		$menu .= '<ul class="menu__second-level" style="top: 50px;">';
 		
-		if($page!='lineup_parker') $menu .= '<li><a href="/lineup/lineup_parker1.php">パーカー</a></li>';
+		if($page!='lineup_parker') $menu .= '<li><a href="https://www.takahama428.com/items/category/sweat/" rel=“nofollow">パーカー</a></li>';
 		else $menu .= '<li><p>パーカー</p></li>';
 		
-		if($page!='lineup_trainer') $menu .= '<li><a href="/lineup/lineup_trainer1.php">トレーナー</a></li>';
+		if($page!='lineup_trainer') $menu .= '<li><a href="https://www.takahama428.com/items/category/sweat/?cat=2&shilhouette%5B%5D=15" rel=“nofollow">トレーナー</a></li>';
 		else $menu .= '<li><p>トレーナー</p></li>';
 		
-		if($page!='lineup_pants') $menu .= '<li><a href="/lineup/lineup_pants1.php">パンツ</a></li>';
+		if($page!='lineup_pants') $menu .= '<li><a href="https://www.takahama428.com/items/category/sweat/?cat=2&shilhouette%5B%5D=16" rel=“nofollow">パンツ</a></li>';
 		else $menu .= '<li><p>パンツ</p></li>';
 		
-		if($page!='lineup_t-shirts') $menu .= '<li><a href="/lineup/lineup_t-shirts.php">Tシャツ</a></li>';
+		if($page!='lineup_t-shirts') $menu .= '<li><a href="https://www.takahama428.com/items/category/t-shirts/" rel=“nofollow">Tシャツ</a></li>';
 		else $menu .= '<li><p>Tシャツ</p></li>';
 		
-		if($page!='lineup_outer') $menu .= '<li><a href="/lineup/lineup_outer.php">ブルゾン</a></li>';
+		if($page!='lineup_outer') $menu .= '<li><a href="https://www.takahama428.com/items/category/outer/" rel=“nofollow">ブルゾン</a></li>';
 		else $menu .= '<li><p>ブルゾン</p></li>';
-		
-		if($page!='sweat_navi') $menu .= '<li><a href="/guide/sweat_navi1.php">ランキング</a></li>';
-		else $menu .= '<li><p>ランキング</p></li>';;
 		
 		$menu .= '</ul>';
 	
@@ -435,7 +432,7 @@
 
 		$menu .= '<ul class="menu__second-level" style="top: 50px;">';
 		
-		if($page!='order') $menu .= '<li><a href="/order/index1.php">申し込み</a></li>';
+		if($page!='order') $menu .= '<li><a href="https://www.takahama428.com/order/order_entrace.php" rel=“nofollow">申し込み</a></li>';
 		else $menu .= '<li><p>申し込み</p></li>';
 		
 		if($page!='contact') $menu .= '<li><a href="/customer/contact1.php">お問い合わせ</a></li>';
@@ -467,7 +464,7 @@
 		if($page!='design_temp') $menu .= '<li><a href="/policy/policy1.php">プライバシーポリシー</a></li>';
 		else $menu .= '<li><p>プライバシーポリシー</p></li>';
 		
-		if($page!='sheet') $menu .= '<li><a href="/faq/index1.php">Q&A</a></li>';
+		if($page!='sheet') $menu .= '<li><a href="https://www.takahama428.com/guide/faq.php" rel=“nofollow">Q&A</a></li>';
 		else $menu .= '<li><p>Q&A</p></li>';
 		
 		$menu .= '</ul>';
@@ -490,13 +487,13 @@
 	}else{
 		$header .= '<h1  class="header1">オリジナルパーカーの作成ならスウェットジャック</a></h1>';
 	}
-	$header .='<h2 class="site-title"><a href="http://www.sweatjack.jp/"><img src="/img/home/logo_01.png" alt="SweatJack"  width="100%"/></a></h2>';
+	$header .='<h2 class="site-title"><a href="http://www.sweatjack.jp/"><img src="/img/home/logo_01.png" alt="SweatJack"  width="100%" rel=“nofollow"/></a></h2>';
 	$header .='<div class="function">';
 	$header .='<p class="btn-cart"><a href="/customer/contact1.php"><img src="/img/home/hd_mail.png" alt="お問い合わせ"/><span style="position:absolute; top:35%;">お問い合わせ</span></a></p>';
 	$header .='<p class="btn-login"><a href="#"><img src="/img/home/hd_tel.png" alt="0120-130-428" /><span style="position:absolute; top:25%;">0120-130-428<br>営業時間(10:00-18:00)</span></a></p>';
-	$header .='<p class="btn-cart"><a href="/order/index1.php?cart=1"><img src="/img/home/hd_cart.png" alt="カート" /><span style="position:absolute; top:35%;">カート</span></a></p>';
+	$header .='<p class="btn-cart"><a href="https://www.takahama428.com/order/?update=1"><img src="/img/home/hd_cart.png" rel=“nofollow" alt="カート" /><span style="position:absolute; top:35%;">カート</span></a></p>';
 	//$header .='<p class="btn-mypage"><a href="/user/login.php"><span style="position:absolute; top:35%;">マイページ</span></a></p>';
-	$header .='<p class="btn-mypage"><a href="/user/history.php"><img src="/img/home/hd_mypage.png" style="width:34px;height:34px;"alt="カート" /><span style="position:absolute; top:35%;">マイページ</span></a></p>';
+	$header .='<p class="btn-mypage"><a href="https://www.takahama428.com/user/login.php" rel=“nofollow"><img src="/img/home/hd_mypage.png" style="width:34px;height:34px;"alt="カート" /><span style="position:absolute; top:35%;">マイページ</span></a></p>';
 	$header .='</div>';	
 	if(!empty($_SESSION['me'])){
 		$wel_name = mb_convert_encoding($_SESSION['me']['customername'], 'euc-jp', 'utf-8');
@@ -687,11 +684,11 @@
 	*/
 	$footer = '<div class="wrap">';
 	$footer .= '<div class="clearfix">';
-	$footer .= '<ul><li><p class="guidance">各種案内</p></li><li><a href="/guide/guide1.php">ご注文の流れ</a></li><li><a href="/estimate/estimate1.php">10秒見積もり</a></li><li><a href="/calendar/calendar1.php">お届け日計算</a></li><li><a href="/guide/print_guide1.php">プリント方法</a></li></ul>';
-	$footer .= '<ul><li><p class="itemlist">アイテム一覧</p></li><li><a href="/lineup/lineup_parker1.php">パーカー</a></li><li><a href="/lineup/lineup_trainer1.php">トレーナー</a></li><li><a href="/lineup/lineup_pants1.php">パンツ</a></li><li><a href="/lineup/lineup_t-shirts.php">Tシャツ</a></li><li><a href="/lineup/lineup_outer.php">ブルゾン</a></li><li><a href="/guide/sweat_navi1.php">ランキング</a></li></ul>';
+	$footer .= '<ul><li><p class="guidance">各種案内</p></li><li><a href="https://www.takahama428.com/guide/orderflow.php" rel=“nofollow">ご注文の流れ</a></li><li><a href="https://www.takahama428.com/price/estimate.php" rel=“nofollow">10秒見積もり</a></li><li><a href="https://www.takahama428.com/delivery/">お届け日計算</a></li><li><a href="/guide/print_guide1.php">プリント方法</a></li></ul>';
+	$footer .= '<ul><li><p class="itemlist">アイテム一覧</p></li><li><a href="https://www.takahama428.com/items/category/sweat/" rel=“nofollow">パーカー</a></li><li><a href="https://www.takahama428.com/items/category/sweat/?cat=2&shilhouette%5B%5D=15" rel=“nofollow">トレーナー</a></li><li><a href="https://www.takahama428.com/items/category/sweat/?cat=2&shilhouette%5B%5D=16" rel=“nofollow">パンツ</a></li><li><a href="https://www.takahama428.com/items/category/t-shirts/" rel=“nofollow">Tシャツ</a></li><li><a href="https://www.takahama428.com/items/category/outer/" rel=“nofollow">ブルゾン</a></li></ul>';
 	$footer .= '<ul><li><p class="design">デザイン</p></li><li><a href="/gallery/gallery_body1.php">制作実例</a></li><li><a href="/guide/ink_font.php">インクとフォント</a></li><li><a href="/design/index1.php">デザインテンプレート集</a></li><li><a href="/guide/sheet1.php">デザイン用紙</a></li></ul>';
-	$footer .= '<ul><li><p class="price">申し込み</p></li><li><a href="/order/index1.php">申し込み</a></li><li><a href="/customer/contact1.php">お問い合わせ</a></li><li><a href="/guide/catalog1.php">資料請求</a></li><li><a href="/guide/discount1.php">割引プラン</a></li></ul>';
-	$footer .= '<ul><li><p class="company">会社概要</p></li><li><a href="/company/company1.php">企業情報</a></li><li><a href="/law/law1.php">特定商取引法</a></li><li><a href="/policy/policy1.php">プライバシーポリシー</a></li><li><a href="/faq/index1.php">Ｑ＆Ａ</a></li><li><a href="/sitemap/sitemap.php">サイトマップ</a></li></ul>';
+	$footer .= '<ul><li><p class="price">申し込み</p></li><li><a href="https://www.takahama428.com/order/order_entrace.php" rel=“nofollow">申し込み</a></li><li><a href="/customer/contact1.php">お問い合わせ</a></li><li><a href="/guide/catalog1.php">資料請求</a></li><li><a href="/guide/discount1.php">割引プラン</a></li></ul>';
+	$footer .= '<ul><li><p class="company">会社概要</p></li><li><a href="/company/company1.php">企業情報</a></li><li><a href="/law/law1.php">特定商取引法</a></li><li><a href="/policy/policy1.php">プライバシーポリシー</a></li><li><a href="https://www.takahama428.com/guide/faq.php" rel=“nofollow">Ｑ＆Ａ</a></li><li><a href="/sitemap/sitemap.php">サイトマップ</a></li></ul>';
 	$footer .= '</div>';
 	$footer .= '<div class="inner">';
 	$footer .= '<div class="logo"><img alt="タカハマライフアート" src="/common/img/logo_footer.png" /></div>';
